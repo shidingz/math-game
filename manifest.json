@@ -1,0 +1,420 @@
+{
+  "version": "1.0.0",
+  "character": "孙悟空",
+  "format": "rgba-sprite-atlas",
+  "generator": "ImageGen referenced-image generation; deterministic chroma-key extraction",
+  "cell": {
+    "width": 512,
+    "height": 640,
+    "pivotX": 256,
+    "pivotY": 588
+  },
+  "atlas": {
+    "width": 2048,
+    "height": 2560,
+    "columns": 4,
+    "rows": 4
+  },
+  "stages": [
+    {
+      "id": 1,
+      "name": "小石猴",
+      "range": "Lv.1—5",
+      "tag": "好奇 · 灵巧",
+      "color": "#28b99b",
+      "scale": 0.69,
+      "png": "assets/stage-1.png",
+      "webp": "assets/stage-1.webp",
+      "portrait": "assets/stage-1-portrait.png"
+    },
+    {
+      "id": 2,
+      "name": "小行者",
+      "range": "Lv.6—10",
+      "tag": "勇敢 · 敏捷",
+      "color": "#3883ed",
+      "scale": 0.82,
+      "png": "assets/stage-2.png",
+      "webp": "assets/stage-2.webp",
+      "portrait": "assets/stage-2-portrait.png"
+    },
+    {
+      "id": 3,
+      "name": "踏云大圣",
+      "range": "Lv.11—15",
+      "tag": "自信 · 守护",
+      "color": "#ee655c",
+      "scale": 0.99,
+      "png": "assets/stage-3.png",
+      "webp": "assets/stage-3.webp",
+      "portrait": "assets/stage-3-portrait.png"
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "name": "idle",
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 1,
+      "name": "blink",
+      "x": 512,
+      "y": 0,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 2,
+      "name": "wave-a",
+      "x": 1024,
+      "y": 0,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 3,
+      "name": "wave-b",
+      "x": 1536,
+      "y": 0,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 4,
+      "name": "pet-a",
+      "x": 0,
+      "y": 640,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 5,
+      "name": "pet-b",
+      "x": 512,
+      "y": 640,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 6,
+      "name": "feed-a",
+      "x": 1024,
+      "y": 640,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 7,
+      "name": "feed-b",
+      "x": 1536,
+      "y": 640,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 8,
+      "name": "think",
+      "x": 0,
+      "y": 1280,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 9,
+      "name": "comfort",
+      "x": 512,
+      "y": 1280,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 10,
+      "name": "celebrate",
+      "x": 1024,
+      "y": 1280,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 11,
+      "name": "jump",
+      "x": 1536,
+      "y": 1280,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 12,
+      "name": "sleep",
+      "x": 0,
+      "y": 1920,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 13,
+      "name": "run-a",
+      "x": 512,
+      "y": 1920,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 14,
+      "name": "run-b",
+      "x": 1024,
+      "y": 1920,
+      "width": 512,
+      "height": 640
+    },
+    {
+      "index": 15,
+      "name": "skill",
+      "x": 1536,
+      "y": 1920,
+      "width": 512,
+      "height": 640
+    }
+  ],
+  "actions": {
+    "idle": {
+      "label": "待机",
+      "frames": [
+        0
+      ],
+      "durationMs": null,
+      "loop": true
+    },
+    "wave": {
+      "label": "挥手",
+      "frames": [
+        2,
+        3,
+        2,
+        3,
+        2,
+        3
+      ],
+      "durationMs": 1800,
+      "loop": false
+    },
+    "pet": {
+      "label": "摸摸头",
+      "frames": [
+        4,
+        5,
+        4,
+        5
+      ],
+      "durationMs": 1800,
+      "loop": false
+    },
+    "feed": {
+      "label": "吃桃子",
+      "frames": [
+        6,
+        6,
+        7,
+        7,
+        6,
+        7
+      ],
+      "durationMs": 2600,
+      "loop": false
+    },
+    "think": {
+      "label": "思考",
+      "frames": [
+        8
+      ],
+      "durationMs": 2800,
+      "loop": false
+    },
+    "comfort": {
+      "label": "鼓励",
+      "frames": [
+        9
+      ],
+      "durationMs": 2400,
+      "loop": false
+    },
+    "celebrate": {
+      "label": "庆祝",
+      "frames": [
+        10,
+        11,
+        10
+      ],
+      "durationMs": 1800,
+      "loop": false
+    },
+    "jump": {
+      "label": "跳跃",
+      "frames": [
+        11
+      ],
+      "durationMs": 1100,
+      "loop": false
+    },
+    "sleep": {
+      "label": "小憩",
+      "frames": [
+        12
+      ],
+      "durationMs": null,
+      "loop": true
+    },
+    "run": {
+      "label": "跑动",
+      "frames": [
+        13,
+        14
+      ],
+      "durationMs": null,
+      "loop": true
+    },
+    "skill": {
+      "label": "施法",
+      "frames": [
+        15
+      ],
+      "durationMs": 3000,
+      "loop": false
+    },
+    "evolve": {
+      "label": "进化",
+      "frames": [
+        15,
+        10
+      ],
+      "durationMs": 3000,
+      "loop": false
+    }
+  },
+  "levels": [
+    {
+      "level": 1,
+      "stage": 1,
+      "name": "星芽初醒",
+      "effect": "星点",
+      "description": "身边亮起青色星点，第一束灵气开始陪伴。",
+      "scale": 0.69
+    },
+    {
+      "level": 2,
+      "stage": 1,
+      "name": "桃心羁绊",
+      "effect": "桃心",
+      "description": "桃红色爱心轻轻上浮，回应每一次陪伴。",
+      "scale": 0.707
+    },
+    {
+      "level": 3,
+      "stage": 1,
+      "name": "青叶旋舞",
+      "effect": "飞叶",
+      "description": "鲜绿叶片绕身飞舞，像花果山吹来的风。",
+      "scale": 0.724
+    },
+    {
+      "level": 4,
+      "stage": 1,
+      "name": "尾星轨迹",
+      "effect": "星轨",
+      "description": "蓝色弧线带着星星划过身后。",
+      "scale": 0.742
+    },
+    {
+      "level": 5,
+      "stage": 1,
+      "name": "花果灵环",
+      "effect": "叶环",
+      "description": "脚下展开一圈青叶，幼年阶段成长完成。",
+      "scale": 0.759
+    },
+    {
+      "level": 6,
+      "stage": 2,
+      "name": "如意初芒",
+      "effect": "棒芒",
+      "description": "金色光弧向外展开，小行者正式登场。",
+      "scale": 0.82
+    },
+    {
+      "level": 7,
+      "stage": 2,
+      "name": "赤绫流光",
+      "effect": "红绫",
+      "description": "两道红色飘带绕身流动，奔跑更有气势。",
+      "scale": 0.84
+    },
+    {
+      "level": 8,
+      "stage": 2,
+      "name": "金箍星辉",
+      "effect": "冠星",
+      "description": "头顶浮起三颗金星，金箍光辉逐渐点亮。",
+      "scale": 0.861
+    },
+    {
+      "level": 9,
+      "stage": 2,
+      "name": "踏风云步",
+      "effect": "风云",
+      "description": "脚边生成流动的小云团，轻盈踏风。",
+      "scale": 0.881
+    },
+    {
+      "level": 10,
+      "stage": 2,
+      "name": "行者护环",
+      "effect": "双环",
+      "description": "两道蓝色轨道交错环绕，积蓄进化力量。",
+      "scale": 0.902
+    },
+    {
+      "level": 11,
+      "stage": 3,
+      "name": "筋斗云起",
+      "effect": "筋斗云",
+      "description": "脚下凝成筋斗云，踏云大圣正式登场。",
+      "scale": 0.99
+    },
+    {
+      "level": 12,
+      "stage": 3,
+      "name": "翎羽流星",
+      "effect": "流星",
+      "description": "赤金色流星从翎羽上方掠过。",
+      "scale": 1.015
+    },
+    {
+      "level": 13,
+      "stage": 3,
+      "name": "云纹守护",
+      "effect": "护盾",
+      "description": "青蓝色云纹护盾展开，守护身边的伙伴。",
+      "scale": 1.04
+    },
+    {
+      "level": 14,
+      "stage": 3,
+      "name": "身外化身",
+      "effect": "分身",
+      "description": "两道半透明分身同时现身，随后归于本体。",
+      "scale": 1.064
+    },
+    {
+      "level": 15,
+      "stage": 3,
+      "name": "齐天星阵",
+      "effect": "星阵",
+      "description": "五芒星阵与金色光环同时展开，成长圆满。",
+      "scale": 1.089
+    }
+  ]
+}

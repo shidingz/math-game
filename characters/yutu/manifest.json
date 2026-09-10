@@ -1,0 +1,522 @@
+{
+  "version": "1.0.0",
+  "characterId": "yutu",
+  "name": "玉兔",
+  "format": "rgba-sprite-atlas",
+  "generator": "Built-in ImageGen; deterministic chroma-key isolation and atlas assembly",
+  "cell": {
+    "width": 512,
+    "height": 640,
+    "pivotX": 256,
+    "pivotY": 588
+  },
+  "atlas": {
+    "width": 2048,
+    "height": 2560,
+    "columns": 4,
+    "rows": 4
+  },
+  "stages": [
+    {
+      "id": 1,
+      "name": "月宫幼兔",
+      "minLevel": 1,
+      "maxLevel": 5,
+      "scale": 0.7,
+      "color": "#5cbfb9",
+      "tag": "乖巧 · 好奇",
+      "png": "assets/stage-1.png",
+      "webp": "assets/stage-1.webp",
+      "portrait": "assets/stage-1-portrait.png"
+    },
+    {
+      "id": 2,
+      "name": "桂香灵兔",
+      "minLevel": 6,
+      "maxLevel": 10,
+      "scale": 0.85,
+      "color": "#538bc7",
+      "tag": "灵动 · 聪慧",
+      "png": "assets/stage-2.png",
+      "webp": "assets/stage-2.webp",
+      "portrait": "assets/stage-2-portrait.png"
+    },
+    {
+      "id": 3,
+      "name": "月光玉兔",
+      "minLevel": 11,
+      "maxLevel": 15,
+      "scale": 1,
+      "color": "#7272ce",
+      "tag": "沉静 · 守护",
+      "png": "assets/stage-3.png",
+      "webp": "assets/stage-3.webp",
+      "portrait": "assets/stage-3-portrait.png"
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "name": "idle",
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 1,
+      "name": "blink",
+      "x": 512,
+      "y": 0,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 2,
+      "name": "wave-a",
+      "x": 1024,
+      "y": 0,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 3,
+      "name": "wave-b",
+      "x": 1536,
+      "y": 0,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 4,
+      "name": "pet-a",
+      "x": 0,
+      "y": 640,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 5,
+      "name": "pet-b",
+      "x": 512,
+      "y": 640,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 6,
+      "name": "feed-a",
+      "x": 1024,
+      "y": 640,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 7,
+      "name": "feed-b",
+      "x": 1536,
+      "y": 640,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 8,
+      "name": "think",
+      "x": 0,
+      "y": 1280,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 9,
+      "name": "comfort",
+      "x": 512,
+      "y": 1280,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 10,
+      "name": "celebrate",
+      "x": 1024,
+      "y": 1280,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 11,
+      "name": "jump",
+      "x": 1536,
+      "y": 1280,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 12,
+      "name": "sleep",
+      "x": 0,
+      "y": 1920,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 13,
+      "name": "run-a",
+      "x": 512,
+      "y": 1920,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 14,
+      "name": "run-b",
+      "x": 1024,
+      "y": 1920,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    },
+    {
+      "index": 15,
+      "name": "skill",
+      "x": 1536,
+      "y": 1920,
+      "width": 512,
+      "height": 640,
+      "pivotX": 256,
+      "pivotY": 588
+    }
+  ],
+  "actions": {
+    "idle": {
+      "label": "待机",
+      "frames": [
+        0
+      ],
+      "durationMs": null,
+      "loop": true
+    },
+    "wave": {
+      "label": "挥手",
+      "frames": [
+        2,
+        3,
+        2,
+        3
+      ],
+      "durationMs": 1800,
+      "loop": false
+    },
+    "pet": {
+      "label": "摸摸头",
+      "frames": [
+        4,
+        5,
+        4,
+        5
+      ],
+      "durationMs": 1800,
+      "loop": false
+    },
+    "feed": {
+      "label": "吃桂花糕",
+      "frames": [
+        6,
+        6,
+        7,
+        7,
+        6,
+        7
+      ],
+      "durationMs": 1600,
+      "loop": false
+    },
+    "think": {
+      "label": "思考",
+      "frames": [
+        8
+      ],
+      "durationMs": 2800,
+      "loop": false
+    },
+    "comfort": {
+      "label": "鼓励",
+      "frames": [
+        9
+      ],
+      "durationMs": 2200,
+      "loop": false
+    },
+    "celebrate": {
+      "label": "庆祝",
+      "frames": [
+        10,
+        11,
+        10
+      ],
+      "durationMs": 1800,
+      "loop": false
+    },
+    "jump": {
+      "label": "跳跃",
+      "frames": [
+        11
+      ],
+      "durationMs": 1100,
+      "loop": false
+    },
+    "sleep": {
+      "label": "小憩",
+      "frames": [
+        12
+      ],
+      "durationMs": null,
+      "loop": true
+    },
+    "run": {
+      "label": "跑动",
+      "frames": [
+        13,
+        14
+      ],
+      "durationMs": null,
+      "loop": true,
+      "frameMs": 200
+    },
+    "skill": {
+      "label": "本领展示",
+      "frames": [
+        15
+      ],
+      "durationMs": 3000,
+      "loop": false
+    },
+    "evolve": {
+      "label": "进化",
+      "frames": [
+        15,
+        10
+      ],
+      "durationMs": 3000,
+      "loop": false
+    }
+  },
+  "levels": [
+    {
+      "level": 1,
+      "stage": 1,
+      "name": "月尘初醒",
+      "effect": "moon-dust",
+      "description": "月白星点在身旁轻轻闪烁。",
+      "scale": 0.7,
+      "stageGrowth": 1,
+      "effectSvg": "assets/effects/level-01.svg"
+    },
+    {
+      "level": 2,
+      "stage": 1,
+      "name": "桂香微光",
+      "effect": "osmanthus",
+      "description": "青玉桂叶与小桂花绕身飘落。",
+      "scale": 0.717,
+      "stageGrowth": 1.025,
+      "effectSvg": "assets/effects/level-02.svg"
+    },
+    {
+      "level": 3,
+      "stage": 1,
+      "name": "新月足迹",
+      "effect": "moon-ring",
+      "description": "脚边亮起一圈细细的月光。",
+      "scale": 0.735,
+      "stageGrowth": 1.05,
+      "effectSvg": "assets/effects/level-03.svg"
+    },
+    {
+      "level": 4,
+      "stage": 1,
+      "name": "玉叶旋风",
+      "effect": "jade-leaves",
+      "description": "两道青玉叶影轻轻盘旋。",
+      "scale": 0.752,
+      "stageGrowth": 1.075,
+      "effectSvg": "assets/effects/level-04.svg"
+    },
+    {
+      "level": 5,
+      "stage": 1,
+      "name": "月芽绽放",
+      "effect": "crescent-bloom",
+      "description": "小月牙与桂花在脚边绽开。",
+      "scale": 0.77,
+      "stageGrowth": 1.1,
+      "effectSvg": "assets/effects/level-05.svg"
+    },
+    {
+      "level": 6,
+      "stage": 2,
+      "name": "灵兔觉醒",
+      "effect": "spirit-awake",
+      "description": "进化为桂香灵兔，双重月环展开。",
+      "scale": 0.85,
+      "stageGrowth": 1,
+      "effectSvg": "assets/effects/level-06.svg"
+    },
+    {
+      "level": 7,
+      "stage": 2,
+      "name": "桂枝流萤",
+      "effect": "fireflies",
+      "description": "桂花与青色流萤沿身旁巡游。",
+      "scale": 0.871,
+      "stageGrowth": 1.025,
+      "effectSvg": "assets/effects/level-07.svg"
+    },
+    {
+      "level": 8,
+      "stage": 2,
+      "name": "玉杵星芒",
+      "effect": "pestle-glint",
+      "description": "玉杵边闪出蓝白星芒。",
+      "scale": 0.892,
+      "stageGrowth": 1.05,
+      "effectSvg": "assets/effects/level-08.svg"
+    },
+    {
+      "level": 9,
+      "stage": 2,
+      "name": "月华绸带",
+      "effect": "moon-silk",
+      "description": "蓝紫月华如绸带环绕。",
+      "scale": 0.914,
+      "stageGrowth": 1.075,
+      "effectSvg": "assets/effects/level-09.svg"
+    },
+    {
+      "level": 10,
+      "stage": 2,
+      "name": "桂庭月阵",
+      "effect": "garden-array",
+      "description": "桂花环和月纹在脚下交相辉映。",
+      "scale": 0.935,
+      "stageGrowth": 1.1,
+      "effectSvg": "assets/effects/level-10.svg"
+    },
+    {
+      "level": 11,
+      "stage": 3,
+      "name": "望月守护",
+      "effect": "guardian",
+      "description": "进化为月光玉兔，身后展开守护月弧。",
+      "scale": 1,
+      "stageGrowth": 1,
+      "effectSvg": "assets/effects/level-11.svg"
+    },
+    {
+      "level": 12,
+      "stage": 3,
+      "name": "银辉流星",
+      "effect": "silver-meteor",
+      "description": "银蓝流星划过月弧。",
+      "scale": 1.025,
+      "stageGrowth": 1.025,
+      "effectSvg": "assets/effects/level-12.svg"
+    },
+    {
+      "level": 13,
+      "stage": 3,
+      "name": "月桂结界",
+      "effect": "laurel-shield",
+      "description": "青玉月桂组成轻盈的守护结界。",
+      "scale": 1.05,
+      "stageGrowth": 1.05,
+      "effectSvg": "assets/effects/level-13.svg"
+    },
+    {
+      "level": 14,
+      "stage": 3,
+      "name": "三月共鸣",
+      "effect": "moon-resonance",
+      "description": "三道蓝紫月环交错共鸣。",
+      "scale": 1.075,
+      "stageGrowth": 1.075,
+      "effectSvg": "assets/effects/level-14.svg"
+    },
+    {
+      "level": 15,
+      "stage": 3,
+      "name": "广寒星河",
+      "effect": "moon-galaxy",
+      "description": "月弧、桂花、星河与玉叶一同展开。",
+      "scale": 1.1,
+      "stageGrowth": 1.1,
+      "effectSvg": "assets/effects/level-15.svg"
+    }
+  ],
+  "food": {
+    "id": "osmanthus-cake",
+    "name": "桂花糕",
+    "icon": "assets/osmanthus-cake.png",
+    "bittenIcon": "assets/osmanthus-cake-bitten.png"
+  },
+  "items": [
+    {
+      "id": "osmanthus-cake",
+      "png": "assets/osmanthus-cake.png",
+      "width": 512,
+      "height": 512
+    },
+    {
+      "id": "osmanthus-cake-bitten",
+      "png": "assets/osmanthus-cake-bitten.png",
+      "width": 512,
+      "height": 512
+    },
+    {
+      "id": "jade-pestle",
+      "png": "assets/jade-pestle.png",
+      "width": 512,
+      "height": 512
+    },
+    {
+      "id": "osmanthus-sprig",
+      "png": "assets/osmanthus-sprig.png",
+      "width": 512,
+      "height": 512
+    }
+  ],
+  "limitations": [
+    "2D raster keyframes, not skeletal animation or 3D model",
+    "16 key poses per stage; not a fully in-betweened animation",
+    "Same-stage size growth is uniform scaling plus separate SVG effects; no 15 separate costumes"
+  ]
+}
