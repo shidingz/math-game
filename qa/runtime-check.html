@@ -1,0 +1,29 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><title>悟空组件检查</title><script src="../wukong.js" defer></script><style>body{font:14px system-ui;color:#24374b;background:#f2f6fa;margin:24px}button{padding:12px}#fixture{max-width:500px}#results{line-height:1.8;white-space:pre-wrap}.gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.gallery figure{margin:0;background:white;border-radius:12px;overflow:hidden}.gallery canvas{width:100%;height:auto;display:block}.gallery figcaption{padding:10px;font-size:12px}.ok{color:#008255}.fail{color:#bd2d36}</style></head><body><h1>运行与素材检查</h1><button id="run">运行全部检查</button><pre id="results" role="status">等待开始</pre><div id="fixture"></div><h2>15 级特效快照</h2><div class="gallery" id="gallery"></div><script>
+window.addEventListener('DOMContentLoaded',()=>{document.getElementById('run').onclick=async()=>{
+const output=document.getElementById('results'),fixture=document.getElementById('fixture'),gallery=document.getElementById('gallery');output.textContent='正在检查…';gallery.replaceChildren();fixture.replaceChildren();const lines=[];let passed=0,failed=0;
+const check=(name,fn)=>{try{if(fn()===false)throw Error('条件不成立');lines.push('✓ '+name);passed++;}catch(e){lines.push('✗ '+name+' — '+e.message);failed++;}};
+const ready=pet=>new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('素材加载超时')),10000);const ok=()=>{clearTimeout(timer);pet.removeEventListener('pet-error',bad);resolve();};const bad=()=>{clearTimeout(timer);pet.removeEventListener('pet-ready',ok);reject(Error('素材加载失败'));};pet.addEventListener('pet-ready',ok,{once:true});pet.addEventListener('pet-error',bad,{once:true});});
+try{
+const pet=document.createElement('wukong-game-pet');pet.setAttribute('asset-base','assets/');const first=ready(pet);fixture.append(pet);await first;pet.pause();
+check('初始角色加载成功',()=>pet._atlas.naturalWidth===2048&&pet._atlas.naturalHeight===2560);
+for(let level=1;level<=15;level++){
+const stage=Math.floor((level-1)/5)+1;const wait=stage!==pet.stage?ready(pet):Promise.resolve();pet.setLevel(level,{animate:false});await wait;pet.play('skill');pet._t+=1100;pet._render();
+check('等级 '+level+'：阶段、体型、特效可绘制',()=>pet.level===level&&pet.stage===stage&&pet.info.scale>0&&pet.canvas.getContext('2d').getImageData(0,0,960,680).data.some((n,i)=>i%4===3&&n>0));
+const card=document.createElement('figure'),canvas=document.createElement('canvas');canvas.width=480;canvas.height=340;canvas.getContext('2d').drawImage(pet.canvas,0,0,480,340);const label=document.createElement('figcaption');label.textContent=`Lv.${level} ${pet.info.name}`;card.append(canvas,label);gallery.append(card);
+for(const action of Object.keys(WukongGameData.actions)){pet.play(action);pet._render();check('Lv.'+level+' / '+action+' 可见',()=>{const pixels=pet.ctx.getImageData(0,0,960,680).data;let n=0;for(let i=3;i<pixels.length;i+=4)if(pixels[i]>200)n++;return n>5000;});}
+}
+check('所有等级效果名称各不相同',()=>new Set(WukongGameData.levels.map(l=>l.name)).size===15);
+check('同阶段每级体型递增',()=>WukongGameData.levels.every((l,i)=>i===0||l.scale>WukongGameData.levels[i-1].scale));
+pet.setLevel(99,{animate:false});check('等级上限钳制',()=>pet.level===15);const back=ready(pet);pet.setLevel(-4,{animate:false});await back;check('等级下限钳制',()=>pet.level===1);
+let threw=false;try{pet.play('not-an-action')}catch(e){threw=e instanceof RangeError}check('拒绝未知动作',()=>threw);
+let evolve=false;pet.addEventListener('pet-levelchange',e=>{evolve=e.detail.evolved;});pet.setLevel(5,{animate:false});const next=ready(pet);pet.setLevel(6);await next;check('5→6 触发换形与进化动作',()=>pet.stage===2&&evolve&&pet.action==='evolve');
+pet.play('feed');pet.play('wave');check('连续互动由最新动作接管',()=>pet.action==='wave');
+pet._reduced=true;pet.moveTo(.1);check('减少动态模式直接到达安全边界',()=>pet._x===960*.28&&pet.action==='idle');pet.play('skill');pet._render();check('减少动态模式仍显示角色与特效',()=>pet._atlas!==null);pet._reduced=false;
+pet.moveTo(.72);pet._last=100;pet.pause(false);const x=pet._x;pet._tick(140);cancelAnimationFrame(pet._raf);check('跑动随时间改变坐标',()=>pet._x>x);
+pet.pause();const t=pet._t;pet._tick(180);cancelAnimationFrame(pet._raf);check('暂停冻结动画时钟',()=>pet._t===t);
+pet.pause(false);pet.play('feed');pet._t=pet._start+3000;pet._tick(220);cancelAnimationFrame(pet._raf);check('有限动作结束回到待机',()=>pet.action==='idle');
+const r=ready(pet);pet.setLevel(11,{animate:false});pet.setLevel(6,{animate:false});await r;check('快速跨阶段切换保留最新素材',()=>pet.stage===2&&pet._atlas.src.endsWith('stage-2.png'));
+pet.remove();check('移除组件清理渲染循环',()=>!pet.isConnected);
+}catch(e){failed++;lines.push('✗ 检查中断：'+e.stack);}
+output.className=failed?'fail':'ok';output.textContent=`${passed} 项通过 / ${failed} 项失败\n`+lines.join('\n');document.getElementById('run').textContent='重新运行检查';
+};});</script></body></html>

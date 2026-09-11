@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   MathPetCharacters.register({
-    id:'yutu',name:'玉兔',portrait:'characters/yutu/assets/stage-1-portrait.png',unlock:{cost:500,description:'使用 500 积分兑换'},
+    id:'yutu',name:'玉兔',portrait:'characters/yutu/assets/stage-1-portrait.png',unlock:{cost:300,description:'使用 300 积分兑换'},
     food:{name:'桂花糕',unit:'块',icon:'🌼',iconImage:'characters/yutu/assets/osmanthus-cake.png',title:'一块桂花糕，长大一点',cost:20,growth:20},
     growthCurve:MathPetGrowth.WUKONG,
     ui:{title:'一起算，月光伴你长大。',location:'广寒宫 · 月桂小庭',symbol:'月',scene:'moon',style:'ornate',zoom:[1.35,1.13,1.02],

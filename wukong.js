@@ -25,12 +25,12 @@
     ['身外化身','分身','两道半透明分身同时现身，随后归于本体。'],
     ['齐天星阵','星阵','五芒星阵与金色光环同时展开，成长圆满。']
   ];
-  const levels = effects.map((e,i) => Object.freeze({level:i+1,stage:Math.floor(i/5)+1,name:e[0],effect:e[1],description:e[2],scale:+(stages[Math.floor(i/5)].scale*(1+(i%5)*.025)).toFixed(3)}));
+  const levels = effects.map((e,i) => Object.freeze({level:i+1,stage:Math.floor(i/5)+1,name:e[0],effect:e[1],description:e[2],scale:+(stages[Math.floor(i/5)].scale*(1+(i%5)*.035)).toFixed(3)}));
   const actions = {
     idle:{label:'待机',frames:[0],duration:Infinity},
     wave:{label:'挥手',frames:[2,3,2,3,2,3],duration:1800},
     pet:{label:'摸摸头',frames:[4,5,4,5],duration:1800},
-    feed:{label:'吃桃子',frames:[6,6,7,7,6,7],duration:1600},
+    feed:{label:'吃桃子',frames:[6,6,7,7,6,7],duration:500},
     think:{label:'思考',frames:[8],duration:2800},
     comfort:{label:'鼓励',frames:[9],duration:2400},
     celebrate:{label:'庆祝',frames:[10,11,10],duration:1800},
@@ -52,7 +52,7 @@
     constructor(){
       super(); this.attachShadow({mode:'open'});
       this.shadowRoot.innerHTML=`<style>:host{display:block;width:100%;aspect-ratio:960/680;position:relative;min-width:0}canvas{display:block;width:100%;height:100%;touch-action:pan-y;outline:none}canvas:focus-visible{outline:3px solid #3684e8;outline-offset:-4px;border-radius:24px}.status{position:absolute;inset:45% 10% auto;text-align:center;color:#36465e;font:14px system-ui;pointer-events:none}.status:empty{display:none}</style><canvas width="960" height="680" role="button" tabindex="0" aria-label="孙悟空，点击摸摸头；左右方向键移动，空格互动"></canvas><span class="status" role="status">正在准备角色…</span>`;
-      this.canvas=this.shadowRoot.querySelector('canvas');this.ctx=this.canvas.getContext('2d');this.status=this.shadowRoot.querySelector('.status');
+      this.canvas=this.shadowRoot.querySelector('canvas');this.ctx=this.canvas.getContext('2d');const pixelRatio=Math.min(2,Math.max(1,Number(globalThis.devicePixelRatio)||1));if(pixelRatio>1&&typeof this.ctx.setTransform==='function'){this.canvas.width=Math.round(960*pixelRatio);this.canvas.height=Math.round(680*pixelRatio);this.ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);}this.ctx.imageSmoothingEnabled=true;this.ctx.imageSmoothingQuality='high';this.status=this.shadowRoot.querySelector('.status');
       this._level=1;this._action='idle';this._t=0;this._start=0;this._fxStart=-99999;this._fxUntil=0;this._x=480;this._target=480;this._dir=1;this._paused=false;this._atlas=null;this._last=0;this._token=0;this._initialized=false;this._evolution=null;
       this._motion=matchMedia('(prefers-reduced-motion: reduce)');this._reduced=this._motion.matches;
       this._onMotion=()=>{this._reduced=this._motion.matches;};
@@ -167,8 +167,8 @@
       const active=this._t<this._fxUntil,fxTime=reduced?1:(this._t-this._fxStart)/1000;
       if(this.stage===3)this._cloud(this._x,base+15,.83,.85);
       if(active&&this.level===14){const a=reduced?.22:.23*Math.sin(Math.PI*Math.min(1,(this._t-this._fxStart)/3800));this._sprite(frame,this._x-105,base+3,scale,a);this._sprite(frame,this._x+105,base+3,scale,a);}
-      if(active)this._effect(this.level,fxTime,this._x,base,h,.88);
-      else if(this._action!=='sleep')this._effect(this.level,t,this._x,base,h,.18);
+      if(active)this._effect(this.level,fxTime,this._x,base,h,.98);
+      else if(this._action!=='sleep')this._effect(this.level,t,this._x,base,h,.34+(this.level-1)*.02);
       this._sprite(frame,this._x,base,scale);
       if(this._action==='pet'||this._action==='feed'){for(let i=0;i<3;i++){const p=reduced?.6:((elapsed/1800+i/3)%1);this._heart(this._x+(i-1)*45,base-h*.8-p*50,.5,'#f57f9a');}}
       if(this._action==='sleep'){c.fillStyle='#7b91ba';c.font='bold 26px system-ui';c.fillText('z',this._x+70,base-h*.44-8*Math.sin(t));c.font='bold 18px system-ui';c.fillText('z',this._x+97,base-h*.51);}

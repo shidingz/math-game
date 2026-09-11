@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "checked": [
+    "500-point exchange",
+    "no automatic unlock",
+    "test save isolation",
+    "15 levels",
+    "all 12 actions",
+    "click interaction",
+    "feeding evolution",
+    "quiz correct auto-next and wrong manual-next",
+    "four character themes",
+    "mobile overflow",
+    "reload persistence"
+  ],
+  "errors": []
+}

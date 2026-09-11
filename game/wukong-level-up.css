@@ -1,0 +1,26 @@
+/* Full-screen celebration shared by every pet. */
+dialog.pet-upgrade{--upgrade-primary:#398c75;--upgrade-dark:#173d55;--upgrade-accent:#70b79a;--upgrade-surface:#fff4ce;--upgrade-muted:#c7e4ea;position:fixed;inset:0;margin:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;padding:0;border:0;border-radius:0;overflow:hidden;background:radial-gradient(circle at 50% 53%,#10263d 0,#081321 43%,#03060d 100%);color:#fff;text-align:center;box-shadow:none;isolation:isolate;overscroll-behavior:contain;touch-action:none}
+.pet-upgrade::backdrop{background:#02050bf2;backdrop-filter:brightness(.2) blur(6px);animation:pet-upgrade-dim .35s ease-out}
+.pet-upgrade-aura{position:absolute;left:50%;top:51%;width:min(850px,150vw);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--upgrade-accent) 35%,transparent) 0%,color-mix(in srgb,var(--upgrade-primary) 18%,transparent) 34%,transparent 67%);pointer-events:none}
+.pet-upgrade-aura:after{content:'';position:absolute;inset:12%;border-radius:50%;border:1px solid color-mix(in srgb,var(--upgrade-muted) 35%,transparent);box-shadow:0 0 60px color-mix(in srgb,var(--upgrade-accent) 15%,transparent),inset 0 0 60px color-mix(in srgb,var(--upgrade-primary) 16%,transparent);animation:pet-upgrade-halo 3s ease-in-out infinite}
+.pet-upgrade-heading{position:absolute;z-index:2;top:max(5%,env(safe-area-inset-top));left:16px;right:16px;padding:0;pointer-events:none}
+.pet-upgrade-kicker{font-size:12px;letter-spacing:4px;color:var(--upgrade-muted);margin:0 0 10px}
+.pet-upgrade-heading h2{font-size:clamp(28px,6vw,46px);line-height:1.2;margin:0;color:var(--upgrade-surface);text-shadow:0 3px 24px color-mix(in srgb,var(--upgrade-accent) 30%,transparent)}
+.pet-upgrade-level{font-size:clamp(23px,5vw,34px);font-weight:750;color:color-mix(in srgb,var(--upgrade-surface) 75%,var(--upgrade-accent));margin:12px 0 8px;font-variant-numeric:tabular-nums}
+.pet-upgrade-detail{font-size:13px;color:var(--upgrade-muted);margin:0;line-height:1.5}
+.pet-upgrade-stage{position:absolute;left:50%;top:52%;width:min(920px,180vw,calc(66svh * 960 / 680));aspect-ratio:960/680;margin-left:calc(min(920px,180vw,calc(66svh * 960 / 680)) / -2);margin-top:calc(min(920px,180vw,calc(66svh * 960 / 680)) * 680 / 960 / -2);transform-origin:50% 50%;opacity:0;pointer-events:none}
+.pet-upgrade-stage>*{display:block;width:100%;filter:drop-shadow(0 12px 22px color-mix(in srgb,var(--upgrade-accent) 25%,transparent))}
+.pet-upgrade.is-ready .pet-upgrade-stage{opacity:1}
+.pet-upgrade-loading{position:absolute;top:48%;left:0;right:0;color:var(--upgrade-muted);font-size:14px}
+.pet-upgrade-footer{position:absolute;bottom:max(5%,env(safe-area-inset-bottom));left:18px;right:18px;z-index:2}
+.pet-upgrade-footer p{font-size:12px;color:var(--upgrade-muted);margin:0 0 14px}
+.pet-upgrade-done{border:1px solid color-mix(in srgb,var(--upgrade-surface) 55%,transparent);background:var(--upgrade-surface);color:var(--upgrade-dark);box-shadow:0 5px 0 color-mix(in srgb,var(--upgrade-dark) 20%,transparent);min-height:48px;border-radius:16px;padding:13px 28px;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.pet-upgrade-done:focus-visible{outline:3px solid var(--upgrade-accent);outline-offset:5px}
+.pet-upgrade-sparks{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s}
+.pet-upgrade.is-ready .pet-upgrade-sparks{opacity:.75}.pet-upgrade-sparks i{position:absolute;left:var(--x);top:var(--y);color:var(--upgrade-accent);font-size:var(--size);font-style:normal;animation:pet-upgrade-spark 2.4s var(--delay) ease-in-out infinite}.pet-upgrade-sparks i:nth-child(3n){color:var(--upgrade-surface)}
+.pet-upgrade.is-leaving .pet-upgrade-heading,.pet-upgrade.is-leaving .pet-upgrade-footer,.pet-upgrade.is-leaving .pet-upgrade-sparks{opacity:0;transition:opacity .25s}
+@keyframes pet-upgrade-dim{from{opacity:0}to{opacity:1}}
+@keyframes pet-upgrade-spark{50%{transform:translateY(-16px) scale(.7);opacity:.3}}
+@keyframes pet-upgrade-halo{50%{transform:scale(1.06);opacity:.5}}
+@media(max-height:550px){.pet-upgrade-heading{top:4%}.pet-upgrade-kicker{display:none}.pet-upgrade-heading h2{font-size:25px}.pet-upgrade-level{font-size:20px;margin:6px}.pet-upgrade-footer{bottom:3%}.pet-upgrade-footer p{display:none}.pet-upgrade-stage{top:55%}}
+@media(prefers-reduced-motion:reduce){.pet-upgrade::backdrop,.pet-upgrade-aura:after,.pet-upgrade-sparks i{animation:none}.pet-upgrade-sparks{transition:none}}

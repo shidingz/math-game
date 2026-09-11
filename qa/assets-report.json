@@ -1,0 +1,901 @@
+{
+  "cell": [
+    512,
+    640
+  ],
+  "baseline": 588,
+  "stages": [
+    {
+      "stage": 1,
+      "frames": [
+        {
+          "name": "idle",
+          "source": "stage-1-a.png",
+          "sourceBounds": [
+            51,
+            67,
+            372,
+            492
+          ],
+          "bounds": [
+            115,
+            163,
+            436,
+            589
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "blink",
+          "source": "stage-1-a.png",
+          "sourceBounds": [
+            434,
+            67,
+            755,
+            492
+          ],
+          "bounds": [
+            114,
+            163,
+            435,
+            589
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "wave-a",
+          "source": "stage-1-a.png",
+          "sourceBounds": [
+            818,
+            67,
+            1139,
+            493
+          ],
+          "bounds": [
+            114,
+            162,
+            435,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "wave-b",
+          "source": "stage-1-a.png",
+          "sourceBounds": [
+            1182,
+            67,
+            1523,
+            493
+          ],
+          "bounds": [
+            94,
+            162,
+            435,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "pet-a",
+          "source": "stage-1-a.png",
+          "sourceBounds": [
+            67,
+            551,
+            377,
+            968
+          ],
+          "bounds": [
+            131,
+            171,
+            441,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "pet-b",
+          "source": "stage-1-a.png",
+          "sourceBounds": [
+            456,
+            561,
+            746,
+            970
+          ],
+          "bounds": [
+            136,
+            179,
+            426,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "feed-a",
+          "source": "stage-1-a.png",
+          "sourceBounds": [
+            818,
+            548,
+            1137,
+            970
+          ],
+          "bounds": [
+            114,
+            166,
+            433,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "feed-b",
+          "source": "stage-1-a.png",
+          "sourceBounds": [
+            1204,
+            548,
+            1524,
+            971
+          ],
+          "bounds": [
+            116,
+            165,
+            436,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "think",
+          "source": "stage-1-b.png",
+          "sourceBounds": [
+            59,
+            64,
+            359,
+            493
+          ],
+          "bounds": [
+            123,
+            159,
+            423,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "comfort",
+          "source": "stage-1-b.png",
+          "sourceBounds": [
+            444,
+            63,
+            756,
+            492
+          ],
+          "bounds": [
+            123,
+            159,
+            436,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "celebrate",
+          "source": "stage-1-b.png",
+          "sourceBounds": [
+            823,
+            64,
+            1106,
+            492
+          ],
+          "bounds": [
+            119,
+            160,
+            402,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "jump",
+          "source": "stage-1-b.png",
+          "sourceBounds": [
+            1183,
+            68,
+            1491,
+            459
+          ],
+          "bounds": [
+            95,
+            197,
+            403,
+            589
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "sleep",
+          "source": "stage-1-b.png",
+          "sourceBounds": [
+            66,
+            605,
+            363,
+            934
+          ],
+          "bounds": [
+            130,
+            259,
+            427,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "run-a",
+          "source": "stage-1-b.png",
+          "sourceBounds": [
+            400,
+            557,
+            730,
+            941
+          ],
+          "bounds": [
+            80,
+            204,
+            410,
+            589
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "run-b",
+          "source": "stage-1-b.png",
+          "sourceBounds": [
+            786,
+            558,
+            1103,
+            942
+          ],
+          "bounds": [
+            82,
+            203,
+            399,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "skill",
+          "source": "stage-1-b.png",
+          "sourceBounds": [
+            1177,
+            547,
+            1485,
+            951
+          ],
+          "bounds": [
+            89,
+            184,
+            397,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        }
+      ],
+      "atlas": [
+        2048,
+        2560
+      ]
+    },
+    {
+      "stage": 2,
+      "frames": [
+        {
+          "name": "idle",
+          "source": "stage-2-a.png",
+          "sourceBounds": [
+            46,
+            25,
+            383,
+            492
+          ],
+          "bounds": [
+            110,
+            121,
+            447,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "blink",
+          "source": "stage-2-a.png",
+          "sourceBounds": [
+            430,
+            25,
+            766,
+            492
+          ],
+          "bounds": [
+            110,
+            121,
+            447,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "wave-a",
+          "source": "stage-2-a.png",
+          "sourceBounds": [
+            817,
+            34,
+            1145,
+            492
+          ],
+          "bounds": [
+            112,
+            130,
+            441,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "wave-b",
+          "source": "stage-2-a.png",
+          "sourceBounds": [
+            1199,
+            33,
+            1529,
+            492
+          ],
+          "bounds": [
+            111,
+            129,
+            441,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "pet-a",
+          "source": "stage-2-a.png",
+          "sourceBounds": [
+            54,
+            542,
+            376,
+            992
+          ],
+          "bounds": [
+            118,
+            138,
+            440,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "pet-b",
+          "source": "stage-2-a.png",
+          "sourceBounds": [
+            440,
+            545,
+            759,
+            992
+          ],
+          "bounds": [
+            120,
+            141,
+            439,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "feed-a",
+          "source": "stage-2-a.png",
+          "sourceBounds": [
+            792,
+            541,
+            1138,
+            990
+          ],
+          "bounds": [
+            88,
+            139,
+            434,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "feed-b",
+          "source": "stage-2-a.png",
+          "sourceBounds": [
+            1173,
+            542,
+            1522,
+            990
+          ],
+          "bounds": [
+            85,
+            140,
+            434,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "think",
+          "source": "stage-2-b.png",
+          "sourceBounds": [
+            77,
+            58,
+            366,
+            491
+          ],
+          "bounds": [
+            141,
+            155,
+            430,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "comfort",
+          "source": "stage-2-b.png",
+          "sourceBounds": [
+            452,
+            65,
+            742,
+            491
+          ],
+          "bounds": [
+            132,
+            162,
+            423,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "celebrate",
+          "source": "stage-2-b.png",
+          "sourceBounds": [
+            826,
+            56,
+            1094,
+            491
+          ],
+          "bounds": [
+            122,
+            153,
+            390,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "jump",
+          "source": "stage-2-b.png",
+          "sourceBounds": [
+            1141,
+            48,
+            1516,
+            475
+          ],
+          "bounds": [
+            53,
+            161,
+            428,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "sleep",
+          "source": "stage-2-b.png",
+          "sourceBounds": [
+            25,
+            592,
+            365,
+            940
+          ],
+          "bounds": [
+            89,
+            240,
+            429,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "run-a",
+          "source": "stage-2-b.png",
+          "sourceBounds": [
+            395,
+            542,
+            739,
+            947
+          ],
+          "bounds": [
+            74,
+            183,
+            419,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "run-b",
+          "source": "stage-2-b.png",
+          "sourceBounds": [
+            790,
+            548,
+            1109,
+            950
+          ],
+          "bounds": [
+            86,
+            186,
+            405,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "skill",
+          "source": "stage-2-b.png",
+          "sourceBounds": [
+            1202,
+            548,
+            1509,
+            955
+          ],
+          "bounds": [
+            114,
+            181,
+            421,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        }
+      ],
+      "atlas": [
+        2048,
+        2560
+      ]
+    },
+    {
+      "stage": 3,
+      "frames": [
+        {
+          "name": "idle",
+          "source": "stage-3-a.png",
+          "sourceBounds": [
+            6,
+            10,
+            389,
+            504
+          ],
+          "bounds": [
+            69,
+            94,
+            453,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "blink",
+          "source": "stage-3-a.png",
+          "sourceBounds": [
+            389,
+            10,
+            773,
+            504
+          ],
+          "bounds": [
+            68,
+            93,
+            453,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "wave-a",
+          "source": "stage-3-a.png",
+          "sourceBounds": [
+            773,
+            10,
+            1150,
+            504
+          ],
+          "bounds": [
+            68,
+            94,
+            446,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "wave-b",
+          "source": "stage-3-a.png",
+          "sourceBounds": [
+            1158,
+            10,
+            1534,
+            504
+          ],
+          "bounds": [
+            69,
+            94,
+            446,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "pet-a",
+          "source": "stage-3-a.png",
+          "sourceBounds": [
+            17,
+            524,
+            389,
+            1015
+          ],
+          "bounds": [
+            80,
+            97,
+            453,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "pet-b",
+          "source": "stage-3-a.png",
+          "sourceBounds": [
+            401,
+            526,
+            772,
+            1015
+          ],
+          "bounds": [
+            81,
+            98,
+            452,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "feed-a",
+          "source": "stage-3-a.png",
+          "sourceBounds": [
+            798,
+            526,
+            1139,
+            1011
+          ],
+          "bounds": [
+            94,
+            103,
+            435,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "feed-b",
+          "source": "stage-3-a.png",
+          "sourceBounds": [
+            1182,
+            527,
+            1522,
+            1011
+          ],
+          "bounds": [
+            94,
+            103,
+            434,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "think",
+          "source": "stage-3-b.png",
+          "sourceBounds": [
+            19,
+            28,
+            383,
+            505
+          ],
+          "bounds": [
+            83,
+            111,
+            447,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "comfort",
+          "source": "stage-3-b.png",
+          "sourceBounds": [
+            405,
+            29,
+            760,
+            505
+          ],
+          "bounds": [
+            84,
+            112,
+            440,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "celebrate",
+          "source": "stage-3-b.png",
+          "sourceBounds": [
+            787,
+            30,
+            1153,
+            505
+          ],
+          "bounds": [
+            82,
+            112,
+            449,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "jump",
+          "source": "stage-3-b.png",
+          "sourceBounds": [
+            1162,
+            27,
+            1516,
+            456
+          ],
+          "bounds": [
+            74,
+            159,
+            428,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "sleep",
+          "source": "stage-3-b.png",
+          "sourceBounds": [
+            14,
+            596,
+            378,
+            932
+          ],
+          "bounds": [
+            78,
+            252,
+            442,
+            589
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "run-a",
+          "source": "stage-3-b.png",
+          "sourceBounds": [
+            388,
+            531,
+            749,
+            952
+          ],
+          "bounds": [
+            68,
+            166,
+            429,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "run-b",
+          "source": "stage-3-b.png",
+          "sourceBounds": [
+            766,
+            533,
+            1114,
+            959
+          ],
+          "bounds": [
+            61,
+            162,
+            410,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        },
+        {
+          "name": "skill",
+          "source": "stage-3-b.png",
+          "sourceBounds": [
+            1171,
+            524,
+            1517,
+            980
+          ],
+          "bounds": [
+            83,
+            132,
+            429,
+            588
+          ],
+          "sourceEdgeTouch": false,
+          "nonempty": true
+        }
+      ],
+      "atlas": [
+        2048,
+        2560
+      ]
+    }
+  ],
+  "ok": true
+}

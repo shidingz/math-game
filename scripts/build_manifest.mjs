@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const sandbox={window:{},document:{currentScript:{src:new URL('../wukong.js',import.meta.url).href}},URL,HTMLElement:class{},customElements:{get:()=>false,define:()=>{}}};
+vm.runInNewContext(fs.readFileSync(path.join(root,'wukong.js'),'utf8'),sandbox);
+const data=sandbox.window.WukongGameData;
+const manifest={version:data.version,character:'孙悟空',format:'rgba-sprite-atlas',generator:'ImageGen referenced-image generation; deterministic chroma-key extraction',cell:{width:512,height:640,pivotX:256,pivotY:588},atlas:{width:2048,height:2560,columns:4,rows:4},stages:data.stages.map(s=>({...s,png:`assets/stage-${s.id}.png`,webp:`assets/stage-${s.id}.webp`,portrait:`assets/stage-${s.id}-portrait.png`})),frames:data.frames.map((name,i)=>({index:i,name,x:i%4*512,y:Math.floor(i/4)*640,width:512,height:640})),actions:Object.fromEntries(Object.entries(data.actions).map(([k,v])=>[k,{...v,durationMs:Number.isFinite(v.duration)?v.duration:null,loop:!Number.isFinite(v.duration),duration:undefined}])),levels:data.levels};
+fs.writeFileSync(path.join(root,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
+console.log(`Manifest: ${manifest.stages.length} stages / ${manifest.frames.length} poses each / ${manifest.levels.length} levels`);

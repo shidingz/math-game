@@ -1,0 +1,44 @@
+{
+  "id": "corgi",
+  "name": "柯基犬",
+  "version": "2.0.0",
+  "atlas": {
+    "columns": 3,
+    "rows": 3,
+    "cellWidth": 512,
+    "cellHeight": 512,
+    "pivotX": 256,
+    "pivotY": 470
+  },
+  "frames": [
+    "idle",
+    "blink",
+    "wave",
+    "pet",
+    "feed",
+    "think",
+    "sleep",
+    "jump",
+    "skill"
+  ],
+  "stages": [
+    {
+      "name": "见习小警员",
+      "minLevel": 1,
+      "atlas": "assets/stage-1.png"
+    },
+    {
+      "name": "机敏巡逻员",
+      "minLevel": 6,
+      "atlas": "assets/stage-2.png"
+    },
+    {
+      "name": "王牌汪队长",
+      "minLevel": 11,
+      "atlas": "assets/stage-3.png"
+    }
+  ],
+  "visualMaxLevel": 15,
+  "feedDurationMs": 500,
+  "entry": "corgi.js"
+}

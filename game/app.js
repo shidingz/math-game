@@ -2,12 +2,14 @@
   'use strict';
   const core=MathPetCore,Q=MathPetQuestions,storage=MathPetStorage,$=id=>document.getElementById(id);
   let state=storage.load(),config,pet,interactions,feeding=false,feedTimer,toastTimer,autoTimer,previewing=false;
-  const quiz=$('quiz-dialog'),settings=$('settings-dialog'),characterDialog=$('characters-dialog'),unlockCards=new Map();
+  document.body.classList.toggle('is-test-build',storage.isTest);
+  const petUpgrade=new PetLevelUp();let upgradeRun=0;
+  const quiz=$('quiz-dialog'),settings=$('settings-dialog'),characterDialog=$('characters-dialog'),starter=$('starter-dialog'),unlockCards=new Map();let starterSelection=null;
   const saveMessage=storage.isTest?'测试进度独立保存 · 不影响正式版':'进度自动保存在这台设备';
   function save(){storage.save(state);$('save-status').textContent=storage.warning||saveMessage;}
   function toast(message){clearTimeout(toastTimer);$('toast').textContent=message;$('toast').hidden=false;toastTimer=setTimeout(()=>$('toast').hidden=true,3500);}
   function mount(){
-    previewing=false;
+    upgradeRun++;petUpgrade.cancel();previewing=false;
     interactions?.destroy();pet?.destroy();config=MathPetCharacters.get(state.activePet)||MathPetCharacters.list()[0];state.activePet=config.id;
     if(!Object.hasOwn(state.pets,config.id))state.pets[config.id]={level:1,growth:0,feeds:0};
     const p=state.pets[config.id];while(p.growth>=core.required(p.level,config)){p.growth-=core.required(p.level,config);p.level++;}
@@ -15,7 +17,7 @@
     interactions=new PetInteraction(pet,config,message=>$('speech').textContent=message);
     $('speech').textContent=config.messages.idle[0];
   }
-  function syncActivity(){interactions.setEnabled(!feeding&&!previewing&&!quiz.open&&!settings.open&&!characterDialog.open);pet.pause(quiz.open||settings.open||characterDialog.open);}
+  function syncActivity(){interactions.setEnabled(!feeding&&!previewing&&!quiz.open&&!settings.open&&!characterDialog.open&&!starter.open);pet.pause(quiz.open||settings.open||characterDialog.open||starter.open);}
   function render(){
     const p=state.pets[config.id],stageIndex=Math.floor((core.visualLevel(p.level)-1)/5),stage=config.stages[stageIndex],need=core.required(p.level,config),food=core.foodOf(config),grade=core.GRADES[state.grade];
     $('points').textContent=state.points;$('pet-name').textContent=config.name;$('level').textContent=`Lv.${p.level}`;$('stage-name').textContent=stage.name+' · '+stage.tag;
@@ -34,7 +36,8 @@
     $('start').textContent=state.round?(state.round.complete?'查看本轮收获':`继续练习 · 第 ${state.round.index+1} 题`):'开始计算 →';$('start').disabled=feeding;
     $('total-solved').textContent=`已练 ${state.totalAnswered} 题 · 答对 ${state.totalSolved} 题`;$('save-status').textContent=storage.warning||saveMessage;
     const milestoneText=[6,11,15].map(n=>`${Math.ceil(core.totalAt(n,config)/food.growth*food.cost/10)} 题到 Lv.${n}`).join(' · ');
-    $('evolution-note').textContent=p.level>=15?'Lv.15 后仍可继续升级，每级沿用 Lv.15 门槛（约 46 道题）；外形、体形与特效不再变化。':`累计答对 ${milestoneText}。积分需用于喂养当前伙伴，角色兑换另计。`;
+    const continuedQuestions=Math.ceil(core.required(15,config)/food.growth*food.cost/10);
+    $('evolution-note').textContent=p.level>=15?`Lv.15 后仍可继续升级，每级沿用 Lv.15 门槛（约 ${continuedQuestions} 道题）；外形、体形与特效不再变化。`:`累计答对 ${milestoneText}。积分需用于喂养当前伙伴，角色兑换另计。`;
     const picker=document.querySelector('.pet-select');
     if(picker){
       picker.value=state.activePet;picker.disabled=feeding;
@@ -56,7 +59,7 @@
       button.disabled=feeding||(!unlocked&&state.points<cost);
       button.textContent=unlocked?(id===state.activePet?'正在陪伴':'去陪伴'):state.points<cost?`还差 ${cost-state.points} 积分`:`兑换${c.name} · ★ ${cost}`;
       note.textContent=unlocked?'已解锁 · 成长独立保存':`消耗 ${cost} 积分解锁`;}
-    if(storage.isTest){$('test-level').value=p.level;$('test-effect').textContent=`Lv.${p.level} · ${config.effects[core.visualLevel(p.level)-1].name}：${p.level>15?'保持 Lv.15 外形和特效；等级继续成长。':config.effects[core.visualLevel(p.level)-1].description||''}`;$('test-panel').querySelectorAll('button,select,input').forEach(el=>el.disabled=feeding);}
+    if(storage.isTest){$('test-pet-upgrade').textContent=`预览${config.name}升级`;$('test-level').value=p.level;$('test-effect').textContent=`Lv.${p.level} · ${config.effects[core.visualLevel(p.level)-1].name}：${p.level>15?'保持 Lv.15 外形和特效；等级继续成长。':config.effects[core.visualLevel(p.level)-1].description||''}`;$('test-panel').querySelectorAll('button,select,input').forEach(el=>el.disabled=feeding);}
   }
   function renderResult(){
     const r=state.round,correct=r.questions.filter(q=>q.status==='correct').length,wrong=r.questions.filter(q=>q.status==='wrong'),reward=correct*10,food=core.foodOf(config);
@@ -100,19 +103,30 @@
     feeding=true;save();syncActivity();pet.play('feed');$('speech').textContent=`啊呜，${config.food.name}真好吃！谢谢你。`;render();
     feedTimer=setTimeout(()=>{
       if(result.leveled){
-        pet.setLevel(core.visualLevel(result.level));
-        if(result.previous>=core.RULES.visualMaxLevel)pet.play('celebrate');
-        $('speech').textContent=`我升到 Lv.${result.level} 啦！${result.evolved?'快看，我进化了！':'又进步了一点。'}`;
-        toast(result.level<=core.RULES.visualMaxLevel?`${result.evolved?'进化成功':'升级啦'}！${config.effects[result.level-1].name}已解锁`:`升级啦！Lv.${result.level} · 继续陪伴，一起进步`);
-        if(result.evolved){feedTimer=setTimeout(endFeeding,2200);return;}
+        showPetUpgrade(result);return;
       }else toast(`喂养成功 · 成长值 +${result.growth}`);
       endFeeding();
-    },core.RULES.feedDurationMs+50);
+    },core.RULES.feedDurationMs);
   });
+  async function showPetUpgrade(result,preview=false){
+    const run=++upgradeRun,activePet=pet;
+    feeding=true;syncActivity();
+    activePet.setLevel(core.visualLevel(result.level),{animate:false});activePet.pause(true);render();
+    try{await petUpgrade.play({config,origin:activePet.element,level:result.level,previous:result.previous,preview});}
+    finally{
+      if(run===upgradeRun&&activePet===pet){
+        activePet.play('idle');activePet.pause(false);
+        $('speech').textContent=preview?'嘿嘿，和你一起成长真开心！':`我升到 Lv.${result.level} 啦！${result.evolved?'快看，我进化了！':'又进步了一点。'}`;
+        endFeeding();
+        (preview?$('test-pet-upgrade'):$('feed')).focus({preventScroll:true});
+      }
+    }
+  }
   function endFeeding(){feeding=false;syncActivity();render();}
   function selectedGrade(){return Number(settings.querySelector('input[name="grade"]:checked')?.value??2);}
   function updateTopicOptions(topic='balanced'){const grade=selectedGrade(),info=core.GRADES[grade];$('grade-scope').textContent=info.description;$('topic-select').replaceChildren();for(const [id,name] of Object.entries({balanced:'综合练习 · 巩固本年级计算',...info.topics})){const option=document.createElement('option');option.value=id;option.textContent=name;$('topic-select').append(option);}$('topic-select').value=Q.allowed(grade,topic)?topic:'balanced';}
   function openSettings(){
+    if(feeding)return;
     const first=state.grade===null;$('settings-title').textContent=first?'先选孩子的年级':'年级与练习范围';$('settings-description').textContent=first?'我们会按年级安排计算练习，之后随时可以调整。':'更改后立即开始新范围的练习，已获得的积分和成长保留。';$('settings-close').hidden=first;$('settings-save').textContent=first?'选好了，开始陪伴':'保存并使用新设置';
     settings.querySelector(`input[value="${state.grade??2}"]`).checked=true;updateTopicOptions(state.topic);settings.showModal();settings.querySelector('input[name="grade"]:checked').focus();syncActivity();
   }
@@ -121,10 +135,26 @@
   $('settings-save').addEventListener('click',()=>{const grade=selectedGrade(),topic=$('topic-select').value,changed=grade!==state.grade||topic!==state.topic;state.grade=grade;state.topic=topic;if(changed){cancelAuto();state.round=null;}save();render();settings.close();toast(`${core.GRADES[grade].name}练习准备好了。`);});
   settings.addEventListener('close',()=>{syncActivity();$('settings-open').focus();});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAuto();else scheduleAuto();});
-  window.addEventListener('storage',e=>{if(e.key!==storage.key)return;cancelAuto();clearTimeout(feedTimer);feeding=false;state=storage.load();mount();render();if(quiz.open){if(state.round){renderQuestion();focusQuestion();scheduleAuto();}else quiz.close();}syncActivity();toast('已同步另一个页面的最新进度。');});
-  window.addEventListener('pagehide',()=>{interactions.destroy();cancelAuto();clearTimeout(feedTimer);clearTimeout(toastTimer);pet.pause(true);});
-  window.addEventListener('pageshow',e=>{if(e.persisted){state=storage.load();feeding=false;mount();render();if(quiz.open&&state.round)renderQuestion();syncActivity();scheduleAuto();}});
+  window.addEventListener('storage',e=>{if(e.key!==storage.key)return;cancelAuto();clearTimeout(feedTimer);feeding=false;state=storage.load();mount();render();if(quiz.open){if(state.round){renderQuestion();focusQuestion();scheduleAuto();}else quiz.close();}onboard();syncActivity();toast('已同步另一个页面的最新进度。');});
+  window.addEventListener('pagehide',()=>{upgradeRun++;petUpgrade.cancel();interactions.destroy();cancelAuto();clearTimeout(feedTimer);clearTimeout(toastTimer);pet.pause(true);});
+  window.addEventListener('pageshow',e=>{if(e.persisted){state=storage.load();feeding=false;mount();render();if(quiz.open&&state.round)renderQuestion();onboard();syncActivity();scheduleAuto();}});
   const registered=MathPetCharacters.list();
+  for(const c of registered){
+    const button=document.createElement('button'),img=document.createElement('img'),name=document.createElement('strong'),tag=document.createElement('span');
+    button.type='button';button.className='starter-option';button.dataset.starter=c.id;button.setAttribute('aria-pressed','false');img.src=c.portrait||(c.id==='wukong'?'assets/stage-1-portrait.png':`characters/${c.id}/assets/stage-1-portrait.png`);img.alt='';name.textContent=c.name;tag.textContent=c.stages[0].name;button.append(img,name,tag);$('starter-list').append(button);
+    button.addEventListener('click',()=>{starterSelection=c.id;for(const b of $('starter-list').children)b.setAttribute('aria-pressed',String(b===button));$('starter-choice').textContent=c.stages.map(s=>s.name).join(' → ');$('starter-adopt').textContent=`领养${c.name} · 免费`;$('starter-adopt').disabled=false;});
+  }
+  starter.addEventListener('cancel',e=>e.preventDefault());
+  $('starter-adopt').addEventListener('click',()=>{
+    // Reload before granting the one free pet in case another tab already chose one.
+    const latest=storage.load();if(latest.starterChosen){state=latest;mount();render();starter.close();onboard();return;}
+    if(!core.chooseStarter(state,starterSelection,registered.map(c=>c.id)))return;
+    save();mount();render();starter.close();onboard();syncActivity();
+  });
+  function onboard(){
+    if(!storage.isTest&&!state.starterChosen){if(settings.open)settings.close();if(quiz.open)quiz.close();if(characterDialog.open)characterDialog.close();if(!starter.open){starter.showModal();$('starter-title').focus();}syncActivity();return;}
+    if(starter.open)starter.close();if(state.grade===null&&!settings.open)openSettings();
+  }
   function selectCharacter(id){if(feeding)return;if(!core.selectPet(state,id,registered.map(c=>c.id))){render();toast('请先在「认识新伙伴」中使用积分兑换。');return;}mount();save();render();syncActivity();}
   if(registered.length>1){const select=document.createElement('select');select.className='pet-select';select.setAttribute('aria-label','选择宠物');for(const character of registered){const option=document.createElement('option');option.value=character.id;option.textContent=character.name;select.append(option);}select.value=state.activePet;document.querySelector('.welcome').insertBefore(select,$('settings-open'));select.addEventListener('change',()=>selectCharacter(select.value));}
   for(const c of registered){
@@ -140,14 +170,16 @@
     for(const [id,label] of Object.entries({idle:'待机 / 眨眼',wave:'挥手',pet:'摸摸头',feed:'进食（仅预览）',think:'思考',comfort:'鼓励',celebrate:'庆祝',jump:'跳跃',sleep:'睡眠',run:'跑动',skill:'本领展示',evolve:'进化特效'})){const option=document.createElement('option');option.value=id;option.textContent=label;$('test-action').append(option);}
     function testChange(command,value){
       if(feeding||quiz.open||settings.open||characterDialog.open)return;
-      previewing=false;const previous=state.activePet;MathPetTestTools.apply(state,command,value,registered);
-      if(previous!==state.activePet)mount();else if(command==='level')pet.setLevel(core.visualLevel(state.pets[state.activePet].level));else pet.play('idle');
+      previewing=false;const previous=state.activePet,previousLevel=state.pets[state.activePet].level;MathPetTestTools.apply(state,command,value,registered);
+      if(previous!==state.activePet)mount();else if(command==='level')pet.setLevel(core.visualLevel(state.pets[state.activePet].level));else if(command!=='level-up')pet.play('idle');
       save();render();syncActivity();
+      if(command==='level-up')showPetUpgrade({level:state.pets[state.activePet].level,previous:previousLevel,evolved:[6,11].includes(state.pets[state.activePet].level)},true);
     }
     $('test-panel').addEventListener('click',e=>{const target=e.target.closest('button');if(target?.dataset.testCommand)testChange(target.dataset.testCommand);if(target?.dataset.testLevel)testChange('level',target.dataset.testLevel);});
     $('test-level').addEventListener('change',()=>{const n=Number($('test-level').value);if(!Number.isSafeInteger(n)||n<1||n>=Number.MAX_SAFE_INTEGER){render();toast('请输入大于零的整数等级。');return;}testChange('level',n);});
+    $('test-pet-upgrade').addEventListener('click',()=>{if(feeding||quiz.open||settings.open||characterDialog.open)return;previewing=false;const level=state.pets[config.id].level;showPetUpgrade({level,previous:Math.max(1,level-1)},true);});
     $('test-play').addEventListener('click',()=>{if(feeding)return;previewing=true;syncActivity();pet.play($('test-action').value);$('speech').textContent=`动作预览：${$('test-action').selectedOptions[0].textContent}`;});
     $('test-idle').addEventListener('click',()=>{if(feeding)return;previewing=false;pet.play('idle');syncActivity();$('speech').textContent=config.messages.idle[0];});
   }
-  mount();render();if(state.grade===null)openSettings();else save();
+  mount();render();onboard();if(state.starterChosen)save();
 })();

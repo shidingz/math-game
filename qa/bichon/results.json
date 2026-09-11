@@ -1,0 +1,108 @@
+{
+  "results": [
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 844,
+      "layers": 1,
+      "canvas": 1920,
+      "level": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 844,
+      "layers": 6,
+      "canvas": 1920,
+      "level": 6
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 844,
+      "layers": 15,
+      "canvas": 1920,
+      "level": 15
+    },
+    {
+      "pet": "bichon",
+      "title": "比熊犬进化啦！",
+      "backdrop": "rgba(2, 5, 11, 0.95)"
+    },
+    {
+      "unlockButtons": [
+        {
+          "text": "×",
+          "data": "<button id=\"characters-close\" class=\"icon-button\" aria-label=\"关闭伙伴兑换\">×</button>"
+        },
+        {
+          "text": "正在陪伴",
+          "data": "<button type=\"button\" data-unlock=\"wukong\">正在陪伴</button>"
+        },
+        {
+          "text": "兑换哪吒 · ★ 300",
+          "data": "<button type=\"button\" data-unlock=\"nezha\">兑换哪吒 · ★ 300</button>"
+        },
+        {
+          "text": "兑换玉兔 · ★ 300",
+          "data": "<button type=\"button\" data-unlock=\"yutu\">兑换玉兔 · ★ 300</button>"
+        },
+        {
+          "text": "兑换精卫 · ★ 300",
+          "data": "<button type=\"button\" data-unlock=\"jingwei\">兑换精卫 · ★ 300</button>"
+        },
+        {
+          "text": "兑换布偶猫 · ★ 300",
+          "data": "<button type=\"button\" data-unlock=\"ragdoll\">兑换布偶猫 · ★ 300</button>"
+        },
+        {
+          "text": "兑换柯基犬 · ★ 300",
+          "data": "<button type=\"button\" data-unlock=\"corgi\">兑换柯基犬 · ★ 300</button>"
+        },
+        {
+          "text": "兑换萨摩耶 · ★ 300",
+          "data": "<button type=\"button\" data-unlock=\"samoyed\">兑换萨摩耶 · ★ 300</button>"
+        },
+        {
+          "text": "兑换暹罗猫 · ★ 300",
+          "data": "<button type=\"button\" data-unlock=\"siamese\">兑换暹罗猫 · ★ 300</button>"
+        },
+        {
+          "text": "兑换比熊犬 · ★ 300",
+          "data": "<button type=\"button\" data-unlock=\"bichon\">兑换比熊犬 · ★ 300</button>"
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 900,
+      "layers": 1,
+      "canvas": 1920,
+      "level": 1
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 900,
+      "layers": 6,
+      "canvas": 1920,
+      "level": 6
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 900,
+      "layers": 15,
+      "canvas": 1920,
+      "level": 15
+    }
+  ],
+  "errors": []
+}

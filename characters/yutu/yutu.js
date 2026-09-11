@@ -18,14 +18,14 @@
       this.shadowRoot.innerHTML=`<style>
         :host{display:block;width:100%;aspect-ratio:960/680;min-width:0;position:relative}
         .shell{position:absolute;inset:0;overflow:hidden;border-radius:inherit}
-        canvas,.fx{position:absolute;inset:0;width:100%;height:100%}.fx{pointer-events:none;opacity:.2;transition:opacity .3s}.fx svg{display:block;width:100%;height:100%}
-        .fx.burst{opacity:.9}.shell.frozen .yt-pulse{animation-play-state:paused!important}
+        canvas,.fx{position:absolute;inset:0;width:100%;height:100%}.fx{pointer-events:none;opacity:var(--fx-opacity,.34);filter:drop-shadow(0 0 var(--fx-glow,4px) #8d8bea);transition:opacity .3s,filter .3s}.fx svg{display:block;width:100%;height:100%}
+        .fx.burst{opacity:1;filter:drop-shadow(0 0 10px #d5efff) drop-shadow(0 0 20px #9983eb)}.shell.frozen .yt-pulse{animation-play-state:paused!important}
         canvas{touch-action:pan-y;outline:none}canvas:focus-visible{outline:3px solid #5868c4;outline-offset:-4px;border-radius:24px}
         .status{position:absolute;top:43%;left:8%;right:8%;text-align:center;font:14px system-ui;color:#5b6475;pointer-events:none}.status:empty{display:none}
         @media(prefers-reduced-motion:reduce){.fx{transition:none}.yt-pulse{animation:none!important}}
       </style><div class="shell"><div class="fx"></div><canvas width="960" height="680" role="button" tabindex="0" aria-label="玉兔，点击随机互动；左右方向键移动，空格互动"></canvas><span class="status" role="status">正在准备玉兔…</span></div>`;
       this.shell=this.shadowRoot.querySelector('.shell');this.canvas=this.shadowRoot.querySelector('canvas');
-      this.ctx=this.canvas.getContext('2d');this.fx=this.shadowRoot.querySelector('.fx');this.status=this.shadowRoot.querySelector('.status');
+      this.ctx=this.canvas.getContext('2d');const pixelRatio=Math.min(2,Math.max(1,Number(globalThis.devicePixelRatio)||1));if(pixelRatio>1&&typeof this.ctx.setTransform==='function'){this.canvas.width=Math.round(960*pixelRatio);this.canvas.height=Math.round(680*pixelRatio);this.ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);}this.ctx.imageSmoothingEnabled=true;this.ctx.imageSmoothingQuality='high';this.fx=this.shadowRoot.querySelector('.fx');this.status=this.shadowRoot.querySelector('.status');
       this._level=1;this._action='idle';this._t=0;this._start=0;this._last=0;this._x=480;this._target=480;this._dir=1;
       this._paused=false;this._atlas=null;this._token=0;this._fxUntil=0;this._nextIdle=Infinity;this._previousRandom='';this._pose=null;
       this._motion=matchMedia('(prefers-reduced-motion: reduce)');this._onMotion=()=>this._scheduleIdle();
@@ -70,7 +70,7 @@
         this._emit('pet-error',{message:error.message});
       }
     }
-    _updateEffect(){this.fx.innerHTML=FX.svg(this.level);}
+    _updateEffect(){this.fx.innerHTML=FX.svg(this.level);const opacity=(0.34+(this.level-1)*.02).toFixed(2),glow=`${4+Math.floor((this.level-1)/3)}px`;if(this.fx.style.setProperty){this.fx.style.setProperty('--fx-opacity',opacity);this.fx.style.setProperty('--fx-glow',glow);}else{this.fx.style['--fx-opacity']=opacity;this.fx.style['--fx-glow']=glow;}}
     _scheduleIdle(){this._nextIdle=this._t+D.idleDelayMs[0]+Math.random()*(D.idleDelayMs[1]-D.idleDelayMs[0]);}
     setLevel(value,{animate=true}={}){
       const next=D.clampLevel(value),previous=this.level,oldStage=this.stage;

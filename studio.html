@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>悟空成长图鉴 · 花果山伙伴</title><link rel="stylesheet" href="style.css"><script src="wukong.js" defer></script><script src="demo.js" defer></script></head>
+<body>
+  <header class="topbar"><a class="brand" href="./"><span class="brand-icon">悟</span><span>花果山伙伴<small>WUKONG COMPANION</small></span></a><div class="top-links"><span class="edition">角色试玩 · 01</span><a href="README.md">接入说明 ↗</a></div></header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">从山间小猴，到踏云大圣</p><h1>每一次成长，都看得见。</h1><p class="intro-copy">陪他思考，和他击掌。一起解锁十五级的冒险。</p></div><span class="collection-mark">三种形态<span>15 LEVELS / 48 POSES</span></span></div>
+    <nav class="stages" aria-label="选择进化形态">
+      <button class="stage-card" data-stage="1" aria-pressed="false"><span class="stage-number">01</span><img src="assets/stage-1-portrait.png" alt="小石猴：蓝眼睛，绿叶腰带，圆润可爱"><span><strong>小石猴</strong><small>Lv.1—5 · 好奇初醒</small></span><span class="stage-arrow">↗</span></button>
+      <button class="stage-card" data-stage="2" aria-pressed="false"><span class="stage-number">02</span><img src="assets/stage-2-portrait.png" alt="小行者：红巾蓝衣，手持金箍棒"><span><strong>小行者</strong><small>Lv.6—10 · 意气出发</small></span><span class="stage-arrow">↗</span></button>
+      <button class="stage-card" data-stage="3" aria-pressed="true"><span class="stage-number">03</span><img src="assets/stage-3-portrait.png" alt="踏云大圣：修长身形，金甲赤羽，神态自信"><span><strong>踏云大圣</strong><small>Lv.11—15 · 踏云守护</small></span><span class="stage-arrow">↗</span></button>
+    </nav>
+    <div class="play-layout">
+      <section class="habitat" aria-label="宠物互动场景">
+        <div class="habitat-top"><span class="location"><span class="location-dot"></span>花果山 · 晴</span><button id="pause" class="quiet-button" aria-pressed="false">Ⅱ 暂停动画</button></div>
+        <div class="speech" id="speech" role="status" aria-live="polite">准备好了吗？我们一起去闯关。</div>
+        <div class="mountain mountain-back"></div><div class="mountain mountain-front"></div><div class="sun"></div>
+        <wukong-game-pet id="pet" level="11"></wukong-game-pet>
+        <div class="habitat-bottom"><span class="action-label"><i></i><span id="action-label">待机</span></span><span>点一下悟空，摸摸他的头</span><button class="quiet-button" id="reset-position" aria-label="让悟空回到中央">回到中央 ↺</button></div>
+      </section>
+      <aside class="growth-panel">
+        <div class="profile-heading"><p class="eyebrow" id="stage-range">第三阶段 / Lv.11—15</p><span id="level-badge" class="level-badge">Lv.11</span></div>
+        <h2 id="pet-name">踏云大圣</h2><p id="pet-tag" class="pet-tag">自信 · 守护</p>
+        <div class="divider"></div>
+        <div class="section-label"><h3>成长等级</h3><span id="size-label">体型 100%</span></div>
+        <div id="level-buttons" class="levels" role="group" aria-label="选择等级"></div>
+        <p class="evolution-note">Lv.6、Lv.11 进化 · 每级体型逐渐增长</p>
+        <div class="effect-card"><span class="effect-kicker">本级新增特效</span><div><span id="effect-icon" aria-hidden="true">☁</span><h3 id="effect-name">筋斗云起</h3></div><p id="effect-description">脚下凝成筋斗云，踏云大圣正式登场。</p><button id="preview-effect">播放本级特效 <span>✧</span></button></div>
+        <button id="upgrade" class="primary-button">升到 Lv.12 <span>↑</span></button>
+        <p class="sandbox-note">这里是自由试玩，切换等级不消耗积分。</p>
+      </aside>
+    </div>
+    <section class="interaction-section"><div class="section-label"><div><p class="eyebrow">和悟空玩一会儿</p><h2>不止会站着，还会回应你。</h2></div><span class="hint">动作结束后自动回到待机</span></div>
+      <div class="actions" id="actions">
+        <button data-action="wave"><span>✋</span>打个招呼</button><button data-action="pet"><span>♡</span>摸摸头</button><button data-action="feed"><span>🍑</span>喂颗桃子</button><button data-action="jump"><span>↟</span>跳一跳</button><button data-action="think"><span>?</span>一起思考</button><button data-action="comfort"><span>✦</span>鼓励一下</button><button data-action="celebrate"><span>★</span>答对庆祝</button><button data-action="skill"><span>ϟ</span>展示本领</button><button data-move="0.28"><span>←</span>向左跑</button><button data-move="0.72"><span>→</span>向右跑</button><button data-action="sleep"><span>☾</span>休息一下</button><button data-action="idle"><span>☀</span>回到待机</button>
+      </div>
+    </section>
+    <section class="journey-section"><div class="section-label"><div><p class="eyebrow">十五次，变得更强一点</p><h2>成长图鉴</h2></div><p class="hint">点击任意等级，查看专属效果</p></div><div id="journey" class="journey"></div></section>
+    <footer><span>花果山伙伴 · 孙悟空角色素材包</span><div><a href="embed-example.html">最小接入示例 ↗</a><a href="design-guide.md">形象与动作设定 ↗</a></div></footer>
+  </main>
+</body></html>

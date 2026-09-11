@@ -7,7 +7,7 @@
     get(id){return entries.get(id);},list(){return [...entries.values()];}
   };
   MathPetCharacters.register({
-    id:'wukong',name:'孙悟空',food:{name:'桃子',unit:'颗',icon:'🍑',title:'一颗甜桃，长大一点',cost:20,growth:20},
+    id:'wukong',name:'孙悟空',unlock:{cost:300,description:'使用 300 积分兑换'},food:{name:'桃子',unit:'颗',icon:'🍑',title:'一颗甜桃，长大一点',cost:20,growth:20},
     growthCurve:MathPetGrowth.WUKONG,
     ui:{title:'一起算，一起长大。',location:'花果山 · 翠林小居',symbol:'悟',scene:'forest',style:'soft',zoom:[1.6,1.25,1.08],
       palette:{background:'#f3f8f5',ink:'#293e3b',muted:'#7c9690',primary:'#398c75',primaryDark:'#28715e',accent:'#70b79a',surface:'#ffffff',border:'#dce9e0',sceneFrom:'#eff9f0',sceneTo:'#e3f2ec',sceneLine:'#c5e0cd',hill:'#c4dfce80',foodBackground:'#fff5f0',foodBorder:'#e9baa7',foodInk:'#b66e50',radius:'24px'}},

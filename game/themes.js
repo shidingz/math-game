@@ -5,7 +5,7 @@
   window.MathPetThemes={apply(ui={}){
     cleanup?.();cleanup=null;const root=document.documentElement;
     for(const [name,value] of Object.entries({...defaults,...ui.palette}))if(Object.hasOwn(defaults,name))root.style.setProperty('--pet-'+name,value);
-    root.dataset.scene=['forest','cloud','moon','lotus','sea'].includes(ui.scene)?ui.scene:'forest';
+    root.dataset.scene=['forest','cloud','moon','lotus','sea','meadow','snow','thai'].includes(ui.scene)?ui.scene:'forest';
     root.dataset.uiStyle=['soft','bold','ornate'].includes(ui.style)?ui.style:'soft';
     document.getElementById('home-title').textContent=ui.title||'一起算，一起长大。';
     document.getElementById('scene-label').textContent=ui.location||'伙伴的小天地';

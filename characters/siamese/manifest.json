@@ -1,0 +1,15 @@
+{
+  "id": "siamese",
+  "name": "暹罗猫",
+  "version": "1.0.0",
+  "atlas": {"columns": 3, "rows": 3, "cellWidth": 512, "cellHeight": 512, "pivotX": 256, "pivotY": 470},
+  "frames": ["idle", "blink", "wave", "pet", "feed", "think", "sleep", "jump", "skill"],
+  "stages": [
+    {"name": "暹罗幼猫", "minLevel": 1, "atlas": "assets/stage-1.png"},
+    {"name": "兰纳灵猫", "minLevel": 6, "atlas": "assets/stage-2.png"},
+    {"name": "暹光守护者", "minLevel": 11, "atlas": "assets/stage-3.png"}
+  ],
+  "visualMaxLevel": 15,
+  "feedDurationMs": 500,
+  "entry": "siamese.js"
+}

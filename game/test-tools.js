@@ -2,9 +2,11 @@
 (function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./core.js'):root.MathPetCore);if(typeof module==='object'&&module.exports)module.exports=api;else root.MathPetTestTools=api;})(globalThis,core=>{
   'use strict';
   function createState(characters){
-    const state=core.initialState();state.points=10000;state.grade=2;
+    const state=core.initialState({chooseStarter:false});state.points=10000;state.grade=2;
     apply(state,'unlock-all',null,characters);
-    if(characters.some(c=>c.id==='jingwei'))state.activePet='jingwei';
+    // Test mode keeps Wukong as its default and unlocks every registered pet.
+    if(characters.some(c=>c.id==='wukong'))state.activePet='wukong';
+    else if(characters.some(c=>c.id==='ragdoll'))state.activePet='ragdoll';
     else if(characters.some(c=>c.id==='yutu'))state.activePet='yutu';
     return state;
   }
@@ -20,8 +22,8 @@
         const level=Number(value);if(!Number.isSafeInteger(level)||level<1||level>=Number.MAX_SAFE_INTEGER)throw new RangeError('等级必须是正整数');
         state.pets[state.activePet].level=level;state.pets[state.activePet].growth=0;break;
       }
-      case 'near-level':{
-        const p=state.pets[state.activePet];p.growth=core.required(p.level,config)-1;break;
+      case 'level-up':{
+        const p=state.pets[state.activePet];p.level++;p.growth=0;break;
       }
       default:throw new RangeError('未知测试指令');
     }

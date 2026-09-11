@@ -26,14 +26,14 @@
   ];
   const levels = effects.map(([name,effect,description],i) => ({
     level:i+1,stage:Math.floor(i/5)+1,name,effect,description,
-    scale:+(stages[Math.floor(i/5)].scale*(1+(i%5)*.025)).toFixed(3),
-    stageGrowth:+(1+(i%5)*.025).toFixed(3)
+    scale:+(stages[Math.floor(i/5)].scale*(1+(i%5)*.035)).toFixed(3),
+    stageGrowth:+(1+(i%5)*.035).toFixed(3)
   }));
   const actions = {
     idle:{label:'待机',frames:[0],durationMs:null,loop:true},
     wave:{label:'挥手',frames:[2,3,2,3],durationMs:1800,loop:false},
     pet:{label:'摸摸头',frames:[4,5,4,5],durationMs:1800,loop:false},
-    feed:{label:'吃桂花糕',frames:[6,6,7,7,6,7],durationMs:1600,loop:false},
+    feed:{label:'吃桂花糕',frames:[6,6,7,7,6,7],durationMs:500,loop:false},
     think:{label:'思考',frames:[8],durationMs:2800,loop:false},
     comfort:{label:'鼓励',frames:[9],durationMs:2200,loop:false},
     celebrate:{label:'庆祝',frames:[10,11,10],durationMs:1800,loop:false},

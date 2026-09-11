@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   MathPetCharacters.register({
-    id:'nezha',name:'哪吒',unlock:{cost:500,description:'使用 500 积分兑换'},
+    id:'nezha',name:'哪吒',unlock:{cost:300,description:'使用 300 积分兑换'},
     food:{name:'莲花酥',unit:'块',icon:'🪷',iconImage:'characters/nezha/assets/lotus-pastry.png',title:'一块莲花酥，长大一点',cost:20,growth:20},
     growthCurve:MathPetGrowth.WUKONG,
     ui:{title:'一起算，一起变强。',location:'陈塘关 · 莲风小院',symbol:'哪',scene:'lotus',style:'ornate',zoom:[1.45,1.2,1.04],

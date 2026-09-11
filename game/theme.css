@@ -20,7 +20,6 @@ body{background:var(--pet-background);color:var(--pet-ink)}.brand-mark{backgroun
 /* Every character uses the same host contract; Nezha has its own lotus scene. */
 #pet-host>nezha-game-pet{width:100%;transform:scale(var(--pet-zoom,1));transform-origin:50% 88%}
 #pet-host>yutu-game-pet{width:100%;transform:scale(var(--pet-zoom,1));transform-origin:50% 88%}
-#pet-host>jingwei-game-pet{width:100%;transform:scale(var(--pet-zoom,1));transform-origin:50% 88%}
 [data-scene=sea] .halo{border:0;background:radial-gradient(circle,#ffffff88,transparent 70%);box-shadow:none}
 [data-scene=sea] .halo:after{border:0}
 [data-scene=sea] .hill{height:17%;bottom:-9%;border-radius:50%;background:#82cbd733}
@@ -49,4 +48,128 @@ body{background:var(--pet-background);color:var(--pet-ink)}.brand-mark{backgroun
 [data-scene=lotus] .pet-scene:before,[data-scene=lotus] .pet-scene:after{content:'';position:absolute;width:78px;height:150px;border:1px solid var(--pet-accent);background:#efb4c633;border-radius:90% 10% 90% 10%;bottom:12px;left:-17px;transform:rotate(-32deg);opacity:.55;z-index:0}
 [data-scene=lotus] .pet-scene:after{left:auto;right:-17px;transform:rotate(58deg)}
 .card-copy strong{color:var(--pet-primaryDark)}
+.feed-card{order:-1}
+#pet-host>ragdoll-game-pet{width:100%;transform:scale(var(--pet-zoom,1));transform-origin:50% 88%}
+[data-scene=starlight] .halo{background:radial-gradient(circle,#ffffffaa,transparent 70%);border-style:dashed}
 @media(max-width:720px){.welcome{flex-wrap:wrap;justify-content:flex-start;gap:10px}.welcome>div:first-child{flex:1 0 100%;margin-bottom:3px}.welcome .pet-select{min-width:112px;max-width:none}.welcome .grade-switch{margin-left:auto}}
+/* Compact phone home: all primary actions remain next to the pet. No fixed-height clipping. */
+@media(max-width:720px){
+  .header{padding:9px 14px}.brand{font-size:15px;gap:7px}.brand-mark{width:30px;height:30px;font-size:20px}.wallet{padding:5px 11px}.wallet strong{font-size:18px}
+  .home{padding:0 12px}.welcome{margin:0 0 8px;gap:6px;flex-wrap:nowrap}.welcome>div:first-child{display:none}
+  .welcome .pet-select{min-width:0;flex:1;width:90px;padding:8px;max-width:150px}.welcome .grade-switch{padding:8px;gap:5px}.unlock-pet{padding:8px;font-size:11px}
+  .game-layout{gap:8px}.pet-heading{padding:10px 15px 0;align-items:center}.pet-heading .eyebrow{display:none}.pet-heading h2{font-size:21px}.pet-heading p{margin:3px 0 0;font-size:10px}.level{padding:7px 10px}
+  .pet-scene{height:clamp(156px,26svh,230px);min-height:0;max-height:none;flex:none}
+  #pet-host{width:min(100%,calc(clamp(156px,26svh,230px)*1.38));max-width:340px;padding:0;margin:0 auto -5px;flex-shrink:0}
+  .speech{top:7px;left:12px;padding:5px 9px;font-size:10px;max-width:220px;line-height:1.5}.touch-hint{bottom:5px;font-size:9px}.halo{width:175px;height:175px;top:5%}
+  .growth{padding:10px 15px}.growth-label{margin-bottom:6px;font-size:11px}.growth p{font-size:10px;margin-top:5px}.growth #growth-note{display:none}.evolution-hint{margin-top:6px!important}
+  .play-panel{gap:8px}.feed-card{padding:10px 12px;grid-template-columns:30px minmax(0,1fr) auto;gap:3px 8px;border-radius:17px}
+  .food-illustration{font-size:26px}.food-illustration img{width:32px;height:32px;margin:0}.feed-card .eyebrow{display:none}.feed-card h2{font-size:13px}.feed-card p{font-size:10px;margin:3px 0}.feed-button{grid-column:3;grid-row:1;margin:0;min-height:44px;padding:8px 10px;font-size:12px;gap:9px}.feed-button>span{font-size:11px}.feed-card>#feed-hint{grid-column:1/-1;text-align:left;font-size:10px;margin:2px 0 0}
+  .practice-card{padding:12px;border-radius:17px;display:grid;grid-template-columns:1fr auto;gap:5px 10px;align-items:center}.practice-card>.eyebrow,.practice-card .card-copy,.card-icon{display:none}.practice-card h2{font-size:17px}.practice-meta{margin:0;gap:4px;grid-column:1}.practice-meta span{padding:3px 5px;font-size:9px}.practice-card .primary{grid-column:2;grid-row:1/3;width:auto;min-width:125px;min-height:48px;padding:10px 12px;font-size:13px}.small-note{display:none}
+  .home footer{padding:10px 2px;font-size:9px;gap:5px}.test-panel{margin-top:8px}.character-option>img{width:75px;height:88px}
+}
+@media(max-width:360px){.feed-card{grid-template-columns:24px minmax(0,1fr) auto;gap:3px 5px}.feed-button{font-size:11px;padding:8px}.feed-card h2{font-size:12px}.practice-card .primary{min-width:115px}.unlock-pet{font-size:10px}}
+
+/* Corgi's breezy meadow; art follows the same compact mobile host sizing. */
+#pet-host>corgi-game-pet{width:100%;transform:scale(var(--pet-zoom,1));transform-origin:50% 88%}
+.corgi-meadow{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.corgi-meadow i{position:absolute;width:23px;height:10px;background:#4cbea52b;border-radius:100% 0 100% 0;transform:rotate(-25deg)}
+.corgi-meadow i:nth-child(1){left:12%;top:28%}.corgi-meadow i:nth-child(2){right:16%;top:18%;transform:rotate(25deg)}
+.corgi-meadow i:nth-child(3){right:8%;bottom:21%}.corgi-meadow i:nth-child(4){left:21%;bottom:14%;transform:rotate(30deg)}
+html[data-scene="meadow"] .scene{background:linear-gradient(145deg,var(--pet-sceneFrom),var(--pet-sceneTo))}
+
+/* Formal home fills one viewport. The test build keeps scrolling for its developer controls. */
+body:not(.is-test-build){height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+body:not(.is-test-build) .header{flex:0 0 auto;padding-top:12px;padding-bottom:12px}
+body:not(.is-test-build) .home{height:calc(100dvh - 59px);min-height:0;width:100%;display:flex;flex-direction:column;padding-top:0}
+body:not(.is-test-build) .welcome{flex:0 0 auto;margin:5px 0 12px}
+body:not(.is-test-build) .game-layout{flex:1;min-height:0}
+body:not(.is-test-build) .pet-card,body:not(.is-test-build) .play-panel{min-height:0}
+body:not(.is-test-build) .pet-scene{min-height:0}
+body:not(.is-test-build) .home footer{flex:0 0 auto;padding:10px 3px 12px}
+@media(min-width:721px){
+  body:not(.is-test-build) .pet-card{height:100%}
+  body:not(.is-test-build) .pet-heading{padding-top:18px}
+  body:not(.is-test-build) .pet-scene{flex:1}
+  body:not(.is-test-build) .growth{padding-top:15px;padding-bottom:14px}
+  body:not(.is-test-build) .play-panel{height:100%;gap:10px}
+  body:not(.is-test-build) .feed-card{padding:17px 19px;gap:5px 11px}
+  body:not(.is-test-build) .feed-button{margin-top:6px;min-height:45px}
+  body:not(.is-test-build) .practice-card{padding:20px 22px;display:flex;flex-direction:column}
+  body:not(.is-test-build) .practice-card>.eyebrow{margin-bottom:10px}
+  body:not(.is-test-build) .card-copy{margin:9px 0 12px}
+  body:not(.is-test-build) .practice-meta{margin-bottom:12px}
+  body:not(.is-test-build) .practice-card .primary{margin-top:auto}
+  body:not(.is-test-build) .small-note{padding:0 6px}
+}
+@media(max-width:720px){
+  body:not(.is-test-build) .header{padding:7px 12px}
+  body:not(.is-test-build) .home{height:calc(100dvh - 44px);padding:0 10px}
+  body:not(.is-test-build) .welcome{height:38px;margin:0 0 6px;gap:5px}
+  body:not(.is-test-build) .welcome .pet-select{height:36px;padding:6px 8px}
+  body:not(.is-test-build) .welcome .grade-switch,body:not(.is-test-build) .unlock-pet{height:36px;min-height:36px;padding:6px 8px}
+  body:not(.is-test-build) .game-layout{display:flex;flex-direction:column;gap:7px}
+  body:not(.is-test-build) .pet-card{flex:1;min-height:0}
+  body:not(.is-test-build) .pet-heading{flex:0 0 auto;padding:8px 13px 0}
+  body:not(.is-test-build) .pet-heading h2{font-size:20px}
+  body:not(.is-test-build) .level{padding:6px 9px}
+  body:not(.is-test-build) .pet-scene{height:auto;min-height:0;max-height:none;flex:1}
+  body:not(.is-test-build) #pet-host{width:115%;max-width:none;margin:0 0 -5px -7.5%;padding:0}
+  body:not(.is-test-build) .speech{top:6px;left:10px;max-width:210px;padding:5px 8px}
+  body:not(.is-test-build) .halo{width:min(48vw,190px);height:min(48vw,190px)}
+  body:not(.is-test-build) .growth{flex:0 0 auto;padding:8px 13px 9px}
+  body:not(.is-test-build) .growth-label{margin-bottom:5px}
+  body:not(.is-test-build) .evolution-hint{margin-top:5px!important}
+  body:not(.is-test-build) .play-panel{flex:0 0 108px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  body:not(.is-test-build) .feed-card,body:not(.is-test-build) .practice-card{height:108px;padding:9px;border-radius:16px;min-width:0}
+  body:not(.is-test-build) .feed-card{order:0;display:grid;grid-template-columns:28px minmax(0,1fr);grid-template-rows:minmax(0,1fr) 39px;gap:4px 6px;align-items:center}
+  body:not(.is-test-build) .food-illustration{font-size:24px;align-self:center}
+  body:not(.is-test-build) .food-illustration img{width:28px;height:28px}
+  body:not(.is-test-build) .feed-card h2{font-size:12px;line-height:1.25;word-break:keep-all;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  body:not(.is-test-build) .feed-card #food-copy,body:not(.is-test-build) .feed-card>#feed-hint,body:not(.is-test-build) .feed-card .eyebrow{display:none}
+  body:not(.is-test-build) .feed-button{grid-column:1/-1;grid-row:2;margin:0;min-height:39px;padding:6px 8px;font-size:11px;gap:4px;white-space:nowrap}
+  body:not(.is-test-build) .feed-button>span{font-size:10px}
+  body:not(.is-test-build) .practice-card{display:flex;flex-direction:column;gap:4px;align-items:stretch}
+  body:not(.is-test-build) .practice-card>.eyebrow,body:not(.is-test-build) .practice-card .card-copy,body:not(.is-test-build) .card-icon{display:none}
+  body:not(.is-test-build) .practice-card h2{font-size:15px;line-height:1.25;white-space:nowrap}
+  body:not(.is-test-build) .practice-meta{display:flex;gap:3px;margin:0;overflow:hidden}
+  body:not(.is-test-build) .practice-meta span{font-size:8px;padding:3px 4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  body:not(.is-test-build) .practice-card .primary{width:100%;min-width:0;min-height:39px;margin-top:auto;padding:6px;font-size:11px;gap:3px;white-space:nowrap}
+  body:not(.is-test-build) .small-note{display:none}
+  body:not(.is-test-build) .home footer{padding:6px 2px 7px;font-size:8px}
+}
+/* The developer build uses the same tidy two-card phone controls without the
+   older implicit third grid column that made Chinese text stack vertically. */
+@media(max-width:720px){
+  body.is-test-build .play-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;align-items:stretch}
+  body.is-test-build .feed-card,body.is-test-build .practice-card{height:108px;min-width:0;padding:9px;border-radius:16px}
+  body.is-test-build .feed-card{order:0;display:grid;grid-template-columns:28px minmax(0,1fr);grid-template-rows:minmax(0,1fr) 39px;gap:4px 6px;align-items:center}
+  body.is-test-build .food-illustration{font-size:24px;align-self:center}
+  body.is-test-build .food-illustration img{width:28px;height:28px;margin:0}
+  body.is-test-build .feed-card .eyebrow,body.is-test-build .feed-card #food-copy,body.is-test-build .feed-card>#feed-hint{display:none}
+  body.is-test-build .feed-card h2{font-size:12px;line-height:1.25;word-break:keep-all;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  body.is-test-build .feed-button{grid-column:1/-1;grid-row:2;margin:0;min-height:39px;padding:6px 8px;font-size:11px;gap:4px;white-space:nowrap}
+  body.is-test-build .feed-button>span{font-size:10px}
+  body.is-test-build .practice-card{display:flex;flex-direction:column;gap:4px;align-items:stretch}
+  body.is-test-build .practice-card>.eyebrow,body.is-test-build .practice-card .card-copy,body.is-test-build .card-icon{display:none}
+  body.is-test-build .practice-card h2{font-size:15px;line-height:1.25;white-space:nowrap}
+  body.is-test-build .practice-meta{display:flex;gap:3px;margin:0;overflow:hidden}
+  body.is-test-build .practice-meta span{font-size:8px;padding:3px 4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  body.is-test-build .practice-card .primary{width:100%;min-width:0;min-height:39px;margin-top:auto;padding:6px;font-size:11px;gap:3px;white-space:nowrap}
+}
+@media(max-height:650px) and (max-width:720px){
+  body:not(.is-test-build) .play-panel{flex-basis:104px}
+  body:not(.is-test-build) .feed-card,body:not(.is-test-build) .practice-card{height:104px;padding:8px}
+  body:not(.is-test-build) .pet-heading p,body:not(.is-test-build) .touch-hint,body:not(.is-test-build) .home footer{display:none}
+  body:not(.is-test-build) .home{height:calc(100dvh - 44px)}
+}
+
+/* Equal stage zoom preserves visible growth on evolution. */
+#pet-host>samoyed-game-pet{width:100%;transform:scale(var(--pet-zoom,1));transform-origin:50% 88%}
+[data-scene=snow] .halo{border:0;background:radial-gradient(circle,#e5f4ff66,transparent 70%)}
+[data-scene=snow] .halo:after{border:0}
+[data-scene=snow] .hill{background:#a2bce82e}
+#pet-host>siamese-game-pet,#pet-host>bichon-game-pet{width:100%;transform:scale(var(--pet-zoom,1));transform-origin:50% 88%}
+[data-scene=thai] .halo{border:1px solid #d6aa4c99;border-radius:50% 50% 42% 42%;box-shadow:0 0 46px #38bcb32b;background:radial-gradient(circle,#fff6cf99,transparent 69%)}
+[data-scene=thai] .halo:after{inset:24px;border:1px dashed #7c4dbc66;border-radius:50%}
+[data-scene=thai] .hill{background:#38bcb32b}
+.thai-garden{position:absolute;inset:0;overflow:hidden}.thai-garden i{position:absolute;width:74px;height:126px;bottom:3%;left:-22px;border:2px solid #d6aa4c55;border-radius:90% 10% 90% 10%;background:#43c7bd1c;transform:rotate(-25deg)}.thai-garden i:nth-child(2){left:auto;right:-22px;transform:rotate(55deg)}.thai-garden b,.thai-garden span{position:absolute;color:#d6aa4c99;font-weight:400}.thai-garden b:nth-of-type(1){left:15%;top:24%}.thai-garden b:nth-of-type(2){right:14%;top:18%;font-size:20px}.thai-garden span:nth-of-type(1){left:11%;bottom:17%;color:#7c4dbc55;font-size:21px}.thai-garden span:nth-of-type(2){right:10%;bottom:24%;color:#2abbb355;font-size:17px}

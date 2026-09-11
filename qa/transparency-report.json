@@ -1,0 +1,294 @@
+{
+  "ok": true,
+  "frames": 48,
+  "checks": [
+    {
+      "file": "stage-1-idle.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-blink.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-wave-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-wave-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-pet-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-pet-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-feed-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-feed-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-think.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-comfort.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-celebrate.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-jump.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-sleep.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-run-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-run-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-1-skill.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-idle.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-blink.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-wave-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-wave-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-pet-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-pet-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-feed-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-feed-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-think.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-comfort.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-celebrate.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-jump.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-sleep.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-run-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-run-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-2-skill.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-idle.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-blink.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-wave-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-wave-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-pet-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-pet-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-feed-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-feed-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-think.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-comfort.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-celebrate.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-jump.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-sleep.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-run-a.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-run-b.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    },
+    {
+      "file": "stage-3-skill.png",
+      "transparent": true,
+      "uncropped": true,
+      "atlasMatches": true
+    }
+  ]
+}
