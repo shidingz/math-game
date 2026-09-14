@@ -7,8 +7,10 @@
   const quiz=$('quiz-dialog'),settings=$('settings-dialog'),characterDialog=$('characters-dialog'),starter=$('starter-dialog'),unlockCards=new Map();let starterSelection=null;
   const saveMessage=storage.isTest?'测试进度独立保存 · 不影响正式版':'进度自动保存在这台设备';
   function save(){storage.save(state);$('save-status').textContent=storage.warning||saveMessage;}
-  function toast(message){clearTimeout(toastTimer);$('toast').textContent=message;$('toast').hidden=false;toastTimer=setTimeout(()=>$('toast').hidden=true,3500);}
+  function hideToast(){clearTimeout(toastTimer);$('toast').hidden=true;$('feed-notice').hidden=true;}
+  function toast(message,target='toast'){hideToast();const notice=$(target);notice.textContent=message;notice.hidden=false;toastTimer=setTimeout(()=>notice.hidden=true,target==='feed-notice'?2200:3500);}
   function mount(){
+    hideToast();
     upgradeRun++;petUpgrade.cancel();previewing=false;
     interactions?.destroy();pet?.destroy();config=MathPetCharacters.get(state.activePet)||MathPetCharacters.list()[0];state.activePet=config.id;
     if(!Object.hasOwn(state.pets,config.id))state.pets[config.id]={level:1,growth:0,feeds:0};
@@ -100,11 +102,12 @@
   $('feed').addEventListener('click',()=>{
     if(feeding)return;
     const result=core.feed(state,state.activePet,config);if(result.status!=='fed')return;
+    hideToast();
     feeding=true;save();syncActivity();pet.play('feed');$('speech').textContent=`啊呜，${config.food.name}真好吃！谢谢你。`;render();
     feedTimer=setTimeout(()=>{
       if(result.leveled){
         showPetUpgrade(result);return;
-      }else toast(`喂养成功 · 成长值 +${result.growth}`);
+      }else toast(`喂养成功 · 成长值 +${result.growth}`,'feed-notice');
       endFeeding();
     },core.RULES.feedDurationMs);
   });

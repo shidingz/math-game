@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4f8f9">
 <title>算算萌宠 · 计算养伙伴</title>
-<link rel="stylesheet" href="game/game.css?v=20260912-starters1"><link rel="stylesheet" href="game/theme.css?v=20260912-starters1">
-<script src="wukong.js?v=20260912-starters1" defer></script>
-<script src="characters/nezha/nezha-data.js?v=20260912-starters1" defer></script><script src="characters/nezha/nezha-effects.js?v=20260912-starters1" defer></script><script src="characters/nezha/nezha.js?v=20260912-starters1" defer></script>
+<link rel="stylesheet" href="game/game.css?v=20260914-feed-notice"><link rel="stylesheet" href="game/theme.css?v=20260912-starters1">
+<script src="wukong.js?v=20260914-cute-agile-hero4" defer></script>
+<script src="characters/nezha/nezha-data.js?v=realistic2-martial" defer></script><script src="characters/nezha/nezha-effects.js?v=realistic2-martial" defer></script><script src="characters/nezha/nezha.js?v=realistic2-martial" defer></script>
 <script src="characters/yutu/yutu-data.js?v=20260912-starters1" defer></script><script src="characters/yutu/yutu-effects.js?v=20260912-starters1" defer></script><script src="characters/yutu/yutu.js?v=20260912-starters1" defer></script>
 <script src="characters/ragdoll/ragdoll-data.js?v=20260912-starters1" defer></script><script src="characters/ragdoll/ragdoll-effects.js?v=20260912-starters1" defer></script><script src="characters/ragdoll/ragdoll.js?v=20260912-starters1" defer></script>
 <script src="characters/corgi/corgi-data.js?v=20260912-starters1" defer></script><script src="characters/corgi/corgi-effects.js?v=20260912-starters1" defer></script><script src="characters/corgi/corgi.js?v=20260912-starters1" defer></script>
@@ -14,16 +14,16 @@
 <script src="characters/bichon/bichon-data.js?v=20260912-starters1" defer></script><script src="characters/bichon/bichon-effects.js?v=20260912-starters1" defer></script><script src="characters/bichon/bichon.js?v=20260912-starters1" defer></script>
 <script src="game/questions.js?v=20260912-starters1" defer></script><script src="game/growth.js?v=20260912-starters1" defer></script>
 <script src="game/core.js?v=20260912-starters1" defer></script><script src="game/themes.js?v=20260912-starters1" defer></script>
-<script src="game/characters.js?v=20260912-starters1" defer></script>
+<script src="game/characters.js?v=20260914-cute-agile-hero4" defer></script>
 <script src="game/ragdoll-character.js?v=20260912-starters1" defer></script>
 <script src="game/corgi-character.js?v=20260912-starters1" defer></script>
 <script src="game/samoyed-character.js?v=20260912-starters1" defer></script>
 <script src="game/siamese-character.js?v=20260912-starters1" defer></script>
 <script src="game/bichon-character.js?v=20260912-starters1" defer></script>
-<script src="game/nezha-character.js?v=20260912-starters1" defer></script>
+<script src="game/nezha-character.js?v=realistic2-martial" defer></script>
 <script src="game/yutu-character.js?v=20260912-starters1" defer></script>
 <script src="game/test-tools.js?v=20260912-starters1" defer></script>
-<script src="game/storage.js?v=20260912-starters1" defer></script><script src="game/interaction.js?v=20260912-starters1" defer></script><script src="game/wukong-level-up.js?v=20260912-starters1" defer></script><script src="game/app.js?v=20260912-starters1" defer></script>
+<script src="game/storage.js?v=20260912-starters1" defer></script><script src="game/interaction.js?v=20260912-starters1" defer></script><script src="game/wukong-level-up.js?v=20260912-starters1" defer></script><script src="game/app.js?v=20260914-feed-notice" defer></script>
 <link rel="stylesheet" href="game/wukong-level-up.css?v=20260912-starters1">
 </head>
 <body>
@@ -41,7 +41,7 @@
   <div class="game-layout">
     <section class="pet-card" aria-label="我的宠物">
       <div class="pet-heading"><div><span id="scene-label" class="eyebrow">花果山 · 翠林小居</span><h2 id="pet-name">孙悟空</h2><p id="stage-name">小石猴 · 初识花果山</p></div><span id="level" class="level">Lv.1</span></div>
-      <div class="pet-scene"><div id="scene-decoration" aria-hidden="true"></div><div class="halo" aria-hidden="true"></div><div class="hill hill-one" aria-hidden="true"></div><div class="hill hill-two" aria-hidden="true"></div><p id="speech" class="speech" aria-live="polite">一起做题，攒桃子吧！</p><div id="pet-host"></div><span class="touch-hint">轻轻点我，有小惊喜</span></div>
+      <div class="pet-scene"><div id="scene-decoration" aria-hidden="true"></div><div class="halo" aria-hidden="true"></div><div class="hill hill-one" aria-hidden="true"></div><div class="hill hill-two" aria-hidden="true"></div><p id="speech" class="speech" aria-live="polite">一起做题，攒桃子吧！</p><div id="pet-host"></div><div id="feed-notice" class="feed-notice" role="status" aria-live="polite" hidden></div><span class="touch-hint">轻轻点我，有小惊喜</span></div>
       <div class="growth"><div class="growth-label"><strong id="growth-title">成长进度</strong><span id="growth-value">0 / 60</span></div><progress id="growth-bar" max="60" value="0" aria-label="宠物成长进度"></progress><p id="growth-note">喂养伙伴，一起长大</p><p id="evolution-hint" class="evolution-hint">Lv.6 和 Lv.11 会进化哦。</p></div>
     </section>
     <section class="play-panel" aria-label="做题和喂养">

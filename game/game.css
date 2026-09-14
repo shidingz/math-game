@@ -39,6 +39,10 @@ dialog{border:1px solid #dfe9ee;border-radius:25px;padding:25px 28px;width:min(4
   .is-test-build .small-note{display:none}
   .is-test-build .home footer{padding-top:15px}
 }
+/* Feeding feedback belongs to the pet, clear of the action buttons. */
+.feed-notice{position:absolute;z-index:4;bottom:10px;left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);padding:7px 14px;border:1px solid var(--pet-sceneLine,#cfe2db);border-radius:999px;background:var(--pet-surface,#fff);color:var(--pet-primaryDark,#28765f);box-shadow:0 3px 12px #26485d14;font-size:12px;font-weight:600;line-height:1.5;text-align:center;pointer-events:none}
+.feed-notice:not([hidden])~.touch-hint{visibility:hidden}
+.toast{pointer-events:none}
 /* First companion selection uses the same art and has its own scrollable dialog. */
 #starter-dialog{width:min(720px,calc(100vw - 24px));max-height:calc(100dvh - 24px);padding:24px;border-radius:26px;overflow:auto}
 #starter-dialog h2{margin:6px 0 10px;font-size:clamp(23px,4vw,32px)}

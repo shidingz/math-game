@@ -1,7 +1,7 @@
 /* Standalone character data. No game state, rewards, storage or network calls. */
 (() => {
   'use strict';
-  const frames = ['idle','blink','wave-a','wave-b','pet-a','pet-b','feed-a','feed-b','think','comfort','celebrate','jump','sleep','run-a','run-b','skill'];
+  const frames = ['idle','blink','wave-a','wave-b','pet-a','pet-b','feed-a','feed-b','think','comfort','celebrate','jump','sleep','run-a','run-b','skill','skill-b','skill-c'];
   const stages = [
     {id:1,name:'莲花童子',minLevel:1,maxLevel:5,scale:.72,color:'#eb6685',tag:'机灵 · 好奇'},
     {id:2,name:'风火行者',minLevel:6,maxLevel:10,scale:.85,color:'#f2654f',tag:'轻快 · 勇敢'},
@@ -32,7 +32,7 @@
   const actions = {
     idle:{label:'待机',frames:[0],durationMs:null,loop:true},
     wave:{label:'挥手',frames:[2,3,2,3],durationMs:1800,loop:false},
-    pet:{label:'摸摸头',frames:[4,5,4,5],durationMs:1800,loop:false},
+    pet:{label:'伙伴回应',frames:[4,5],durationMs:1200,loop:false},
     feed:{label:'吃莲花酥',frames:[6,6,7,7,6,7],durationMs:500,loop:false},
     think:{label:'思考',frames:[8],durationMs:2800,loop:false},
     comfort:{label:'鼓励',frames:[9],durationMs:2200,loop:false},
@@ -40,8 +40,8 @@
     jump:{label:'跳跃',frames:[11],durationMs:1100,loop:false},
     sleep:{label:'小憩',frames:[12],durationMs:null,loop:true},
     run:{label:'跑动',frames:[13,14],durationMs:null,loop:true,frameMs:200},
-    skill:{label:'本领展示',frames:[15],durationMs:3000,loop:false},
-    evolve:{label:'进化',frames:[15,10],durationMs:3000,loop:false}
+    skill:{label:'风火武艺',frames:[15,16,17,16,15],durationMs:2400,loop:false},
+    evolve:{label:'进化',frames:[15,16,17,10],durationMs:3000,loop:false}
   };
   function clampLevel(value) { const n=Number(value);return Number.isFinite(n)?Math.max(1,Math.min(15,Math.round(n))):1; }
   function frameAt(action,elapsed,reduced=false) {
@@ -57,7 +57,7 @@
     return available[Math.min(available.length-1,Math.floor(Math.max(0,random())*available.length))];
   }
   const deepFreeze=value=>{if(value&&typeof value==='object'){Object.values(value).forEach(deepFreeze);Object.freeze(value);}return value;};
-  window.NezhaGameData=deepFreeze({version:'1.0.0',characterId:'nezha',name:'哪吒',frames,stages,levels,actions,
+  window.NezhaGameData=deepFreeze({version:'2.0.0',characterId:'nezha',name:'哪吒',frames,stages,levels,actions,
     food:{id:'lotus-pastry',name:'莲花酥',icon:'assets/lotus-pastry.png',bittenIcon:'assets/lotus-pastry-bitten.png'},
     cell:{width:512,height:640,pivotX:256,pivotY:588},
     interactionPool:['wave','pet','jump','celebrate','skill'],idlePool:['think','wave','pet','skill'],

@@ -1,0 +1,15 @@
+{
+  "name": "math-pet-game",
+  "version": "1.0.0",
+  "private": true,
+  "description": "算算萌宠：幼儿园至六年级口算与宠物养成",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node scripts/serve.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "assets": "node scripts/project.cjs assets",
+    "check": "node scripts/project.cjs check",
+    "build": "node scripts/project.cjs build",
+    "test:browser": "node scripts/browser-smoke.cjs"
+  }
+}

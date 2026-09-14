@@ -1,98 +1,80 @@
-# 孙悟空 · HTML 游戏角色包
+# 算算萌宠
 
-2026-09-12 更新：正式版首次进入免费任选一位初始伙伴，其他伙伴（包括孙悟空）均为300积分兑换。已有存档继续使用原有伙伴和成长，不重复发放初始宠物。布偶猫更新为奶凶毛团→傲雪伙伴→霜瞳守护者；精卫已从游戏移除，原素材备份在项目 `output/retired-jingwei/`，旧养成数据保留在存档的 `retiredPets` 中。测试版仍为独立存档，提供全部现有伙伴及调试按钮。
+幼儿园至六年级口算练习与宠物养成网页游戏。答题赚积分，积分可独立用于喂养或兑换伙伴。此目录是 **2026-09-14 整理后的独立开发项目**，可直接作为新的 Codex 项目打开，不需要原对话、上级文件夹或旧项目。
 
-**当前首页已升级为口算喂养游戏。** 使用说明与角色扩展方法见 [GAME.md](GAME.md)。原来的自由等级/动作试玩已保留在 [studio.html](studio.html)。下文为角色素材与组件的技术说明。
+## 本地运行
 
-三阶段、15 级成长、48 张透明动作关键帧，以及可运行的互动组件。沿用已确认的「幼年可爱、成年帅气」方向。打开 `studio.html` 可自由试玩角色；无需安装依赖、无需联网。`embed-example.html` 保留早期组件接入示例，正式游戏请使用 `index.html`。
+安装 Node.js 22 或更高版本，在本目录运行：
 
-## 内容
-
-| 文件 | 用途 |
-|---|---|
-| `wukong.js` | 原生 Web Component，包含动作状态机、移动、成长与 Canvas 特效 |
-| `index.html` + `game/` | 幼儿园及 1—6 年级计算、积分喂养、成长存档的游戏 |
-| `studio.html` + `style.css` + `demo.js` | 保留的三阶段、全部等级及互动试玩页 |
-| `embed-example.html` | 实际加法答题 → 成长值 → 升级的独立示例 |
-| `assets/stage-{1,2,3}.png` | 运行时透明图集，每张 2048×2560，4 列×4 行 |
-| `assets/stage-{1,2,3}.webp` | 同内容的无损 WebP 图集，供其他引擎选用 |
-| `assets/stage-N-动作名.png` | 单独的 512×640 透明动作帧，共 48 张 |
-| `assets/stage-N-portrait.png` | 三阶段静态立绘，与 idle 帧相同 |
-| `manifest.json` | 图集矩形、锚点、动作、时长、等级和比例配置 |
-| `design-guide.md` | 三阶段形象、15 级成长、动作与游戏反馈设定 |
-| `source/` + `prompts/` | ImageGen 原始动作设计图与生成提示词 |
-| `qa/` | 动作接触表、循环 GIF、素材检查及浏览器测试页 |
-
-## 最小接入
-
-把整个 `wukong-game` 文件夹复制到网页旁边，然后：
-
-```html
-<script src="wukong-game/wukong.js" defer></script>
-<div style="max-width:640px; background:#eaf6f7; border-radius:24px">
-  <wukong-game-pet id="wukong" level="1"></wukong-game-pet>
-</div>
+```sh
+npm start
 ```
 
-默认自动从 `wukong.js` 所在目录的 `assets/` 加载素材。`asset-base` 可指定相对于 **JS 文件** 的其他素材目录，也可以使用绝对 URL。不要把整张图集直接当作 `<img>` 立绘显示；静态图应选 `stage-N-portrait.png`。
+- 正式版：<http://127.0.0.1:8766/>
+- 测试版：<http://127.0.0.1:8766/?test=1>，也可访问 `/test.html`
+- 如端口被占用：`PORT=8770 npm start`（macOS/Linux）。
 
-```js
-await customElements.whenDefined('wukong-game-pet');
-const pet = document.getElementById('wukong');
+运行、单元测试、资源检查和打包均无第三方依赖，**不需要 npm install**。也可以用任意静态 HTTP 服务器启动；建议通过 HTTP 访问，不依赖 file:// 下的浏览器存储行为。
 
-pet.play('feed');           // 喂桃子
-pet.play('celebrate');      // 答对题目
-pet.play('comfort');        // 答错后鼓励，不扣成长
-pet.setLevel(6);            // 升级；跨形态自动播放进化
-pet.setLevel(11, { animate: false }); // 恢复存档，不播放进化
-pet.moveTo(0.72);           // 向右跑到指定位置
-pet.previewEffect();       // 展示本级特效，持续 3.8 秒
-pet.pause(true);            // 冻结动画、移动、动作计时与特效
-pet.pause(false);
+```sh
+npm test             # 游戏逻辑、角色播放器等自动测试
+npm run check        # 检查素材哈希、坐标数据、入口引用和喂食时长
+npm run build        # dist/ 中输出网页运行文件，排除文档、测试和单帧编辑素材
 ```
 
-### 动作名
+浏览器检查是可选项：先 `npm install --no-save --package-lock=false playwright`、`npx playwright install chromium`，再 `npm run test:browser`；已有 Chrome 可设置 `BROWSER_CHANNEL=chrome`。截图写入被 Git 忽略的 `artifacts/`。
 
-`idle` 待机、`wave` 挥手、`pet` 摸头、`feed` 吃桃、`think` 思考、`comfort` 鼓励、`celebrate` 庆祝、`jump` 跳跃、`sleep` 小憩、`run` 跑动、`skill` 施法、`evolve` 进化。
+## 新 Codex 项目如何继续
 
-- `idle`、`sleep`、`run` 持续，直到收到下一动作；`moveTo()` 跑到目的地后自动待机。
-- 其他动作在 1.1–3 秒后自动待机。新动作立即接管旧动作，不会堆积定时器。
-- `moveTo(x)` 使用 0–1 的横向位置；组件将目标限制到 0.28–0.72，为尾巴、金箍棒和动作留出边距。向左移动时水平镜像。
-- 组件画布自身透明，可以放在自己的森林、地图、房间或 UI 中。场景背景只属于试玩页。
-- 成长等级自动限制到 1–15；同一阶段体型每级增加约 2.5%，阶段升级更换完整立绘。
-- 本级效果平时低强度显示，升级/施法时完整展开；成年形态始终保留筋斗云。为避免画面堆满粒子，不把 15 种特效同时叠加。
-- 支持鼠标/触摸点击摸头、键盘方向键移动、空格/回车摸头。遵循系统「减少动态效果」设置，改为静态姿势和静态特效；有限动作仍按时结束。
+选择当前 `math-game` 文件夹作为项目目录。建议第一条消息：
 
-### 事件与数据
+> 先阅读 AGENTS.md、docs/DEVELOPMENT.md、docs/HANDOFF.md 和 docs/WECHAT-MIGRATION.md，运行现有检查，基于当前游戏继续开发微信小程序。保留已经确认的角色形象、积分规则和存档兼容性。
 
-```js
-pet.addEventListener('pet-ready', e => console.log('当前形态素材已就绪', e.detail));
-pet.addEventListener('pet-levelchange', e => {
-  // { level, stage, action, previous, evolved }
-  // 在这里接入自己的存档和 UI。
-});
-pet.addEventListener('pet-actionend', e => console.log(e.detail.completed));
-pet.addEventListener('pet-error', e => console.error(e.detail.message));
+入口是根目录 `index.html`，不再有外层 `wukong-game/`。Git 仓库独立存在于当前目录，origin 为 `git@github.com:shidingz/math-game.git`。复制文件夹或重新克隆仓库都能继续开发。
 
-console.log(pet.level, pet.stage, pet.action, pet.paused, pet.info);
-console.log(window.WukongGameData.levels); // 15 级设计配置
+## 当前内容
+
+- 8 个伙伴：布偶猫、柯基犬、萨摩耶、暹罗猫、比熊犬、孙悟空、哪吒、玉兔。
+- 首次正式游戏免费任选 1 个伙伴；其他伙伴每个 300 积分兑换。
+- 幼儿园与 1—6 年级题库、可切换年级/范围、错题回顾。
+- 每轮 10 题，每题答对 +10 积分；正确约 400ms 自动进入下一题，错误显示答案后手动继续。
+- 喂食花 20 积分、增加 20 成长值，动画 500ms；喂养成功提示在宠物脚下、进度条上方。
+- 累计约 30 道正确题到 Lv.6、80 道到 Lv.11、150 道到 Lv.15（奖励全部用于喂养时）；Lv.15 后每级 300 成长值继续升级，外观不再变化。
+- 点击随机互动、低频随机待机、逐级特效与全屏暗背景升级展示。
+
+测试版首次赠送 10,000 积分、解锁全部伙伴，可反复加分、改等级、直接升级和播放动作。它不是后端意义的无限积分服务；只有浏览器本地测试工具，存档与正式版隔离。
+
+## 文件导航
+
+| 路径 | 内容 |
+| --- | --- |
+| `index.html`、`game/` | 游戏入口、题库、积分/成长、主题、存档和交互 |
+| `wukong.js`、`assets/` | 最新「可爱→灵动→帅气」孙悟空 |
+| `characters/` | 其他七个角色的数据、播放器、特效和最终 PNG |
+| `asset-inventory.json` | 从当前代码生成的完整素材清单、帧坐标、阶段、动作、等级、哈希 |
+| `tests/` | 可重复执行的单元测试 |
+| `scripts/` | 本地服务器、资源清单/检查/打包、浏览器验收 |
+| `docs/` | 开发说明、角色制作指南、交接、清理范围和小程序迁移规划 |
+| `.github/workflows/check.yml` | GitHub 自动测试与资源检查 |
+
+## 发布
+
+仓库：<https://github.com/shidingz/math-game>
+
+正式版：<https://shidingz.github.io/math-game/>；测试版：<https://shidingz.github.io/math-game/?test=1>。
+
+当前沿用 GitHub Pages 从 `main` 根目录发布，保留 `.nojekyll`。不要将来源改为 `docs/`，这里的 docs 是开发文档；`dist/` 仅用于其他静态托管，不提交到 Git。
+
+```sh
+git status
+npm test
+npm run check
+npm run build
+git add -A
+git commit -m "Describe the change"
+git push origin main
 ```
 
-还提供 `pet-action`、`pet-effect`、`pet-pause` 事件。事件可冒泡并穿过 Shadow DOM。组件从 DOM 移除时停止动画并注销监听器；多个组件共享已加载的图集。
+GitHub Pages 分支发布说明：[官方文档](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)。推送完成后还应确认 Pages 部署成功，以及线上版本确实更新。
 
-### 素材技术规格
-
-单帧 512×640，锚点 `(256, 588)`，图集按行排列。若接入 Phaser / Pixi / 自研 Canvas，可以直接使用 `manifest.json` 中的帧矩形。图片已经从原始底色分离，含真实 Alpha 通道；原始洋红底图只用于制作溯源。
-
-角色是 **PNG / WebP 位图关键帧**，动画由姿势切换、平移、跳跃曲线和程序特效组合完成。可以自由放置、移动、缩放、镜像；不包含可任意弯曲四肢的骨骼绑定，也没有四方向/背面视图。挥手、吃桃、跑动每组有两张核心姿势；不是逐帧绘制的 24/30 FPS 长动画。
-
-最小运行文件只有 `wukong.js` 和三张 `assets/stage-N.png`；其他图片、原始稿、提示词和检查页不用随正式游戏发布。这里的素材没有声音，也不依赖外部字体、CDN、账号、存档或付费服务。正式数学题库和积分规则由游戏决定，示例规则仅用于验证接入。
-
-## 检查与再生成
-
-1. 浏览器打开 `qa/runtime-check.html`，点击运行；检查等级、动作绘制、暂停、移动、跨阶段切换、输入边界及移除清理。
-2. `qa/stage-N-contact.jpg` 可快速检查全部姿势；GIF 用于检查姿势衔接。
-3. 原稿提取脚本：`python3 scripts/build_assets.py`，需要 Pillow、NumPy。
-4. 导出配置：`node scripts/build_manifest.mjs`。
-
-设计日期：2026-09-10。此包是网页游戏角色素材，不是 Codex 桌面宠物安装包。
+此项目目前是静态网页，不含微信 appid、小程序工程、服务器、登录或云存档。微信版本待后续开发，参见迁移文档。
