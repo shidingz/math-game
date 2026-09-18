@@ -2,7 +2,7 @@
 
 ## 2026-09-18 当前：v22 照片制作服务与真实 Canvas 网页
 
-版本 `wechat-v22-photo-service`。保留 v21 的背景和主题效果，不改成长、积分或已解锁伙伴互动规则。新增 `wechat/browser/` 真实浏览器适配层，以相机/相册文件选择、IndexedDB 持久原图、fetch 上传/轮询和 Canvas 游戏替代仅供模拟验收的 preview shim；根目录旧网页继续保留。新浏览器站计划发布到 GitHub Pages `/dev/`，本记录写入时尚未推送或部署确认。
+版本 `wechat-v22-photo-service`。保留 v21 的背景和主题效果，不改成长、积分或已解锁伙伴互动规则。新增 `wechat/browser/` 真实浏览器适配层，以相机/相册文件选择、IndexedDB 持久原图、fetch 上传/轮询和 Canvas 游戏替代仅供模拟验收的 preview shim；根目录旧网页继续保留。新浏览器站目标为 GitHub Pages `/dev/`；dev 已推送 `9c15167`，GitHub 构建成功；首轮部署被 github-pages 环境分支策略拦截，用户已完成设置并允许 dev，等待重新触发部署验证。这不是代码构建失败，不能写成已发布。
 
 灰猫真实制作目录 `artifacts/gray-cat-release-20260918`，4 次 302.AI 图片请求生成三阶段设计及三张九宫格，得到三阶段 27 个动作。最终 PNG 与 manifest 已整理到 `assets/custom-pets/gray-cat/`，目录清单 `assets/custom-pets/catalog.json`；当前构建是 8 个内置伙伴加该灰猫，共 9 个伙伴，不包含所有历史实验角色。固定名「新伙伴」，可以在客户端改本机别名。技术规范检查与规则裁切完成，未调用额外 AI 视觉质检、命名或代码生成，不宣称自动美术语义审核通过。
 
@@ -10,9 +10,11 @@
 
 浏览器 token、过期标记和游戏库按完整服务地址隔离。真实过期后只暂停业务请求，保留 token 用于正确口令下的同地址续期；服务端可恢复原 owner 的排队/半上传任务。新设备或未知 token 不按 deviceId 接管已有 owner。收到任务确认后释放本机照片；生成多次得到不同 custom id 和独立进度。
 
-新增命令 `pet:serve`、`test:pet-server`、`build:web-game`；依赖单独在 `server/package.json`，原 npm test/check/build 无安装依赖。`.env.local` 与 `.env.service.local` 是被忽略的私有配置，不放入站点或日志。本机 API 默认 `127.0.0.1:8799`，用户已授权 Cloudflare HTTPS 隧道，公网健康检查已正常，真实网页已上传灰猫、新任务正在生成，完整流程尚未完成验收。计划推送 dev 触发新 workflow；Pages Actions 来源与 github-pages 环境允许 dev 仍需用户配置确认，不能写成已发布。没有支付、云端成长存档或微信原生身份联调；没有本轮微信真机/审核/上传发布结论。
+新增命令 `pet:serve`、`test:pet-server`、`build:web-game`；依赖单独在 `server/package.json`，原 npm test/check/build 无安装依赖。`.env.local` 与 `.env.service.local` 是被忽略的私有配置，不放入站点或日志。本机 API 默认 `127.0.0.1:8799`，用户已授权 Cloudflare HTTPS 隧道，真实全流程已通过公开 HTTPS，详见下段；首轮 GitHub Pages 部署曾被环境分支规则拦截，用户已允许 dev，等待重新触发验证，不能写成已发布。没有支付、云端成长存档或微信原生身份联调；没有本轮微信真机/审核/上传发布结论。
 
-主流程已报告 201 项通用测试与干净 Git index 导出构建通过。已完成的独立服务测试为 7 组假 worker HTTP 测试，包括真实过期后续期、重启、旧任务/半上传归属、幂等与资产访问；不触发收费 API。客户端 agent 已另做本机真实 server + 已有合格灰猫 fixture worker 集成：过期续接、多次领取、图集 URL 和多标签会话恢复，报告 `artifacts/web-client-20260918/qa-real/result.json`。这属于本机协议链验证，不等同于新的真实生图全流程或公网部署成功。最新最终验收由主流程另记。
+主流程已报告 201 项通用测试与干净 Git index 导出构建通过。已完成的独立服务测试为 7 组假 worker HTTP 测试，包括真实过期后续期、重启、旧任务/半上传归属、幂等与资产访问；不触发收费 API。客户端 agent 已另做本机真实 server + 已有合格灰猫 fixture worker 集成：过期续接、多次领取、图集 URL 和多标签会话恢复，报告 `artifacts/web-client-20260918/qa-real/result.json`。该 fixture 测试与后续真实付费全流程分别记录，不能混淆。
+
+真实网页全流程已通过公开 Cloudflare HTTPS：照片上传、排队、4 次 302.AI 图片请求（无重试）、固定规则裁切、免费加入列表首位和刷新保存；三个远程阶段图集实际以 1536×1536 加载。首套随包灰猫 4 次加本次真实验收 4 次，共 8 次图片请求，没有其他 AI 调用；新生成伙伴仅归测试会话，预置包仍为 9 个伙伴。 真实记录为 `artifacts/dev-release-20260918/paid-flow/result.json` 与 `display-result.json`，无需复制私有会话或资产 token 到文档。灰猫另有 81 个动作组合、6 次进化、3 个视口的浏览器检查全部通过。双源发布构建验证保留 main 原站字节；首轮 Pages 部署被环境策略拦截，用户已修正设置，等待重新触发验证；微信真机仍未验收。最新集中记录见 [VALIDATION.md](VALIDATION.md)。
 
 现行使用见 [LOCAL-PET-SERVICE.md](LOCAL-PET-SERVICE.md)、接口/恢复见 [server/README.md](../server/README.md)。以下为历史逐版记录，旧“后台未配置”“当前版本”等说法只表示对应日期版本，不能覆盖本节。
 

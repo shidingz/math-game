@@ -1,6 +1,6 @@
 # 微信小程序迁移规划
 
-当前开发版本为 `wechat-v22-photo-service`：保留 v21 的主题特效、16 种背景、双伙伴互动、宠物大小与 30/100 题进化，新增本机照片制作服务和真实 Canvas 浏览器适配器。灰猫案例经 4 次图片 API 生成三阶段 27 动作，当前构建共 9 个伙伴。新版网页计划在 GitHub Pages `/dev/` 发布，本文更新时尚未推送；公网与完整流程验收仍进行中。详见 [LOCAL-PET-SERVICE.md](LOCAL-PET-SERVICE.md) 和 [WEBSITE-EFFECTS.md](WEBSITE-EFFECTS.md)。
+当前开发版本为 `wechat-v22-photo-service`：保留 v21 的主题特效、16 种背景、双伙伴互动、宠物大小与 30/100 题进化，新增本机照片制作服务和真实 Canvas 浏览器适配器。灰猫案例经 4 次图片 API 生成三阶段 27 动作，当前构建共 9 个伙伴。真实网页经公开 Cloudflare 的上传、排队、4 次生图、规则裁切、免费领取和刷新恢复已通过，三阶段远程 1536×1536 图集加载正常。dev 已推送 `9c15167`，GitHub 构建成功；首轮部署因 github-pages 环境策略拦截而失败，用户已允许 dev，等待重新触发验证，不代表已经上线。详见 [LOCAL-PET-SERVICE.md](LOCAL-PET-SERVICE.md) 和 [WEBSITE-EFFECTS.md](WEBSITE-EFFECTS.md)。
 
 
 ## 自定义伙伴客户端增补
@@ -11,7 +11,7 @@
 
 `npm run build:web-game` 从微信素材导出构建独立网站，复用 Canvas 游戏层，但替换为浏览器平台适配器，不发布 preview shim、AppID 或微信工程个人配置。`npm run pet:serve` 在电脑本机运行生图服务，默认 8799；GitHub Pages 仅托管静态客户端，通过另行授权配置的 HTTPS 隧道连接本机，电脑关机/断网时不能继续生成。原生微信工程仍由 `build:wechat` 导出，保留真实目标 AppID，不覆盖原工程。
 
-网页口令会话不等于微信账号。浏览器协议测试、微信开发者工具原生编译、iOS/Android 真机、上传、审核、发布必须分别记录。此版没有新增微信真机或发布通过结论。网页 token 按服务地址隔离，后端图片链接用不可猜 token 适配无法附带 Authorization 的 Image 加载；原照片不作为公开图片提供。后端仅负责制作与结果，宠物等级/积分仍保存在各平台本地。
+网页口令会话不等于微信账号。浏览器协议测试、微信开发者工具原生编译、iOS/Android 真机、上传、审核、发布必须分别记录。本次公网浏览器全流程通过仍不代表微信原生编译或手机验收；此版没有新增微信真机或发布通过结论。网页 token 按服务地址隔离，后端图片链接用不可猜 token 适配无法附带 Authorization 的 Image 加载；原照片不作为公开图片提供。后端仅负责制作与结果，宠物等级/积分仍保存在各平台本地。
 
 ## 2026-09-14 微信小游戏实现（历史记录）
 
