@@ -19,4 +19,6 @@ Intentional differences: retain photo creation/service links; keep custom naming
 - `verification.json`, `final-*.png`, `greeting-*.png`, `upgrade-*.png`, `studio-*.png` document results. Browser tests use isolated storage and existing images; no paid generation calls.
 - This is browser emulation, not native WeChat or physical phone verification. Remote generation internals/session formats are unchanged and were not retested with a paid job in this visual change.
 
+Public deployment verified: commit `458825c`, Actions run `35300758003`; 390/1280 browser views, all gray-cat stages and creation/settings entry points pass with no JS/resource errors. Root main-site HTML is unchanged. Evidence: `artifacts/classic-layout-20260918/public-result.json` and `public-*.png`.
+
 final result: passed

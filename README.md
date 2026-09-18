@@ -10,7 +10,7 @@
 
 真实网页全流程已通过公开 Cloudflare HTTPS：照片上传、排队、4 次 302.AI 图片请求（无重试）、固定规则裁切、免费加入列表首位和刷新保存；三个远程阶段图集实际以 1536×1536 加载。首套随包灰猫 4 次加本次真实验收 4 次，共 8 次图片请求，没有其他 AI 调用；新生成伙伴仅归测试会话，预置包仍为 9 个伙伴。 灰猫另通过 81 个动作组合、6 次进化与 3 种视口的浏览器检查。
 
-照片服务 v22 已发布到 [GitHub Pages /dev/](https://shidingz.github.io/math-game/dev/)，部署代码提交为 `5922dde`。首轮环境分支限制已由用户修正，第二轮构建与部署均成功；已用全新未登录浏览器验证线上 9 伙伴、三阶段和服务跨域健康检查。主站根页仍与 main 字节一致。本轮未做微信真机或审核发布。启动与构建见 [本机照片制作服务](docs/LOCAL-PET-SERVICE.md)，实测记录见 [VALIDATION](docs/VALIDATION.md)。
+本轮代码 `458825c` 已部署到 [GitHub Pages /dev/](https://shidingz.github.io/math-game/dev/)，[Actions 35300758003](https://github.com/shidingz/math-game/actions/runs/35300758003) 构建与发布成功。隔离浏览器在 390/1280 两种宽度验证线上新布局、9 伙伴、灰猫三阶段、制作页、服务设置与取消交互，零脚本/资源错误；根站 HTML 与 origin/main 字节相同。线上结果记录为 `artifacts/classic-layout-20260918/public-result.json`，本轮没有再次上传照片或调用付费生图。 启动与构建见 [本机照片制作服务](docs/LOCAL-PET-SERVICE.md)，实测记录见 [VALIDATION](docs/VALIDATION.md)。
 
 ## 本地运行
 
