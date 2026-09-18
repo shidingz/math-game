@@ -1,6 +1,6 @@
 # 微信小程序迁移规划
 
-当前开发版本为 `wechat-v22-photo-service`：保留 v21 的主题特效、16 种背景、双伙伴互动、宠物大小与 30/100 题进化，新增本机照片制作服务和真实 Canvas 浏览器适配器。灰猫案例经 4 次图片 API 生成三阶段 27 动作，当前构建共 9 个伙伴。真实网页经公开 Cloudflare 的上传、排队、4 次生图、规则裁切、免费领取和刷新恢复已通过，三阶段远程 1536×1536 图集加载正常。dev 已推送 `9c15167`，GitHub 构建成功；首轮部署因 github-pages 环境策略拦截而失败，用户已允许 dev，等待重新触发验证，不代表已经上线。详见 [LOCAL-PET-SERVICE.md](LOCAL-PET-SERVICE.md) 和 [WEBSITE-EFFECTS.md](WEBSITE-EFFECTS.md)。
+当前开发版本为 `wechat-v22-photo-service`：保留 v21 的主题特效、16 种背景、双伙伴互动、宠物大小与 30/100 题进化，新增本机照片制作服务和真实 Canvas 浏览器适配器。灰猫案例经 4 次图片 API 生成三阶段 27 动作，当前构建共 9 个伙伴。真实网页经公开 Cloudflare 的上传、排队、4 次生图、规则裁切、免费领取和刷新恢复已通过，三阶段远程 1536×1536 图集加载正常。dev 的 `5922dde` 已构建并发布到 GitHub Pages `/dev/`，线上页面和服务连通检查通过。详见 [LOCAL-PET-SERVICE.md](LOCAL-PET-SERVICE.md) 和 [WEBSITE-EFFECTS.md](WEBSITE-EFFECTS.md)。
 
 
 ## 自定义伙伴客户端增补

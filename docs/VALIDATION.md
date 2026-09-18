@@ -8,7 +8,7 @@
 - 远程三个阶段图集实际加载，尺寸均为 1536×1536；显示及刷新验证记录：`artifacts/dev-release-20260918/paid-flow/display-result.json`。该新任务只归验收会话，没有替换随包灰猫或增加预置伙伴，公开构建仍为 9 只。
 - 本轮付费图片请求合计为 8 次：首套预置 4 次＋独立真实全流程 4 次，不应把整个工作误记为只调用 4 次。fixture worker 自动测试不调用付费接口，也不计入这 8 次。
 - 灰猫浏览器专项检查通过 81 个动作组合、6 次进化及 3 个视口；本机真实服务＋已生成素材 fixture 还验证真正过期的 401、同地址续期恢复旧任务、第二次制作、资产链接与多标签会话，报告在 `artifacts/web-client-20260918/qa-real/result.json`。
-- 发布双源构建通过，main 原站内容按字节保留，新版产物目标为 `/dev/`。dev 已推送 `9c15167`，GitHub 构建成功；首轮部署因 `github-pages` 环境分支策略拦截而失败。用户已完成 Pages Actions 与环境设置，已确认允许 dev/main/test-build，等待重新触发部署验证。这是首轮授权配置限制，不是代码构建错误，当前不能宣称 Pages 发布成功。
+- dev 代码 `5922dde` 已成功构建并部署到 https://shidingz.github.io/math-game/dev/ ，工作流为 https://github.com/shidingz/math-game/actions/runs/35295976981 。首轮环境分支限制由用户修正；公开主站根 HTML 与 origin/main 字节相同。线上全新未登录浏览器验证 9 伙伴、三阶段图集、预填 API 地址和从真实 GitHub origin 到 Cloudflare 的匿名健康检查/CORS，零 JS 错误；未复制任何本地测试凭据。记录为 `artifacts/dev-release-20260918/public-result.json`。
 - 本轮未完成新增微信原生/手机真机验收，没有微信审核或发布；没有支付、云端积分与成长账户系统。
 
 以下保留旧版本历史记录，其中旧的“当前”或“未部署后端”仅对应当时版本。

@@ -2,7 +2,7 @@
 
 本文对应 `wechat-v22-photo-service`，更新于 2026-09-18。真实网页全流程已通过公开 Cloudflare HTTPS：照片上传、排队、4 次 302.AI 图片请求（无重试）、固定规则裁切、免费加入列表首位和刷新保存；三个远程阶段图集实际以 1536×1536 加载。首套随包灰猫 4 次加本次真实验收 4 次，共 8 次图片请求，没有其他 AI 调用；新生成伙伴仅归测试会话，预置包仍为 9 个伙伴。
 
-新版 Canvas 网页目标为 GitHub Pages `/dev/`。dev 已推送至 `9c15167`，GitHub 构建成功；首轮部署被 `github-pages` 环境分支策略拦截。用户已完成 Pages Actions 与允许 dev 的设置，环境现允许 dev/main/test-build，等待重新触发部署验证，尚不称为 Pages 发布成功。 具体实测见 [VALIDATION.md](VALIDATION.md)。
+新版 Canvas 网页已发布到 [GitHub Pages /dev/](https://shidingz.github.io/math-game/dev/)，部署代码为 dev 的 `5922dde`。首轮部署的环境分支限制已修正；[第二轮构建和部署成功](https://github.com/shidingz/math-game/actions/runs/35295976981)。线上用全新未登录浏览器验证 9 伙伴、三阶段素材和 API 健康检查的 CORS；没有把本地测试会话迁移到公网浏览器。具体实测见 [VALIDATION.md](VALIDATION.md)。
 
 ## 当前可以做什么
 
@@ -61,7 +61,7 @@ npm run build:web-game -- \
 
 公开配置文件只能包含 `baseUrl` 与 `assetHosts`，不能含口令、token 或第三方 Key。网页默认只允许 HTTPS 服务；仅本机 localhost/127.0.0.1 页面允许 HTTP 本机服务用于调试。生产图片仍要求 HTTPS 且命中素材域名白名单。
 
-`--test --test-default` 是无限积分测试构建；不传它们为正式规则。正式和测试使用不同本地命名空间。新增 `.github/workflows/deploy-dev.yml` 在推送 dev 分支时构建，取 main 的原站到根目录，并将新版放入 `/dev/`。仓库 Pages 需要选择 GitHub Actions，`github-pages` 环境的部署分支规则还需允许 dev；dev 已推送且构建成功，首轮部署被该环境策略拦截；用户已完成设置并允许 dev，等待重新触发部署验证，尚未发布成功。可用仓库变量 `PET_SERVICE_URL` 覆盖公开 API 地址，该变量只能是 URL，不能填写任何密钥。推送后需单独确认 Actions/Pages 成功及线上版本，这一步不由生成服务自动完成。
+`--test --test-default` 是无限积分测试构建；不传它们为正式规则。正式和测试使用不同本地命名空间。新增 `.github/workflows/deploy-dev.yml` 在推送 dev 分支时构建，取 main 的原站到根目录，并将新版放入 `/dev/`。仓库 Pages 需要选择 GitHub Actions，`github-pages` 环境的部署分支规则还需允许 dev；dev `5922dde` 已构建、部署成功，并通过线上检查。可用仓库变量 `PET_SERVICE_URL` 覆盖公开 API 地址，该变量只能是 URL，不能填写任何密钥。推送后需单独确认 Actions/Pages 成功及线上版本，这一步不由生成服务自动完成。
 
 ## 用户操作与恢复
 

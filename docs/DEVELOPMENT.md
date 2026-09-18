@@ -1,6 +1,6 @@
 # 开发说明
 
-当前开发版本为 `wechat-v22-photo-service`：保留 v21 的背景、主题特效与双伙伴互动，新增本机制作服务与真实浏览器适配器。灰猫案例已完成四次图片 API 生成、三阶段 27 动作，当前构建共 9 个伙伴。公开 Cloudflare 上的真实上传→4 次生图→裁切→领取→刷新全流程已通过，远程三阶段 1536×1536 图集加载正常；当前随包仍 9 个伙伴，新任务只属于验收会话。dev 已推送 `9c15167`，GitHub 构建成功；首轮部署被 github-pages 环境策略拦截，用户已允许 dev，等待重新触发部署验证，尚未发布成功。201 项通用测试、7 组服务测试及灰猫 81 动作组合/6 次进化/3 视口检查通过，完整实测边界见 [VALIDATION.md](VALIDATION.md)。操作见 [LOCAL-PET-SERVICE.md](LOCAL-PET-SERVICE.md)，主题视觉见 [WEBSITE-EFFECTS.md](WEBSITE-EFFECTS.md)。
+当前开发版本为 `wechat-v22-photo-service`：保留 v21 的背景、主题特效与双伙伴互动，新增本机制作服务与真实浏览器适配器。灰猫案例已完成四次图片 API 生成、三阶段 27 动作，当前构建共 9 个伙伴。公开 Cloudflare 上的真实上传→4 次生图→裁切→领取→刷新全流程已通过，远程三阶段 1536×1536 图集加载正常；当前随包仍 9 个伙伴，新任务只属于验收会话。dev 的 `5922dde` 已构建并发布到 GitHub Pages `/dev/`，线上页面和服务连通检查通过。201 项通用测试、7 组服务测试及灰猫 81 动作组合/6 次进化/3 视口检查通过，完整实测边界见 [VALIDATION.md](VALIDATION.md)。操作见 [LOCAL-PET-SERVICE.md](LOCAL-PET-SERVICE.md)，主题视觉见 [WEBSITE-EFFECTS.md](WEBSITE-EFFECTS.md)。
 
 ## 微信自定义宠物增补
 

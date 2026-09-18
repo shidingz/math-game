@@ -10,7 +10,7 @@
 
 真实网页全流程已通过公开 Cloudflare HTTPS：照片上传、排队、4 次 302.AI 图片请求（无重试）、固定规则裁切、免费加入列表首位和刷新保存；三个远程阶段图集实际以 1536×1536 加载。首套随包灰猫 4 次加本次真实验收 4 次，共 8 次图片请求，没有其他 AI 调用；新生成伙伴仅归测试会话，预置包仍为 9 个伙伴。 灰猫另通过 81 个动作组合、6 次进化与 3 种视口的浏览器检查。
 
-新版目标是 GitHub Pages 的 `/dev/`。dev 已推送至 `9c15167`，GitHub 构建成功；首轮部署被 `github-pages` 环境分支策略拦截。用户已完成 Pages Actions 与允许 dev 的设置，环境现允许 dev/main/test-build，等待重新触发部署验证，尚不称为 Pages 发布成功。 本轮仍未做微信真机或审核发布。启动与构建见 [本机照片制作服务](docs/LOCAL-PET-SERVICE.md)，实测记录见 [VALIDATION](docs/VALIDATION.md)。
+新版已发布到 [GitHub Pages /dev/](https://shidingz.github.io/math-game/dev/)，部署代码提交为 `5922dde`。首轮环境分支限制已由用户修正，第二轮构建与部署均成功；已用全新未登录浏览器验证线上 9 伙伴、三阶段和服务跨域健康检查。主站根页仍与 main 字节一致。本轮未做微信真机或审核发布。启动与构建见 [本机照片制作服务](docs/LOCAL-PET-SERVICE.md)，实测记录见 [VALIDATION](docs/VALIDATION.md)。
 
 ## 本地运行
 
@@ -78,7 +78,7 @@ npm run test:pet-server # 假 worker 服务测试，不调用收费 API
 
 正式版：<https://shidingz.github.io/math-game/>；测试版：<https://shidingz.github.io/math-game/?test=1>。
 
-原站此前由 GitHub Pages 的 `main` 根目录发布。新增 `.github/workflows/deploy-dev.yml` 计划在 `dev` 推送后用 Actions 发布，保留 main 的原站，并把新版 Canvas 放到 `/dev/`。Pages 来源使用 GitHub Actions，且 `github-pages` 环境需允许 dev 分支。dev 已推送且构建成功；首轮部署被环境分支策略拦截，用户已允许 dev，等待重新触发部署验证；推送代码不等于部署成功。不要将来源改为 `docs/`，这里的 docs 是开发文档；`dist/` 仅用于其他静态托管，不提交到 Git。
+原站此前由 GitHub Pages 的 `main` 根目录发布。新增 `.github/workflows/deploy-dev.yml` 在 `dev` 推送后用 Actions 发布，保留 main 的原站，并把新版 Canvas 放到 `/dev/`。Pages 来源使用 GitHub Actions，且 `github-pages` 环境需允许 dev 分支。dev `5922dde` 的构建与部署已成功，线上 9 伙伴和服务跨域连通已验证。不要将来源改为 `docs/`，这里的 docs 是开发文档；`dist/` 仅用于其他静态托管，不提交到 Git。
 
 ```sh
 git status
