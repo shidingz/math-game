@@ -7,14 +7,14 @@ function registry(){
   return ctx.MathPetCharacters;
 }
 test('三位伙伴独立配置，玉兔使用月宫场景、桂花糕和 15 级成长',()=>{
-  const r=registry(),y=r.get('yutu');assert.equal(r.list().length,4);assert.equal(y.ui.scene,'moon');assert.equal(y.food.name,'桂花糕');assert.equal(y.unlock.cost,300);assert.equal(y.effects.length,15);
+  const r=registry(),y=r.get('yutu');assert.equal(r.list().length,4);assert.equal(y.ui.scene,'moon');assert.equal(y.food.name,'桂花糕');assert.equal(y.unlock.cost,200);assert.equal(y.effects.length,15);
   assert.equal(new Set(y.effects.map(e=>e.effect)).size,15);assert.ok(fs.existsSync(path.join(root,y.food.iconImage)));
-  assert.deepEqual(Array.from(y.stages,s=>s.minLevel),[1,6,11]);assert.equal(core.totalAt(6,y),300);assert.equal(core.totalAt(11,y),800);assert.equal(core.totalAt(15,y),1500);
+  assert.deepEqual(Array.from(y.stages,s=>s.minLevel),[1,6,11]);assert.equal(core.totalAt(6,y),300);assert.equal(core.totalAt(11,y),1000);assert.equal(core.totalAt(15,y),1500);
 });
-test('答题数不自动解锁玉兔；兑换仅扣 300 分一次，喂养只改变玉兔',()=>{
-  const y=registry().get('yutu'),s=core.initialState({chooseStarter:false});s.totalAnswered=1000;s.totalSolved=1000;s.points=299;
+test('答题数不自动解锁玉兔；兑换仅扣 200 分一次，喂养只改变玉兔',()=>{
+  const y=registry().get('yutu'),s=core.initialState({chooseStarter:false});s.totalAnswered=1000;s.totalSolved=1000;s.points=199;
   assert.equal(core.isPetUnlocked(s,'yutu'),false);const before=structuredClone(s);assert.equal(core.unlockPet(s,'yutu',y).status,'insufficient');assert.deepEqual(s,before);
-  s.points=320;assert.equal(core.unlockPet(s,'yutu',y).status,'unlocked');assert.equal(s.points,20);assert.equal(core.unlockPet(s,'yutu',y).status,'already-unlocked');assert.equal(s.points,20);
+  s.points=220;assert.equal(core.unlockPet(s,'yutu',y).status,'unlocked');assert.equal(s.points,20);assert.equal(core.unlockPet(s,'yutu',y).status,'already-unlocked');assert.equal(s.points,20);
   assert.ok(core.selectPet(s,'yutu',['wukong','nezha','yutu']));assert.equal(core.feed(s,'yutu',y).status,'fed');assert.equal(s.points,0);assert.equal(s.pets.yutu.growth,20);assert.equal(s.pets.wukong.growth,0);
   const restored=core.restore(s);assert.equal(restored.activePet,'yutu');assert.equal(restored.unlockedPets.yutu,true);assert.equal(restored.pets.yutu.growth,20);
 });

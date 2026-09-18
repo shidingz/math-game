@@ -1,0 +1,4 @@
+{
+  "baseUrl": "https://api.example.com",
+  "assetHosts": ["pets.example.com"]
+}

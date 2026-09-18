@@ -21,6 +21,14 @@ for(const id of ids){
  const png=fs.readFileSync(path.join(root,stages[0].png));
  manifests.push({id,name:data.name||'孙悟空',cell,atlas:{width:png.readUInt32BE(16),height:png.readUInt32BE(20),columns,rows:png.readUInt32BE(20)/cell.height},frames:data.frames.map((name,index)=>({index,name,x:index%columns*cell.width,y:Math.floor(index/columns)*cell.height,...cell})),stages,actions,levels:data.levels});
 }
+// Only the current scene library and explicitly registered custom pets ship.
+for(const [group] of require('../wechat/runtime/kingdom-scenes').GROUPS)assetPaths.add('assets/toy-worlds/'+group+'.png');
+const catalogPath=path.join(root,'assets/custom-pets/catalog.json');
+if(fs.existsSync(catalogPath))for(const entry of JSON.parse(fs.readFileSync(catalogPath,'utf8'))){
+ assert.match(entry,/^[a-zA-Z0-9_-]+\/pet\.json$/,'Invalid built-in custom pet catalog path');
+ const folder='assets/custom-pets/'+path.dirname(entry);
+ for(const file of fs.readdirSync(path.join(root,folder)))if(file.endsWith('.png'))assetPaths.add(folder+'/'+file);
+}
 const assets=[...assetPaths].sort().map(file=>{const bytes=fs.readFileSync(path.join(root,file));assert.equal(bytes.subarray(1,4).toString(),'PNG',file);return{file,bytes:bytes.length,width:bytes.readUInt32BE(16),height:bytes.readUInt32BE(20),sha256:crypto.createHash('sha256').update(bytes).digest('hex'),runtime:runtime.has(file)};});
 for(const m of manifests){for(const s of m.stages){const a=assets.find(a=>a.file===s.png);assert.equal(a.width,m.atlas.width,s.png);assert.equal(a.height,m.atlas.height,s.png);}assert.equal(new Set(m.levels.map(l=>l.name)).size,15,m.id);for(const a of Object.values(m.actions))for(const f of a.frames)assert.ok(f>=0&&f<m.frames.length,m.id);assert.equal(m.actions.feed.durationMs,500,m.id);}
 const inventory={characters:manifests,assets,runtimeFiles:[...runtime].sort()};

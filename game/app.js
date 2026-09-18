@@ -27,19 +27,18 @@
     $('grade-caption').textContent=(grade?grade.name+' · ':'')+'每天进步一点点';$('grade-button').textContent=grade?.name||'选择年级';
     const active=state.round&&!state.round.complete?state.round:{grade:state.grade,topic:state.topic};const scope=core.GRADES[active.grade];$('mode-label').textContent=scope?(active.topic==='balanced'?scope.name+'综合练习':scope.topics[active.topic]):'先选择年级';
     $('growth-title').textContent='成长进度';$('growth-value').textContent=`${p.growth} / ${need}`;$('growth-bar').max=need;$('growth-bar').value=p.growth;
-    $('growth-note').textContent=`再喂 ${Math.ceil((need-p.growth)/food.growth)} ${config.food.unit}${config.food.name}，就能升到 Lv.${p.level+1}`;
-    $('evolution-hint').textContent=p.level<6?'Lv.6 首次进化 · Lv.11 再次进化':p.level<11?'Lv.6 已进化 · Lv.11 再次进化':'Lv.6、Lv.11 已完成进化';
+    const nextEvolution=p.level<6?6:p.level<11?11:null;
+    const evolutionFoods=nextEvolution?Math.ceil((core.totalAt(nextEvolution,config)-core.totalAt(p.level,config)-p.growth)/food.growth):0;
+    const evolutionQuestions=Math.ceil(Math.max(0,evolutionFoods*food.cost-state.points)/core.RULES.reward);
+    $('growth-note').textContent=nextEvolution?(evolutionQuestions?`距 Lv.${nextEvolution} 进化还差 ${evolutionQuestions} 题`:'积分已够，喂养即可进化'):'已达终极形态';
+    $('evolution-hint').textContent=p.level<6?'Lv.6 首次进化 · Lv.11 再次进化':p.level<11?'Lv.6 已进化 · Lv.11 再次进化':'此后不再进化，仍可继续成长';
     $('food-title').textContent=config.food.title||`喂养${config.name}，长大一点`;
-    const foodArt=document.querySelector('.food-illustration');
-    if(foodArt.dataset.pet!==config.id){foodArt.dataset.pet=config.id;if(config.food.iconImage){const image=document.createElement('img');image.src=config.food.iconImage;image.alt='';foodArt.replaceChildren(image);}else foodArt.textContent=config.food.icon;}
     $('food-copy').textContent=`每${config.food.unit}增加 ${food.growth} 点成长值`;
-    $('feed').replaceChildren(document.createTextNode(feeding?'正在享用…':`喂${config.food.unit}${config.food.name} `));const cost=document.createElement('span');cost.textContent=`★ ${food.cost}`;$('feed').append(cost);$('feed').disabled=feeding||state.points<food.cost;
+    $('feed').replaceChildren(document.createTextNode(feeding?'正在享用…':'喂养伙伴 '));const cost=document.createElement('span');cost.textContent=`★ ${food.cost}`;$('feed').append(cost);$('feed').disabled=feeding||state.points<food.cost;
     $('feed-hint').textContent=state.points<food.cost?`再答对 ${Math.ceil((food.cost-state.points)/10)} 道题，就能喂一${config.food.unit}${config.food.name}`:`花 ${food.cost} 积分，送给${config.name}一点甜`;
     $('start').textContent=state.round?(state.round.complete?'查看本轮收获':`继续练习 · 第 ${state.round.index+1} 题`):'开始计算 →';$('start').disabled=feeding;
     $('total-solved').textContent=`已练 ${state.totalAnswered} 题 · 答对 ${state.totalSolved} 题`;$('save-status').textContent=storage.warning||saveMessage;
-    const milestoneText=[6,11,15].map(n=>`${Math.ceil(core.totalAt(n,config)/food.growth*food.cost/10)} 题到 Lv.${n}`).join(' · ');
-    const continuedQuestions=Math.ceil(core.required(15,config)/food.growth*food.cost/10);
-    $('evolution-note').textContent=p.level>=15?`Lv.15 后仍可继续升级，每级沿用 Lv.15 门槛（约 ${continuedQuestions} 道题）；外形、体形与特效不再变化。`:`累计答对 ${milestoneText}。积分需用于喂养当前伙伴，角色兑换另计。`;
+    $('evolution-note').textContent=p.level>=11?'Lv.11 已达终极形态，此后不再进化，仍可继续成长。':'从零累计答对30题到Lv.6，100题到Lv.11。积分需用于喂养当前伙伴，角色兑换另计。';
     const picker=document.querySelector('.pet-select');
     if(picker){
       picker.value=state.activePet;picker.disabled=feeding;

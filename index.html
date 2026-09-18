@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4f8f9">
 <title>算算萌宠 · 计算养伙伴</title>
-<link rel="stylesheet" href="game/game.css?v=20260914-feed-notice"><link rel="stylesheet" href="game/theme.css?v=20260912-starters1">
+<link rel="stylesheet" href="game/game.css?v=20260914-feed-notice"><link rel="stylesheet" href="game/theme.css?v=20260917-plain-feed">
 <script src="wukong.js?v=20260914-cute-agile-hero4" defer></script>
 <script src="characters/nezha/nezha-data.js?v=realistic2-martial" defer></script><script src="characters/nezha/nezha-effects.js?v=realistic2-martial" defer></script><script src="characters/nezha/nezha.js?v=realistic2-martial" defer></script>
 <script src="characters/yutu/yutu-data.js?v=20260912-starters1" defer></script><script src="characters/yutu/yutu-effects.js?v=20260912-starters1" defer></script><script src="characters/yutu/yutu.js?v=20260912-starters1" defer></script>
@@ -12,18 +12,18 @@
 <script src="characters/samoyed/samoyed-data.js?v=20260912-starters1" defer></script><script src="characters/samoyed/samoyed-effects.js?v=20260912-starters1" defer></script><script src="characters/samoyed/samoyed.js?v=20260912-starters1" defer></script>
 <script src="characters/siamese/siamese-data.js?v=20260912-starters1" defer></script><script src="characters/siamese/siamese-effects.js?v=20260912-starters1" defer></script><script src="characters/siamese/siamese.js?v=20260912-starters1" defer></script>
 <script src="characters/bichon/bichon-data.js?v=20260912-starters1" defer></script><script src="characters/bichon/bichon-effects.js?v=20260912-starters1" defer></script><script src="characters/bichon/bichon.js?v=20260912-starters1" defer></script>
-<script src="game/questions.js?v=20260912-starters1" defer></script><script src="game/growth.js?v=20260912-starters1" defer></script>
-<script src="game/core.js?v=20260912-starters1" defer></script><script src="game/themes.js?v=20260912-starters1" defer></script>
-<script src="game/characters.js?v=20260914-cute-agile-hero4" defer></script>
-<script src="game/ragdoll-character.js?v=20260912-starters1" defer></script>
-<script src="game/corgi-character.js?v=20260912-starters1" defer></script>
-<script src="game/samoyed-character.js?v=20260912-starters1" defer></script>
-<script src="game/siamese-character.js?v=20260912-starters1" defer></script>
-<script src="game/bichon-character.js?v=20260912-starters1" defer></script>
-<script src="game/nezha-character.js?v=realistic2-martial" defer></script>
-<script src="game/yutu-character.js?v=20260912-starters1" defer></script>
+<script src="game/questions.js?v=20260912-starters1" defer></script><script src="game/growth.js?v=20260918-evolution100" defer></script>
+<script src="game/core.js?v=20260918-evolution100" defer></script><script src="game/themes.js?v=20260912-starters1" defer></script>
+<script src="game/characters.js?v=20260916-economy200" defer></script>
+<script src="game/ragdoll-character.js?v=20260916-economy200" defer></script>
+<script src="game/corgi-character.js?v=20260916-economy200" defer></script>
+<script src="game/samoyed-character.js?v=20260916-economy200" defer></script>
+<script src="game/siamese-character.js?v=20260916-economy200" defer></script>
+<script src="game/bichon-character.js?v=20260916-economy200" defer></script>
+<script src="game/nezha-character.js?v=20260916-economy200" defer></script>
+<script src="game/yutu-character.js?v=20260916-economy200" defer></script>
 <script src="game/test-tools.js?v=20260912-starters1" defer></script>
-<script src="game/storage.js?v=20260912-starters1" defer></script><script src="game/interaction.js?v=20260912-starters1" defer></script><script src="game/wukong-level-up.js?v=20260912-starters1" defer></script><script src="game/app.js?v=20260914-feed-notice" defer></script>
+<script src="game/storage.js?v=20260912-starters1" defer></script><script src="game/interaction.js?v=20260912-starters1" defer></script><script src="game/wukong-level-up.js?v=20260912-starters1" defer></script><script src="game/app.js?v=20260918-evolution100" defer></script>
 <link rel="stylesheet" href="game/wukong-level-up.css?v=20260912-starters1">
 </head>
 <body>
@@ -45,7 +45,7 @@
       <div class="growth"><div class="growth-label"><strong id="growth-title">成长进度</strong><span id="growth-value">0 / 60</span></div><progress id="growth-bar" max="60" value="0" aria-label="宠物成长进度"></progress><p id="growth-note">喂养伙伴，一起长大</p><p id="evolution-hint" class="evolution-hint">Lv.6 和 Lv.11 会进化哦。</p></div>
     </section>
     <section class="play-panel" aria-label="做题和喂养">
-      <div class="feed-card"><div class="food-illustration" aria-hidden="true">🍑</div><div><p class="eyebrow">喂养会长大</p><h2 id="food-title">一颗甜桃，长大一点</h2><p id="food-copy">每颗增加 20 点成长值</p></div><button id="feed" class="feed-button">喂颗桃子 <span>★ 20</span></button><p id="feed-hint">做对 2 道题，就能喂一颗桃子</p></div>
+      <div class="feed-card"><div><p class="eyebrow">喂养会长大</p><h2 id="food-title">一颗甜桃，长大一点</h2><p id="food-copy">每颗增加 20 点成长值</p></div><button id="feed" class="feed-button">喂颗桃子 <span>★ 20</span></button><p id="feed-hint">做对 2 道题，就能喂一颗桃子</p></div>
       <div class="practice-card"><span class="card-icon" aria-hidden="true">＋</span><p class="eyebrow">做题赚积分</p><h2>开动小脑筋</h2><p class="card-copy">答对一题，获得 <strong>10 积分</strong>。<br>不计时，慢慢想也没关系。</p><div class="practice-meta"><span id="mode-label">按年级出题</span><span>每轮 10 题</span></div><button id="start" class="primary">开始口算 <span aria-hidden="true">→</span></button></div>
       <div class="small-note"><span aria-hidden="true">✧</span><p id="evolution-note">从小石猴，到踏云大圣。<br>Lv.6 和 Lv.11 会进化哦。</p></div>
     </section>
@@ -55,11 +55,11 @@
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 <dialog id="starter-dialog" aria-labelledby="starter-title" aria-describedby="starter-description">
   <p class="eyebrow">第一位伙伴 · 免费领养</p><h2 id="starter-title" tabindex="-1">想和谁一起长大？</h2>
-  <p id="starter-description" class="setting-description">选一只喜欢的宠物，开启你们的冒险。其他伙伴以后可用 300 积分兑换。</p>
+  <p id="starter-description" class="setting-description">选一只喜欢的宠物，开启你们的冒险。其他伙伴以后可用 200 积分兑换。</p>
   <div id="starter-list" class="starter-list" role="group" aria-label="选择初始宠物"></div>
   <div class="starter-confirm"><p id="starter-choice" aria-live="polite">点击一位伙伴，了解它的成长路线</p><button id="starter-adopt" class="primary" disabled>先选一位伙伴</button></div>
 </dialog>
-<dialog id="characters-dialog" aria-labelledby="characters-title"><div class="quiz-top"><h2 id="characters-title">认识新伙伴</h2><button id="characters-close" class="icon-button" aria-label="关闭伙伴兑换">×</button></div><p class="setting-description">积分可以喂养，也可以兑换伙伴。每位新伙伴需要 300 积分，相当于答对 30 道题的奖励。</p><div id="character-list" class="character-list"></div></dialog>
+<dialog id="characters-dialog" aria-labelledby="characters-title"><div class="quiz-top"><h2 id="characters-title">认识新伙伴</h2><button id="characters-close" class="icon-button" aria-label="关闭伙伴兑换">×</button></div><p class="setting-description">积分可以喂养，也可以兑换伙伴。每位新伙伴需要 200 积分，相当于答对 20 道题的奖励。</p><div id="character-list" class="character-list"></div></dialog>
 <dialog id="quiz-dialog" aria-labelledby="quiz-title">
   <div class="quiz-top"><span class="eyebrow" id="quiz-title">计算小挑战</span><button id="quiz-close" class="icon-button" aria-label="稍后继续，保存本轮进度">×</button></div>
   <section id="question-view"><div class="quiz-status"><span id="question-number">第 1 / 10 题</span><span class="round-coins" id="round-points">★ 本轮 +0</span></div><div id="question-dots" class="question-dots" aria-hidden="true"></div><p class="quiz-guidance">认真想一想，算好就提交。</p><form id="answer-form" novalidate><div id="counting-objects" class="counting-objects" role="group" aria-label="数一数这些星星" hidden></div><div class="equation"><label id="equation" for="answer">12 + 8 =</label><input id="answer" type="text" inputmode="none" maxlength="18" autocomplete="off" aria-label="输入口算答案" aria-describedby="answer-feedback"></div><div id="answer-feedback" class="answer-feedback" role="status" aria-live="polite">答对得 10 积分，加油！</div><div id="extra-keys" class="extra-keys"><button type="button" data-key="." id="decimal-key">小数点 .</button><button type="button" data-key="/" id="fraction-key">分数线 /</button></div><div class="keypad" id="keypad"><button type="button" data-key="1">1</button><button type="button" data-key="2">2</button><button type="button" data-key="3">3</button><button type="button" data-key="4">4</button><button type="button" data-key="5">5</button><button type="button" data-key="6">6</button><button type="button" data-key="7">7</button><button type="button" data-key="8">8</button><button type="button" data-key="9">9</button><button type="button" data-key="clear" class="secondary-key">清空</button><button type="button" data-key="0">0</button><button type="button" data-key="delete" class="secondary-key" aria-label="删除最后一位">⌫</button></div><button id="submit" class="primary" type="submit">确认答案</button><button id="next" class="primary" type="button" hidden>下一题 →</button></form><p class="quiz-bottom" id="answer-format-note">答对自动下一题 · 答错看答案后继续</p></section>

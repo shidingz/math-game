@@ -2,10 +2,10 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const core=require('../game/core.js'),growth=require('../game/growth.js'),dev=require('../game/test-tools.js'),root=path.join(__dirname,'..');
 function registry(){const ctx={MathPetGrowth:growth,HTMLElement:class{},document:{currentScript:{src:'http://local/wukong.js'}},URL,customElements:{get(){return true},define(){}}};ctx.window=ctx;
   for(const file of ['wukong.js','characters/ragdoll/ragdoll-data.js','characters/corgi/corgi-data.js','characters/corgi/corgi-effects.js','game/characters.js','game/ragdoll-character.js','game/corgi-character.js'])vm.runInNewContext(fs.readFileSync(path.join(root,file),'utf8'),ctx);return ctx;}
-test('柯基兑换扣300分，喂养独立，刷新后保留进度且默认仍是孙悟空',()=>{
-  const ctx=registry(),cfg=ctx.MathPetCharacters.get('corgi'),s=core.initialState({chooseStarter:false});assert.equal(cfg.unlock.cost,300);assert.equal(s.activePet,'wukong');
-  s.points=299;const before=structuredClone(s);assert.equal(core.unlockPet(s,'corgi',cfg).status,'insufficient');assert.deepEqual(s,before);
-  s.points=320;assert.equal(core.unlockPet(s,'corgi',cfg).status,'unlocked');assert.equal(s.points,20);assert.equal(core.unlockPet(s,'corgi',cfg).status,'already-unlocked');assert.equal(s.points,20);
+test('柯基兑换扣200分，喂养独立，刷新后保留进度且默认仍是孙悟空',()=>{
+  const ctx=registry(),cfg=ctx.MathPetCharacters.get('corgi'),s=core.initialState({chooseStarter:false});assert.equal(cfg.unlock.cost,200);assert.equal(s.activePet,'wukong');
+  s.points=199;const before=structuredClone(s);assert.equal(core.unlockPet(s,'corgi',cfg).status,'insufficient');assert.deepEqual(s,before);
+  s.points=220;assert.equal(core.unlockPet(s,'corgi',cfg).status,'unlocked');assert.equal(s.points,20);assert.equal(core.unlockPet(s,'corgi',cfg).status,'already-unlocked');assert.equal(s.points,20);
   assert.ok(core.selectPet(s,'corgi',ctx.MathPetCharacters.list().map(c=>c.id)));assert.equal(core.feed(s,'corgi',cfg).status,'fed');assert.equal(s.pets.corgi.growth,20);assert.equal(s.pets.wukong.growth,0);assert.deepEqual(core.restore(s),s);
 });
 test('柯基1至15级各有不同几何特效与递增体形，16级沿用最终外观',()=>{

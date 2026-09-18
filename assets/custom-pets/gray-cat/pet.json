@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "id": "custom-gray-cat-20260918",
+  "name": "新伙伴",
+  "trial": true,
+  "layout": "template-v1",
+  "cellSize": 512,
+  "stages": [
+    {
+      "image": "stage-1.png",
+      "name": "初始伙伴",
+      "bounds": [
+        {
+          "x": 70,
+          "y": 67,
+          "width": 372,
+          "height": 381
+        },
+        {
+          "x": 69,
+          "y": 79,
+          "width": 375,
+          "height": 369
+        },
+        {
+          "x": 74,
+          "y": 71,
+          "width": 364,
+          "height": 377
+        },
+        {
+          "x": 73,
+          "y": 78,
+          "width": 367,
+          "height": 370
+        },
+        {
+          "x": 66,
+          "y": 69,
+          "width": 380,
+          "height": 379
+        },
+        {
+          "x": 87,
+          "y": 67,
+          "width": 338,
+          "height": 381
+        },
+        {
+          "x": 48,
+          "y": 223,
+          "width": 416,
+          "height": 225
+        },
+        {
+          "x": 69,
+          "y": 119,
+          "width": 374,
+          "height": 329
+        },
+        {
+          "x": 71,
+          "y": 70,
+          "width": 371,
+          "height": 378
+        }
+      ]
+    },
+    {
+      "image": "stage-2.png",
+      "name": "觉醒伙伴",
+      "bounds": [
+        {
+          "x": 49,
+          "y": 70,
+          "width": 415,
+          "height": 378
+        },
+        {
+          "x": 48,
+          "y": 71,
+          "width": 416,
+          "height": 377
+        },
+        {
+          "x": 57,
+          "y": 74,
+          "width": 399,
+          "height": 374
+        },
+        {
+          "x": 57,
+          "y": 99,
+          "width": 398,
+          "height": 349
+        },
+        {
+          "x": 67,
+          "y": 72,
+          "width": 378,
+          "height": 376
+        },
+        {
+          "x": 57,
+          "y": 65,
+          "width": 399,
+          "height": 383
+        },
+        {
+          "x": 58,
+          "y": 233,
+          "width": 397,
+          "height": 215
+        },
+        {
+          "x": 78,
+          "y": 83,
+          "width": 357,
+          "height": 365
+        },
+        {
+          "x": 63,
+          "y": 96,
+          "width": 386,
+          "height": 352
+        }
+      ]
+    },
+    {
+      "image": "stage-3.png",
+      "name": "守护伙伴",
+      "bounds": [
+        {
+          "x": 61,
+          "y": 58,
+          "width": 390,
+          "height": 390
+        },
+        {
+          "x": 70,
+          "y": 65,
+          "width": 373,
+          "height": 383
+        },
+        {
+          "x": 60,
+          "y": 59,
+          "width": 393,
+          "height": 389
+        },
+        {
+          "x": 52,
+          "y": 158,
+          "width": 409,
+          "height": 290
+        },
+        {
+          "x": 66,
+          "y": 82,
+          "width": 380,
+          "height": 366
+        },
+        {
+          "x": 66,
+          "y": 65,
+          "width": 380,
+          "height": 383
+        },
+        {
+          "x": 54,
+          "y": 221,
+          "width": 404,
+          "height": 227
+        },
+        {
+          "x": 63,
+          "y": 148,
+          "width": 387,
+          "height": 300
+        },
+        {
+          "x": 65,
+          "y": 48,
+          "width": 382,
+          "height": 400
+        }
+      ]
+    }
+  ],
+  "portrait": "portrait.png",
+  "procedural": {
+    "version": 2,
+    "seed": 209554669,
+    "scene": "lotus",
+    "motif": "stars",
+    "food": "fruit",
+    "colors": {
+      "primary": "#6b5333",
+      "secondary": "#9b995a",
+      "accent": "#e76d40",
+      "sky": "#f6f6f3",
+      "ground": "#e6dfdb"
+    },
+    "match": {
+      "method": "opaque-hue-histogram-v1",
+      "hue": 34,
+      "lightness": 0.582,
+      "neutral": false
+    }
+  },
+  "revision": "bf279b3fd1e3e20a"
+}

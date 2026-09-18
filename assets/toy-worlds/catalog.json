@@ -1,0 +1,345 @@
+{
+  "version": "toy-worlds-v3",
+  "columns": 4,
+  "rows": 2,
+  "backgroundCell": 443,
+  "propCell": 256,
+  "elements": [
+    {
+      "id": "skies-0",
+      "group": "skies",
+      "label": "日常小世界",
+      "index": 0,
+      "name": "阳光游乐场"
+    },
+    {
+      "id": "skies-1",
+      "group": "skies",
+      "label": "日常小世界",
+      "index": 1,
+      "name": "温暖木屋"
+    },
+    {
+      "id": "skies-2",
+      "group": "skies",
+      "label": "日常小世界",
+      "index": 2,
+      "name": "蓝天巴士站"
+    },
+    {
+      "id": "skies-3",
+      "group": "skies",
+      "label": "日常小世界",
+      "index": 3,
+      "name": "星空魔法屋"
+    },
+    {
+      "id": "skies-4",
+      "group": "skies",
+      "label": "日常小世界",
+      "index": 4,
+      "name": "冰淇淋海滩"
+    },
+    {
+      "id": "skies-5",
+      "group": "skies",
+      "label": "日常小世界",
+      "index": 5,
+      "name": "云端小屋"
+    },
+    {
+      "id": "skies-6",
+      "group": "skies",
+      "label": "日常小世界",
+      "index": 6,
+      "name": "薄荷花园"
+    },
+    {
+      "id": "skies-7",
+      "group": "skies",
+      "label": "日常小世界",
+      "index": 7,
+      "name": "蜜桃车库"
+    },
+    {
+      "id": "grounds-0",
+      "group": "grounds",
+      "label": "活动地面",
+      "index": 0,
+      "name": "花朵草坪"
+    },
+    {
+      "id": "grounds-1",
+      "group": "grounds",
+      "label": "活动地面",
+      "index": 1,
+      "name": "蜂蜜木台"
+    },
+    {
+      "id": "grounds-2",
+      "group": "grounds",
+      "label": "活动地面",
+      "index": 2,
+      "name": "蓝色游戏垫"
+    },
+    {
+      "id": "grounds-3",
+      "group": "grounds",
+      "label": "活动地面",
+      "index": 3,
+      "name": "星星软垫"
+    },
+    {
+      "id": "grounds-4",
+      "group": "grounds",
+      "label": "活动地面",
+      "index": 4,
+      "name": "贝壳沙岛"
+    },
+    {
+      "id": "grounds-5",
+      "group": "grounds",
+      "label": "活动地面",
+      "index": 5,
+      "name": "云朵地台"
+    },
+    {
+      "id": "grounds-6",
+      "group": "grounds",
+      "label": "活动地面",
+      "index": 6,
+      "name": "嫩叶地毯"
+    },
+    {
+      "id": "grounds-7",
+      "group": "grounds",
+      "label": "活动地面",
+      "index": 7,
+      "name": "桃粉广场"
+    },
+    {
+      "id": "nature-0",
+      "group": "nature",
+      "label": "趣味小道具",
+      "index": 0,
+      "name": "苹果树"
+    },
+    {
+      "id": "nature-1",
+      "group": "nature",
+      "label": "趣味小道具",
+      "index": 1,
+      "name": "彩色气球"
+    },
+    {
+      "id": "nature-2",
+      "group": "nature",
+      "label": "趣味小道具",
+      "index": 2,
+      "name": "太阳花"
+    },
+    {
+      "id": "nature-3",
+      "group": "nature",
+      "label": "趣味小道具",
+      "index": 3,
+      "name": "彩色积木"
+    },
+    {
+      "id": "nature-4",
+      "group": "nature",
+      "label": "趣味小道具",
+      "index": 4,
+      "name": "云朵靠垫"
+    },
+    {
+      "id": "nature-5",
+      "group": "nature",
+      "label": "趣味小道具",
+      "index": 5,
+      "name": "软糖棒棒糖"
+    },
+    {
+      "id": "nature-6",
+      "group": "nature",
+      "label": "趣味小道具",
+      "index": 6,
+      "name": "浆果灌木"
+    },
+    {
+      "id": "nature-7",
+      "group": "nature",
+      "label": "趣味小道具",
+      "index": 7,
+      "name": "玩具风车"
+    },
+    {
+      "id": "landmarks-0",
+      "group": "landmarks",
+      "label": "玩具建筑与车",
+      "index": 0,
+      "name": "圆顶木屋"
+    },
+    {
+      "id": "landmarks-1",
+      "group": "landmarks",
+      "label": "玩具建筑与车",
+      "index": 1,
+      "name": "星空小屋"
+    },
+    {
+      "id": "landmarks-2",
+      "group": "landmarks",
+      "label": "玩具建筑与车",
+      "index": 2,
+      "name": "黄色大巴"
+    },
+    {
+      "id": "landmarks-3",
+      "group": "landmarks",
+      "label": "玩具建筑与车",
+      "index": 3,
+      "name": "冰淇淋车"
+    },
+    {
+      "id": "landmarks-4",
+      "group": "landmarks",
+      "label": "玩具建筑与车",
+      "index": 4,
+      "name": "旋转木马"
+    },
+    {
+      "id": "landmarks-5",
+      "group": "landmarks",
+      "label": "玩具建筑与车",
+      "index": 5,
+      "name": "彩色滑梯"
+    },
+    {
+      "id": "landmarks-6",
+      "group": "landmarks",
+      "label": "玩具建筑与车",
+      "index": 6,
+      "name": "火箭住宅"
+    },
+    {
+      "id": "landmarks-7",
+      "group": "landmarks",
+      "label": "玩具建筑与车",
+      "index": 7,
+      "name": "游戏小厨房"
+    },
+    {
+      "id": "places-0",
+      "group": "places",
+      "label": "奇妙生活场景",
+      "index": 0,
+      "name": "晚霞露营地"
+    },
+    {
+      "id": "places-1",
+      "group": "places",
+      "label": "奇妙生活场景",
+      "index": 1,
+      "name": "苹果野餐园"
+    },
+    {
+      "id": "places-2",
+      "group": "places",
+      "label": "奇妙生活场景",
+      "index": 2,
+      "name": "河畔小镇"
+    },
+    {
+      "id": "places-3",
+      "group": "places",
+      "label": "奇妙生活场景",
+      "index": 3,
+      "name": "月光露台"
+    },
+    {
+      "id": "places-4",
+      "group": "places",
+      "label": "奇妙生活场景",
+      "index": 4,
+      "name": "暖木图书室"
+    },
+    {
+      "id": "places-5",
+      "group": "places",
+      "label": "奇妙生活场景",
+      "index": 5,
+      "name": "海底观察室"
+    },
+    {
+      "id": "places-6",
+      "group": "places",
+      "label": "奇妙生活场景",
+      "index": 6,
+      "name": "玻璃花房"
+    },
+    {
+      "id": "places-7",
+      "group": "places",
+      "label": "奇妙生活场景",
+      "index": 7,
+      "name": "蜜桃烘焙屋"
+    },
+    {
+      "id": "living-0",
+      "group": "living",
+      "label": "会动的小景物",
+      "index": 0,
+      "name": "彩色风筝"
+    },
+    {
+      "id": "living-1",
+      "group": "living",
+      "label": "会动的小景物",
+      "index": 1,
+      "name": "陶瓷风铃"
+    },
+    {
+      "id": "living-2",
+      "group": "living",
+      "label": "会动的小景物",
+      "index": 2,
+      "name": "折纸飞机"
+    },
+    {
+      "id": "living-3",
+      "group": "living",
+      "label": "会动的小景物",
+      "index": 3,
+      "name": "迷你热气球"
+    },
+    {
+      "id": "living-4",
+      "group": "living",
+      "label": "会动的小景物",
+      "index": 4,
+      "name": "双叶小枝"
+    },
+    {
+      "id": "living-5",
+      "group": "living",
+      "label": "会动的小景物",
+      "index": 5,
+      "name": "暖光提灯"
+    },
+    {
+      "id": "living-6",
+      "group": "living",
+      "label": "会动的小景物",
+      "index": 6,
+      "name": "旋转风车叶"
+    },
+    {
+      "id": "living-7",
+      "group": "living",
+      "label": "会动的小景物",
+      "index": 7,
+      "name": "摇摆帆船"
+    }
+  ]
+}

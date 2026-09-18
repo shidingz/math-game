@@ -1,8 +1,15 @@
 node_modules/
 dist/
+dist-wechat/
 artifacts/
 .DS_Store
 *.log
 .env
 .env.*
 !.env.example
+
+# Local web builds and service state (never published)
+.pages-build/
+.pages-site/
+.pages-main/
+.pet-service/

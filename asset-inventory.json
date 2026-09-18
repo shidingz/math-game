@@ -3350,6 +3350,62 @@
   ],
   "assets": [
     {
+      "file": "assets/custom-pets/gray-cat/portrait-1.png",
+      "bytes": 30196,
+      "width": 160,
+      "height": 160,
+      "sha256": "f494d7ad0677423bbfc04f0f1852c11d89c26c5a6d3f4b353844f311c04044c0",
+      "runtime": false
+    },
+    {
+      "file": "assets/custom-pets/gray-cat/portrait-2.png",
+      "bytes": 32236,
+      "width": 160,
+      "height": 160,
+      "sha256": "c4265b56c1d972db9646fd450677a36827519f45c9b6aea856a5ab5b23c3be97",
+      "runtime": false
+    },
+    {
+      "file": "assets/custom-pets/gray-cat/portrait-3.png",
+      "bytes": 34282,
+      "width": 160,
+      "height": 160,
+      "sha256": "5e02fea3d0a3eccaca66d4cf59ee7b2d27eb1ae6a15436505b6cbe5ec5836b78",
+      "runtime": false
+    },
+    {
+      "file": "assets/custom-pets/gray-cat/portrait.png",
+      "bytes": 30196,
+      "width": 160,
+      "height": 160,
+      "sha256": "f494d7ad0677423bbfc04f0f1852c11d89c26c5a6d3f4b353844f311c04044c0",
+      "runtime": false
+    },
+    {
+      "file": "assets/custom-pets/gray-cat/stage-1.png",
+      "bytes": 577224,
+      "width": 1536,
+      "height": 1536,
+      "sha256": "edc78bb5811f6e340b3a0f1c66d118d16b7f731df6a588227cf7c1bcb92e00db",
+      "runtime": false
+    },
+    {
+      "file": "assets/custom-pets/gray-cat/stage-2.png",
+      "bytes": 596211,
+      "width": 1536,
+      "height": 1536,
+      "sha256": "0c1610df3deb8203ac8db0ce3a99bae17c7a932f92cd52e475875c7bb4ee4a06",
+      "runtime": false
+    },
+    {
+      "file": "assets/custom-pets/gray-cat/stage-3.png",
+      "bytes": 633195,
+      "width": 1536,
+      "height": 1536,
+      "sha256": "e0ac9fd56c5a217116d8511b9032123f2cb3bf4b95324f05889db8785171b4bb",
+      "runtime": false
+    },
+    {
       "file": "assets/stage-1-blink.png",
       "bytes": 394761,
       "width": 512,
@@ -3828,6 +3884,54 @@
       "height": 3200,
       "sha256": "80cf5f2bbccbdee585abc6e5646104db1dc64b92a319c96b11544cd2153bdc24",
       "runtime": true
+    },
+    {
+      "file": "assets/toy-worlds/grounds.png",
+      "bytes": 566206,
+      "width": 1024,
+      "height": 512,
+      "sha256": "6eb7351f3bfb1216993370ee02d83e4e74d00548d61799c85cb021f81b9bd8dd",
+      "runtime": false
+    },
+    {
+      "file": "assets/toy-worlds/landmarks.png",
+      "bytes": 902780,
+      "width": 1024,
+      "height": 512,
+      "sha256": "ae3b1604e4936bf059ae759a1ed7a3232bf09875720574b4991eee4cfd3c65f9",
+      "runtime": false
+    },
+    {
+      "file": "assets/toy-worlds/living.png",
+      "bytes": 445291,
+      "width": 1024,
+      "height": 512,
+      "sha256": "a72c2ce7236ec927b990a2403fe7d3a49a183a3513c39923d43c174955143d25",
+      "runtime": false
+    },
+    {
+      "file": "assets/toy-worlds/nature.png",
+      "bytes": 750231,
+      "width": 1024,
+      "height": 512,
+      "sha256": "b05ceac0fa63cc7b9d05671994c95b83172b230ef24ca9cf5a7644de3642be7b",
+      "runtime": false
+    },
+    {
+      "file": "assets/toy-worlds/places.png",
+      "bytes": 4103003,
+      "width": 1772,
+      "height": 886,
+      "sha256": "d2300de3489d7dfc0168b2899658f7ea65b81bf35b4d624ecda1b14d0fe73400",
+      "runtime": false
+    },
+    {
+      "file": "assets/toy-worlds/skies.png",
+      "bytes": 3675190,
+      "width": 1772,
+      "height": 886,
+      "sha256": "e85857db6e931e8d86f47839cb5adf1243ec663628adc53676b928e9f66c5cf2",
+      "runtime": false
     },
     {
       "file": "characters/bichon/assets/stage-1-blink.png",

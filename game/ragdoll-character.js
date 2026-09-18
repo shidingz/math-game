@@ -1,6 +1,6 @@
 (() => {
   MathPetCharacters.register({
-    id:'ragdoll',name:'布偶猫',portrait:'characters/ragdoll/assets/stage-1-portrait.png?v=frost2',unlock:{cost:300,description:'使用 300 积分兑换'},
+    id:'ragdoll',name:'布偶猫',portrait:'characters/ragdoll/assets/stage-1-portrait.png?v=frost2',unlock:{cost:200,description:'使用 200 积分兑换'},
     food:{name:'鲜鱼猫粮',unit:'碗',icon:'🐟',title:'一碗鲜鱼猫粮',cost:20,growth:20},
     growthCurve:MathPetGrowth.WUKONG,
     ui:{title:'慢慢长大，温柔陪伴。',location:'霜华小屋 · 银晶花园',symbol:'喵',scene:'starlight',style:'soft',zoom:[1.2,1.2,1.2],

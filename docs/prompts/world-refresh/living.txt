@@ -1,0 +1,13 @@
+Use case: stylized-concept. Asset type: mobile game transparent decoration sprite atlas.
+Create eight standalone charming environment objects in clean soft 3D cartoon style with rounded shapes, warm small highlights, crisp edges and saturated friendly colors. These will be moved by game code. They are environmental objects, NOT magical particle effects.
+Output PNG with a real transparent Alpha background. Exactly 4 columns and 2 rows of equal square cells in a 2048×1024 atlas. One object per cell, centered, complete, occupying at most 75% cell width and height, separated by fully transparent gaps of at least 48px per cell edge. NO visible grid, background, floor, checkerboard, shadow outside each object, text, labels, numbers, watermark or black outline. The reference provides material and rendering style only; do not reproduce its backgrounds or buildings.
+In left-to-right, top-to-bottom order:
+1. A cheerful teal, coral and yellow diamond kite, with a short curved ribbon tail, fully contained.
+2. A tiny honey wood hanging wind chime with three blue ceramic drops on strings, seen from front.
+3. A soft blue-white paper airplane with crisp folded planes, pointing diagonally to the right.
+4. A small pastel hot air balloon with coral and cream canopy and wooden basket, all complete.
+5. A pair of fresh green leaves on one short twig, angled lightly, suitable for gentle drifting.
+6. A tiny warm amber lantern, rounded brass and translucent glowing orange center, simple handle, no cast light outside.
+7. A coral pink and yellow toy pinwheel rotor only, four rounded broad blades and a small circular center; no pole, no base, so code can rotate it.
+8. A small turquoise toy sailboat with a cream triangular sail and a coral pennant, seen from side, no water, suitable for gentle rocking.
+Real transparency is required, preserve color, all objects standalone and complete.

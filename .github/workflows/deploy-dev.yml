@@ -1,0 +1,55 @@
+name: Publish dev game
+on:
+  push:
+    branches: [dev]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages-dev
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - run: npm run check
+      - run: npm install --no-save --package-lock=false sharp@0.35.4
+      - name: Export the current Canvas game
+        run: node scripts/build-wechat.cjs --out .pages-build/wechat --test --test-default --local-pets assets/custom-pets/catalog.json --allow-trial-pets
+      - run: node scripts/check-wechat.cjs .pages-build/wechat
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: .pages-main
+      - name: Keep the main site and publish the dev game under /dev/
+        env:
+          PET_SERVICE_URL: ${{ vars.PET_SERVICE_URL }}
+        run: |
+          node .pages-main/scripts/project.cjs build
+          mkdir -p .pages-site
+          cp -R .pages-main/dist/. .pages-site/
+          args=(--from .pages-build/wechat --out .pages-site/dev --test --test-default --public-config deployment/public-config.json)
+          if [ -n "$PET_SERVICE_URL" ]; then args+=(--service-url "$PET_SERVICE_URL"); fi
+          node scripts/build-web-game.cjs "${args[@]}"
+          touch .pages-site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .pages-site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

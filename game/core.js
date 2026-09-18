@@ -1,10 +1,10 @@
 /* Pure game transactions; every answered question settles exactly once. */
 (function(root,factory){const api=typeof module==='object'&&module.exports?factory(require('./questions.js'),require('./growth.js')):factory(root.MathPetQuestions,root.MathPetGrowth);if(typeof module==='object'&&module.exports)module.exports=api;else root.MathPetCore=api;})(globalThis,(questions,growth)=>{
   'use strict';
-  const RULES=Object.freeze({roundSize:10,reward:10,feedCost:20,feedGrowth:20,visualMaxLevel:15,feedDurationMs:500,petUnlockCost:Object.freeze({wukong:300,ragdoll:300,nezha:300,yutu:300,corgi:300,samoyed:300,siamese:300,bichon:300})});
+  const RULES=Object.freeze({roundSize:10,reward:10,feedCost:20,feedGrowth:20,visualMaxLevel:15,feedDurationMs:500,petUnlockCost:Object.freeze({wukong:200,ragdoll:200,nezha:200,yutu:200,corgi:200,samoyed:200,siamese:200,bichon:200})});
   const safeInt=(v,max=100000000)=>Number.isSafeInteger(v)&&v>=0&&v<=max;
   const validPetId=id=>typeof id==='string'&&/^[a-z][a-z0-9-]{0,40}$/.test(id)&&!['constructor','prototype','jingwei'].includes(id);
-  function initialState({chooseStarter=true}={}){return {version:4,starterChosen:!chooseStarter,starterPet:chooseStarter?null:'wukong',points:0,activePet:'wukong',unlockedPets:chooseStarter?{}:{wukong:true},pets:chooseStarter?{}:{wukong:{level:1,growth:0,feeds:0}},grade:null,topic:'balanced',round:null,totalSolved:0,totalAnswered:0,totalRounds:0,mistakes:[]};}
+  function initialState({chooseStarter=true}={}){return {version:4,growthVersion:growth.version,starterChosen:!chooseStarter,starterPet:chooseStarter?null:'wukong',points:0,activePet:'wukong',unlockedPets:chooseStarter?{}:{wukong:true},pets:chooseStarter?{}:{wukong:{level:1,growth:0,feeds:0}},grade:null,topic:'balanced',round:null,totalSolved:0,totalAnswered:0,totalRounds:0,mistakes:[]};}
   function chooseStarter(state,id,registeredIds){
     if(!state||state.starterChosen||!Array.isArray(registeredIds)||!registeredIds.includes(id)||!validPetId(id))return false;
     state.starterChosen=true;state.starterPet=id;state.activePet=id;state.unlockedPets={[id]:true};state.pets={[id]:{level:1,growth:0,feeds:0}};return true;
@@ -23,6 +23,9 @@
     if(value.pets&&typeof value.pets==='object')for(const [id,p] of Object.entries(value.pets)){
       if(!/^[a-z][a-z0-9-]{0,40}$/.test(id)||['constructor','prototype'].includes(id))continue;
       if(p&&safeInt(p.level,Number.MAX_SAFE_INTEGER-1)&&p.level>=1&&safeInt(p.growth,1000000)&&safeInt(p.feeds))s.pets[id]={level:p.level,growth:legacy?Math.floor(Math.min(59,p.growth)/60*growth.required(p.level)):p.growth,feeds:p.feeds};
+      // Preserve earned levels/ownership and fractional progress once per curve
+      // update. Retired and unknown third-party pets retain their original data.
+      if(p&&safeInt(p.level,Number.MAX_SAFE_INTEGER-1)&&p.level>=1&&safeInt(p.growth,1000000)&&safeInt(p.feeds)&&s.pets[id]&&!legacy&&value.growthVersion!==growth.version&&(Object.hasOwn(RULES.petUnlockCost,id)||id.startsWith('custom-')))s.pets[id].growth=growth.migrateProgress(p.level,p.growth);
     }
     if(!legacy&&value.unlockedPets&&typeof value.unlockedPets==='object')for(const [id,unlocked] of Object.entries(value.unlockedPets))if(/^[a-z][a-z0-9-]{0,40}$/.test(id)&&unlocked===true)s.unlockedPets[id]=true;
     if(typeof value.activePet==='string'&&Object.hasOwn(s.pets,value.activePet)&&isPetUnlocked(s,value.activePet))s.activePet=value.activePet;

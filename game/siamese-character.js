@@ -1,6 +1,6 @@
 (() => {
   MathPetCharacters.register({
-    id:'siamese',name:'暹罗猫',portrait:'characters/siamese/assets/stage-1-portrait.png',unlock:{cost:300,description:'使用 300 积分兑换'},
+    id:'siamese',name:'暹罗猫',portrait:'characters/siamese/assets/stage-1-portrait.png',unlock:{cost:200,description:'使用 200 积分兑换'},
     food:{name:'椰香芒果饭',unit:'碗',icon:'🥭',title:'一碗椰香芒果饭',cost:20,growth:20},growthCurve:MathPetGrowth.WUKONG,
     ui:{title:'蓝眼睛亮起来，一起寻找答案。',location:'兰纳花园 · 莲灯回廊',symbol:'暹',scene:'thai',style:'ornate',zoom:[1.2,1.2,1.2],
       palette:{background:'#f6f1fb',ink:'#493369',muted:'#8b79a0',primary:'#7c4dbc',primaryDark:'#563486',accent:'#28b9b2',surface:'#fffdf8',border:'#dfd0ed',sceneFrom:'#f2e8f7',sceneTo:'#dff4ef',sceneLine:'#d6aa4c',hill:'#38bcb32b',foodBackground:'#fff8e8',foodBorder:'#e6c675',foodInk:'#8f6522',radius:'24px'},

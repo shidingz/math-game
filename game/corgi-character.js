@@ -1,6 +1,6 @@
 (() => {
   MathPetCharacters.register({
-    id:'corgi',name:'柯基犬',portrait:'characters/corgi/assets/stage-1-portrait.png?v=police2',unlock:{cost:300,description:'使用 300 积分兑换'},
+    id:'corgi',name:'柯基犬',portrait:'characters/corgi/assets/stage-1-portrait.png?v=police2',unlock:{cost:200,description:'使用 200 积分兑换'},
     food:{name:'鸡肉能量餐',unit:'份',icon:'🍗',title:'一份鸡肉能量餐',cost:20,growth:20},growthCurve:MathPetGrowth.WUKONG,
     ui:{title:'开动脑筋，和汪队一起出发。',location:'蓝盾巡逻站 · 伙伴营地',symbol:'汪',scene:'cloud',style:'soft',zoom:[1.2,1.2,1.2],
       palette:{background:'#eef4fb',ink:'#233d62',muted:'#7185a1',primary:'#367ed1',primaryDark:'#245591',accent:'#42b7d9',surface:'#ffffff',border:'#c7d9ef',sceneFrom:'#dfebf9',sceneTo:'#c9e3f4',sceneLine:'#80add9',hill:'#559cd233',foodBackground:'#edf5ff',foodBorder:'#a9c9ec',foodInk:'#326797',radius:'24px'}},

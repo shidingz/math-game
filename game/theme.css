@@ -173,3 +173,6 @@ body:not(.is-test-build) .home footer{flex:0 0 auto;padding:10px 3px 12px}
 [data-scene=thai] .halo:after{inset:24px;border:1px dashed #7c4dbc66;border-radius:50%}
 [data-scene=thai] .hill{background:#38bcb32b}
 .thai-garden{position:absolute;inset:0;overflow:hidden}.thai-garden i{position:absolute;width:74px;height:126px;bottom:3%;left:-22px;border:2px solid #d6aa4c55;border-radius:90% 10% 90% 10%;background:#43c7bd1c;transform:rotate(-25deg)}.thai-garden i:nth-child(2){left:auto;right:-22px;transform:rotate(55deg)}.thai-garden b,.thai-garden span{position:absolute;color:#d6aa4c99;font-weight:400}.thai-garden b:nth-of-type(1){left:15%;top:24%}.thai-garden b:nth-of-type(2){right:14%;top:18%;font-size:20px}.thai-garden span:nth-of-type(1){left:11%;bottom:17%;color:#7c4dbc55;font-size:21px}.thai-garden span:nth-of-type(2){right:10%;bottom:24%;color:#2abbb355;font-size:17px}
+
+/* Feeding is a plain action; food remains inside the feeding animation. */
+.feed-card{grid-template-columns:1fr}

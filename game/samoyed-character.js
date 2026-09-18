@@ -1,6 +1,6 @@
 (() => {
   MathPetCharacters.register({
-    id:'samoyed',name:'萨摩耶',portrait:'characters/samoyed/assets/stage-1-portrait.png',unlock:{cost:300,description:'使用 300 积分兑换'},
+    id:'samoyed',name:'萨摩耶',portrait:'characters/samoyed/assets/stage-1-portrait.png',unlock:{cost:200,description:'使用 200 积分兑换'},
     food:{name:'酸奶雪团',unit:'碗',icon:'🥣',title:'一碗酸奶雪团',cost:20,growth:20},growthCurve:MathPetGrowth.WUKONG,
     ui:{title:'一起想一想，每天进步一点。',location:'极光雪原 · 星雪书屋',symbol:'雪',scene:'snow',style:'soft',zoom:[1.2,1.2,1.2],
       palette:{background:'#eef4fc',ink:'#293d65',muted:'#7283a2',primary:'#507cda',primaryDark:'#355bad',accent:'#79c8ef',surface:'#ffffff',border:'#cfddf2',sceneFrom:'#deeafb',sceneTo:'#ccddf4',sceneLine:'#98b6df',hill:'#a2bce84d',foodBackground:'#edf3ff',foodBorder:'#c1d3f1',foodInk:'#4564a1',radius:'24px'}},

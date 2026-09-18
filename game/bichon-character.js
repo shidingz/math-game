@@ -1,6 +1,6 @@
 (() => {
   MathPetCharacters.register({
-    id:'bichon',name:'比熊犬',portrait:'characters/bichon/assets/stage-1-portrait.png',unlock:{cost:300,description:'使用 300 积分兑换'},
+    id:'bichon',name:'比熊犬',portrait:'characters/bichon/assets/stage-1-portrait.png',unlock:{cost:200,description:'使用 200 积分兑换'},
     food:{name:'云朵鸡肉丸',unit:'份',icon:'🍗',title:'一份云朵鸡肉丸',cost:20,growth:20},growthCurve:MathPetGrowth.WUKONG,
     ui:{title:'和云朵一起，每天长大一点。',location:'晴空花园 · 云朵小窝',symbol:'云',scene:'cloud',style:'soft',zoom:[1.2,1.2,1.2],
       palette:{background:'#eff7ff',ink:'#294d7b',muted:'#6986a6',primary:'#418bdd',primaryDark:'#2863ac',accent:'#42bdd4',surface:'#ffffff',border:'#c9e0f5',sceneFrom:'#dcedff',sceneTo:'#c5e6f6',sceneLine:'#7eb7e7',hill:'#78c9e53d',foodBackground:'#f0f9ff',foodBorder:'#aad5ed',foodInk:'#337eaa',radius:'24px'}},

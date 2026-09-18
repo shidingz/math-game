@@ -1,13 +1,13 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const core=require('../game/core.js'),root=path.join(__dirname,'..');
-test('已有孙悟空的玩家，其他伙伴各扣 300 分且不能重复扣款',()=>{
+test('已有孙悟空的玩家，其他伙伴各扣 200 分且不能重复扣款',()=>{
   const s=core.initialState({chooseStarter:false});assert.equal(s.activePet,'wukong');assert.deepEqual(s.unlockedPets,{wukong:true});
-  for(const id of ['ragdoll','nezha','yutu','corgi']){s.points=299;const before=structuredClone(s);assert.equal(core.unlockPet(s,id).status,'insufficient');assert.deepEqual(s,before);s.points=320;assert.equal(core.unlockPet(s,id).cost,300);assert.equal(s.points,20);assert.equal(core.unlockPet(s,id).status,'already-unlocked');assert.equal(s.points,20);}
+  for(const id of ['ragdoll','nezha','yutu','corgi']){s.points=199;const before=structuredClone(s);assert.equal(core.unlockPet(s,id).status,'insufficient');assert.deepEqual(s,before);s.points=220;assert.equal(core.unlockPet(s,id).cost,200);assert.equal(s.points,20);assert.equal(core.unlockPet(s,id).status,'already-unlocked');assert.equal(s.points,20);}
   assert.equal(core.feed(s).status,'fed');assert.equal(s.pets.wukong.growth,20);assert.equal(s.points,0);
 });
 test('v2 正式存档保留悟空、兑换伙伴和余额；v3 刷新不自动加入布偶猫',()=>{
   const old={version:2,points:77,activePet:'yutu',grade:4,topic:'balanced',unlockedPets:{wukong:true,yutu:true},pets:{wukong:{level:16,growth:65,feeds:161},yutu:{level:6,growth:17,feeds:26}},totalSolved:500,totalAnswered:520,totalRounds:50,mistakes:[],round:null};
-  const s=core.restore(old);assert.equal(s.activePet,'yutu');assert.equal(s.points,77);assert.equal(s.grade,4);assert.deepEqual(s.pets.wukong,old.pets.wukong);assert.deepEqual(s.pets.yutu,old.pets.yutu);assert.equal(s.unlockedPets.ragdoll,undefined);assert.equal(core.isPetUnlocked(s,'nezha'),false);assert.deepEqual(core.restore(s),s);
+  const s=core.restore(old);assert.equal(s.activePet,'yutu');assert.equal(s.points,77);assert.equal(s.grade,4);assert.deepEqual(s.pets.wukong,old.pets.wukong);assert.deepEqual(s.pets.yutu,{level:6,growth:25,feeds:26});assert.equal(s.unlockedPets.ragdoll,undefined);assert.equal(core.isPetUnlocked(s,'nezha'),false);assert.deepEqual(core.restore(s),s);
   const fresh=core.restore(core.initialState({chooseStarter:false}));assert.equal(core.isPetUnlocked(fresh,'wukong'),true);assert.equal(fresh.activePet,'wukong');
 });
 test('布偶猫三阶段素材、九个独立姿势、十五种特效和逐级体形成长',()=>{
