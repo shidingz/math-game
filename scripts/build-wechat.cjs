@@ -47,7 +47,7 @@ async function build() {
   for (const file of fs.readdirSync(path.join(root, 'wechat/runtime'))) copy('wechat/runtime/' + file, 'runtime/' + file);
   copy('wechat/game.js', 'game.js');
   copy('wechat/README.md', 'README.md');
-  write('config.js', `module.exports = ${JSON.stringify({ debug, testDefault, assetVersion: 'wechat-v22-photo-service', customPets })};\n`);
+  write('config.js', `module.exports = ${JSON.stringify({ debug, testDefault, assetVersion: 'wechat-v23-classic-home', customPets })};\n`);
   // Retire the old baked landscapes from new exports, including rebuilds.
   fs.rmSync(path.join(dest,'shared-art'),{recursive:true,force:true});
   fs.rmSync(path.join(dest,'world-art'),{recursive:true,force:true});

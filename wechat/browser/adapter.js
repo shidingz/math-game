@@ -72,7 +72,7 @@ function createAdapter({ canvas, connection, bundledIds = [], environment = wind
     onTouchStart(fn) { canvas.addEventListener('pointerdown', event => { if (!event.isPrimary) return; canvas.setPointerCapture(event.pointerId); fn({ touches: [touch(event)] }); }); },
     onTouchEnd(fn) { canvas.addEventListener('pointerup', event => { if (event.isPrimary) fn({ changedTouches: [touch(event)] }); }); },
     onTouchCancel(fn) { canvas.addEventListener('pointercancel', fn); },
-    onWindowResize(fn) { env.addEventListener('resize', fn); env.visualViewport?.addEventListener('resize', fn); },
+    onWindowResize(fn) { env.addEventListener('resize', fn); env.visualViewport?.addEventListener('resize', fn); if (env.ResizeObserver) new env.ResizeObserver(fn).observe(canvas); },
     onHide(fn) { doc.addEventListener('visibilitychange', () => { if (doc.hidden) fn(); }); env.addEventListener('pagehide', fn); },
     onShow(fn) { doc.addEventListener('visibilitychange', () => { if (!doc.hidden) fn(); }); env.addEventListener('pageshow', fn); }
   };

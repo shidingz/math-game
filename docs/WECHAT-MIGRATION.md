@@ -1,6 +1,8 @@
 # 微信小程序迁移规划
 
-当前开发版本为 `wechat-v22-photo-service`：保留 v21 的主题特效、16 种背景、双伙伴互动、宠物大小与 30/100 题进化，新增本机照片制作服务和真实 Canvas 浏览器适配器。灰猫案例经 4 次图片 API 生成三阶段 27 动作，当前构建共 9 个伙伴。真实网页经公开 Cloudflare 的上传、排队、4 次生图、规则裁切、免费领取和刷新恢复已通过，三阶段远程 1536×1536 图集加载正常。dev 的 `5922dde` 已构建并发布到 GitHub Pages `/dev/`，线上页面和服务连通检查通过。详见 [LOCAL-PET-SERVICE.md](LOCAL-PET-SERVICE.md) 和 [WEBSITE-EFFECTS.md](WEBSITE-EFFECTS.md)。
+当前版本 `wechat-v23-classic-home` 的视觉改版仅用于浏览器：DOM 首页配合 Canvas 伙伴场景，操作页沿用 Canvas。微信不导入 DOM 首页；几何模块的近景参数和运行时的浏览器钩子均为可选，原生默认行为不变。本轮只完成导出入口/逻辑检查，没有微信开发者工具原生编译或真机结论。
+
+v22 历史记录：保留 v21 的主题特效、16 种背景、双伙伴互动、宠物大小与 30/100 题进化，新增本机照片制作服务和真实 Canvas 浏览器适配器。灰猫案例经 4 次图片 API 生成三阶段 27 动作，当前构建共 9 个伙伴。真实网页经公开 Cloudflare 的上传、排队、4 次生图、规则裁切、免费领取和刷新恢复已通过，三阶段远程 1536×1536 图集加载正常。dev 的 `5922dde` 已构建并发布到 GitHub Pages `/dev/`，线上页面和服务连通检查通过。详见 [LOCAL-PET-SERVICE.md](LOCAL-PET-SERVICE.md) 和 [WEBSITE-EFFECTS.md](WEBSITE-EFFECTS.md)。
 
 
 ## 自定义伙伴客户端增补

@@ -21,11 +21,13 @@ function fit(data,stage,frameIndex,area,level,action,phase,time=0,reducedMotion=
  // short sleeping poses never get enlarged just to fill available height.
  // A common idle height across all stages avoids a size drop when a new shape
  // is wider. Dynamic poses still shrink if necessary to keep every pixel safe.
- const heroHeight=Math.min(...data.stages.map(s=>{
+ // The scrollable web card may frame the current stage more closely.
+ const cameraStages=area.camera==='stage'?[data.stages[stage]]:data.stages;
+ const heroHeight=Math.min(...cameraStages.map(s=>{
   const b=s.bounds[0];return b.height*limits(b,data.aligned?idleFrame.pivotX:b.x+b.width/2,data.aligned?idleFrame.pivotY:b.y+b.height).scale;
  }));
  const reference=limits(idle,data.aligned?idleFrame.pivotX:idle.x+idle.width/2,data.aligned?idleFrame.pivotY:idle.y+idle.height);
- const scale=Math.min(current.scale,reference.scale,heroHeight/idle.height)*growthScale(level),down=current.down;
+ const scale=Math.min(current.scale,reference.scale,heroHeight/idle.height)*(area.growthScale??growthScale(level)),down=current.down;
  const active=['jump','celebrate','skill','evolve'].includes(action);
  const lift=reducedMotion?0:active?Math.sin(phase*Math.PI)*liftMax:Math.sin(time/600)*1.2;
  const dx=!reducedMotion&&action==='skill'?Math.sin(phase*Math.PI*2)*dxMax:0;

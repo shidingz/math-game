@@ -78,64 +78,64 @@ body{background:var(--pet-background);color:var(--pet-ink)}.brand-mark{backgroun
 html[data-scene="meadow"] .scene{background:linear-gradient(145deg,var(--pet-sceneFrom),var(--pet-sceneTo))}
 
 /* Formal home fills one viewport. The test build keeps scrolling for its developer controls. */
-body:not(.is-test-build){height:100dvh;overflow:hidden;display:flex;flex-direction:column}
-body:not(.is-test-build) .header{flex:0 0 auto;padding-top:12px;padding-bottom:12px}
-body:not(.is-test-build) .home{height:calc(100dvh - 59px);min-height:0;width:100%;display:flex;flex-direction:column;padding-top:0}
-body:not(.is-test-build) .welcome{flex:0 0 auto;margin:5px 0 12px}
-body:not(.is-test-build) .game-layout{flex:1;min-height:0}
-body:not(.is-test-build) .pet-card,body:not(.is-test-build) .play-panel{min-height:0}
-body:not(.is-test-build) .pet-scene{min-height:0}
-body:not(.is-test-build) .home footer{flex:0 0 auto;padding:10px 3px 12px}
+body:not(.is-test-build):not(.classic-web){height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+body:not(.is-test-build):not(.classic-web) .header{flex:0 0 auto;padding-top:12px;padding-bottom:12px}
+body:not(.is-test-build):not(.classic-web) .home{height:calc(100dvh - 59px);min-height:0;width:100%;display:flex;flex-direction:column;padding-top:0}
+body:not(.is-test-build):not(.classic-web) .welcome{flex:0 0 auto;margin:5px 0 12px}
+body:not(.is-test-build):not(.classic-web) .game-layout{flex:1;min-height:0}
+body:not(.is-test-build):not(.classic-web) .pet-card,body:not(.is-test-build):not(.classic-web) .play-panel{min-height:0}
+body:not(.is-test-build):not(.classic-web) .pet-scene{min-height:0}
+body:not(.is-test-build):not(.classic-web) .home footer{flex:0 0 auto;padding:10px 3px 12px}
 @media(min-width:721px){
-  body:not(.is-test-build) .pet-card{height:100%}
-  body:not(.is-test-build) .pet-heading{padding-top:18px}
-  body:not(.is-test-build) .pet-scene{flex:1}
-  body:not(.is-test-build) .growth{padding-top:15px;padding-bottom:14px}
-  body:not(.is-test-build) .play-panel{height:100%;gap:10px}
-  body:not(.is-test-build) .feed-card{padding:17px 19px;gap:5px 11px}
-  body:not(.is-test-build) .feed-button{margin-top:6px;min-height:45px}
-  body:not(.is-test-build) .practice-card{padding:20px 22px;display:flex;flex-direction:column}
-  body:not(.is-test-build) .practice-card>.eyebrow{margin-bottom:10px}
-  body:not(.is-test-build) .card-copy{margin:9px 0 12px}
-  body:not(.is-test-build) .practice-meta{margin-bottom:12px}
-  body:not(.is-test-build) .practice-card .primary{margin-top:auto}
-  body:not(.is-test-build) .small-note{padding:0 6px}
+  body:not(.is-test-build):not(.classic-web) .pet-card{height:100%}
+  body:not(.is-test-build):not(.classic-web) .pet-heading{padding-top:18px}
+  body:not(.is-test-build):not(.classic-web) .pet-scene{flex:1}
+  body:not(.is-test-build):not(.classic-web) .growth{padding-top:15px;padding-bottom:14px}
+  body:not(.is-test-build):not(.classic-web) .play-panel{height:100%;gap:10px}
+  body:not(.is-test-build):not(.classic-web) .feed-card{padding:17px 19px;gap:5px 11px}
+  body:not(.is-test-build):not(.classic-web) .feed-button{margin-top:6px;min-height:45px}
+  body:not(.is-test-build):not(.classic-web) .practice-card{padding:20px 22px;display:flex;flex-direction:column}
+  body:not(.is-test-build):not(.classic-web) .practice-card>.eyebrow{margin-bottom:10px}
+  body:not(.is-test-build):not(.classic-web) .card-copy{margin:9px 0 12px}
+  body:not(.is-test-build):not(.classic-web) .practice-meta{margin-bottom:12px}
+  body:not(.is-test-build):not(.classic-web) .practice-card .primary{margin-top:auto}
+  body:not(.is-test-build):not(.classic-web) .small-note{padding:0 6px}
 }
 @media(max-width:720px){
-  body:not(.is-test-build) .header{padding:7px 12px}
-  body:not(.is-test-build) .home{height:calc(100dvh - 44px);padding:0 10px}
-  body:not(.is-test-build) .welcome{height:38px;margin:0 0 6px;gap:5px}
-  body:not(.is-test-build) .welcome .pet-select{height:36px;padding:6px 8px}
-  body:not(.is-test-build) .welcome .grade-switch,body:not(.is-test-build) .unlock-pet{height:36px;min-height:36px;padding:6px 8px}
-  body:not(.is-test-build) .game-layout{display:flex;flex-direction:column;gap:7px}
-  body:not(.is-test-build) .pet-card{flex:1;min-height:0}
-  body:not(.is-test-build) .pet-heading{flex:0 0 auto;padding:8px 13px 0}
-  body:not(.is-test-build) .pet-heading h2{font-size:20px}
-  body:not(.is-test-build) .level{padding:6px 9px}
-  body:not(.is-test-build) .pet-scene{height:auto;min-height:0;max-height:none;flex:1}
-  body:not(.is-test-build) #pet-host{width:115%;max-width:none;margin:0 0 -5px -7.5%;padding:0}
-  body:not(.is-test-build) .speech{top:6px;left:10px;max-width:210px;padding:5px 8px}
-  body:not(.is-test-build) .halo{width:min(48vw,190px);height:min(48vw,190px)}
-  body:not(.is-test-build) .growth{flex:0 0 auto;padding:8px 13px 9px}
-  body:not(.is-test-build) .growth-label{margin-bottom:5px}
-  body:not(.is-test-build) .evolution-hint{margin-top:5px!important}
-  body:not(.is-test-build) .play-panel{flex:0 0 108px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
-  body:not(.is-test-build) .feed-card,body:not(.is-test-build) .practice-card{height:108px;padding:9px;border-radius:16px;min-width:0}
-  body:not(.is-test-build) .feed-card{order:0;display:grid;grid-template-columns:28px minmax(0,1fr);grid-template-rows:minmax(0,1fr) 39px;gap:4px 6px;align-items:center}
-  body:not(.is-test-build) .food-illustration{font-size:24px;align-self:center}
-  body:not(.is-test-build) .food-illustration img{width:28px;height:28px}
-  body:not(.is-test-build) .feed-card h2{font-size:12px;line-height:1.25;word-break:keep-all;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-  body:not(.is-test-build) .feed-card #food-copy,body:not(.is-test-build) .feed-card>#feed-hint,body:not(.is-test-build) .feed-card .eyebrow{display:none}
-  body:not(.is-test-build) .feed-button{grid-column:1/-1;grid-row:2;margin:0;min-height:39px;padding:6px 8px;font-size:11px;gap:4px;white-space:nowrap}
-  body:not(.is-test-build) .feed-button>span{font-size:10px}
-  body:not(.is-test-build) .practice-card{display:flex;flex-direction:column;gap:4px;align-items:stretch}
-  body:not(.is-test-build) .practice-card>.eyebrow,body:not(.is-test-build) .practice-card .card-copy,body:not(.is-test-build) .card-icon{display:none}
-  body:not(.is-test-build) .practice-card h2{font-size:15px;line-height:1.25;white-space:nowrap}
-  body:not(.is-test-build) .practice-meta{display:flex;gap:3px;margin:0;overflow:hidden}
-  body:not(.is-test-build) .practice-meta span{font-size:8px;padding:3px 4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  body:not(.is-test-build) .practice-card .primary{width:100%;min-width:0;min-height:39px;margin-top:auto;padding:6px;font-size:11px;gap:3px;white-space:nowrap}
-  body:not(.is-test-build) .small-note{display:none}
-  body:not(.is-test-build) .home footer{padding:6px 2px 7px;font-size:8px}
+  body:not(.is-test-build):not(.classic-web) .header{padding:7px 12px}
+  body:not(.is-test-build):not(.classic-web) .home{height:calc(100dvh - 44px);padding:0 10px}
+  body:not(.is-test-build):not(.classic-web) .welcome{height:38px;margin:0 0 6px;gap:5px}
+  body:not(.is-test-build):not(.classic-web) .welcome .pet-select{height:36px;padding:6px 8px}
+  body:not(.is-test-build):not(.classic-web) .welcome .grade-switch,body:not(.is-test-build):not(.classic-web) .unlock-pet{height:36px;min-height:36px;padding:6px 8px}
+  body:not(.is-test-build):not(.classic-web) .game-layout{display:flex;flex-direction:column;gap:7px}
+  body:not(.is-test-build):not(.classic-web) .pet-card{flex:1;min-height:0}
+  body:not(.is-test-build):not(.classic-web) .pet-heading{flex:0 0 auto;padding:8px 13px 0}
+  body:not(.is-test-build):not(.classic-web) .pet-heading h2{font-size:20px}
+  body:not(.is-test-build):not(.classic-web) .level{padding:6px 9px}
+  body:not(.is-test-build):not(.classic-web) .pet-scene{height:auto;min-height:0;max-height:none;flex:1}
+  body:not(.is-test-build):not(.classic-web) #pet-host{width:115%;max-width:none;margin:0 0 -5px -7.5%;padding:0}
+  body:not(.is-test-build):not(.classic-web) .speech{top:6px;left:10px;max-width:210px;padding:5px 8px}
+  body:not(.is-test-build):not(.classic-web) .halo{width:min(48vw,190px);height:min(48vw,190px)}
+  body:not(.is-test-build):not(.classic-web) .growth{flex:0 0 auto;padding:8px 13px 9px}
+  body:not(.is-test-build):not(.classic-web) .growth-label{margin-bottom:5px}
+  body:not(.is-test-build):not(.classic-web) .evolution-hint{margin-top:5px!important}
+  body:not(.is-test-build):not(.classic-web) .play-panel{flex:0 0 108px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  body:not(.is-test-build):not(.classic-web) .feed-card,body:not(.is-test-build):not(.classic-web) .practice-card{height:108px;padding:9px;border-radius:16px;min-width:0}
+  body:not(.is-test-build):not(.classic-web) .feed-card{order:0;display:grid;grid-template-columns:28px minmax(0,1fr);grid-template-rows:minmax(0,1fr) 39px;gap:4px 6px;align-items:center}
+  body:not(.is-test-build):not(.classic-web) .food-illustration{font-size:24px;align-self:center}
+  body:not(.is-test-build):not(.classic-web) .food-illustration img{width:28px;height:28px}
+  body:not(.is-test-build):not(.classic-web) .feed-card h2{font-size:12px;line-height:1.25;word-break:keep-all;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  body:not(.is-test-build):not(.classic-web) .feed-card #food-copy,body:not(.is-test-build):not(.classic-web) .feed-card>#feed-hint,body:not(.is-test-build):not(.classic-web) .feed-card .eyebrow{display:none}
+  body:not(.is-test-build):not(.classic-web) .feed-button{grid-column:1/-1;grid-row:2;margin:0;min-height:39px;padding:6px 8px;font-size:11px;gap:4px;white-space:nowrap}
+  body:not(.is-test-build):not(.classic-web) .feed-button>span{font-size:10px}
+  body:not(.is-test-build):not(.classic-web) .practice-card{display:flex;flex-direction:column;gap:4px;align-items:stretch}
+  body:not(.is-test-build):not(.classic-web) .practice-card>.eyebrow,body:not(.is-test-build):not(.classic-web) .practice-card .card-copy,body:not(.is-test-build):not(.classic-web) .card-icon{display:none}
+  body:not(.is-test-build):not(.classic-web) .practice-card h2{font-size:15px;line-height:1.25;white-space:nowrap}
+  body:not(.is-test-build):not(.classic-web) .practice-meta{display:flex;gap:3px;margin:0;overflow:hidden}
+  body:not(.is-test-build):not(.classic-web) .practice-meta span{font-size:8px;padding:3px 4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  body:not(.is-test-build):not(.classic-web) .practice-card .primary{width:100%;min-width:0;min-height:39px;margin-top:auto;padding:6px;font-size:11px;gap:3px;white-space:nowrap}
+  body:not(.is-test-build):not(.classic-web) .small-note{display:none}
+  body:not(.is-test-build):not(.classic-web) .home footer{padding:6px 2px 7px;font-size:8px}
 }
 /* The developer build uses the same tidy two-card phone controls without the
    older implicit third grid column that made Chinese text stack vertically. */
@@ -157,10 +157,10 @@ body:not(.is-test-build) .home footer{flex:0 0 auto;padding:10px 3px 12px}
   body.is-test-build .practice-card .primary{width:100%;min-width:0;min-height:39px;margin-top:auto;padding:6px;font-size:11px;gap:3px;white-space:nowrap}
 }
 @media(max-height:650px) and (max-width:720px){
-  body:not(.is-test-build) .play-panel{flex-basis:104px}
-  body:not(.is-test-build) .feed-card,body:not(.is-test-build) .practice-card{height:104px;padding:8px}
-  body:not(.is-test-build) .pet-heading p,body:not(.is-test-build) .touch-hint,body:not(.is-test-build) .home footer{display:none}
-  body:not(.is-test-build) .home{height:calc(100dvh - 44px)}
+  body:not(.is-test-build):not(.classic-web) .play-panel{flex-basis:104px}
+  body:not(.is-test-build):not(.classic-web) .feed-card,body:not(.is-test-build):not(.classic-web) .practice-card{height:104px;padding:8px}
+  body:not(.is-test-build):not(.classic-web) .pet-heading p,body:not(.is-test-build):not(.classic-web) .touch-hint,body:not(.is-test-build):not(.classic-web) .home footer{display:none}
+  body:not(.is-test-build):not(.classic-web) .home{height:calc(100dvh - 44px)}
 }
 
 /* Equal stage zoom preserves visible growth on evolution. */

@@ -197,7 +197,7 @@ class View {
     if(!front)this.lastEffectRecipe=result;
     else this.lastEffectRecipe={...result,sprites:result.sprites+(this.lastEffectRecipe?.sprites||0),burstCount:result.burstCount+(this.lastEffectRecipe?.burstCount||0)};
   }
-  pet(x, top, width, height, full = false) {
+  pet(x, top, width, height, full = false, presentation = {}) {
     const g = this.game, c = this.ctx, data = g.character;
     if (!this.ready) {
       const portrait = this.portraits.get(data.id);
@@ -209,9 +209,9 @@ class View {
     const duet=!full?this.duetLayout:null;
     const {actionName,frameIndex,phase}=duet?.motion||this.petMotion();
     const frame = data.frames[frameIndex];
-    const placement=duet?.host||PetGeometry.fit(data,g.stage,frameIndex,{x,top,width,height},g.visualLevel,actionName,phase,g.time,this.reducedMotion);
+    const placement=duet?.host||PetGeometry.fit(data,g.stage,frameIndex,{x,top,width,height,...presentation},g.visualLevel,actionName,phase,g.time,this.reducedMotion);
     this.lastPetPlacement=placement;
-    const foot=placement.foot,baseHeight=height*.9*PetGeometry.growthScale(g.visualLevel);
+    const foot=placement.foot,baseHeight=height*.9*(presentation.growthScale??PetGeometry.growthScale(g.visualLevel));
     const blend=duet?.blend||0;
     const effectX=duet?(placement.bounds.left+placement.bounds.right)/2:x;
     const effectFoot=(top+height-8)*(1-blend)+(placement.bounds.bottom+6)*blend;

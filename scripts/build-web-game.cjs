@@ -32,7 +32,10 @@ function build(args = process.argv.slice(2)) {
   }
   for (const file of fs.readdirSync(path.join(ROOT, 'wechat/browser'))) if (file.endsWith('.js')) modules['browser/' + file.slice(0,-3)] = fs.readFileSync(path.join(ROOT, 'wechat/browser', file), 'utf8');
   modules.config = 'module.exports=' + JSON.stringify(config) + ';';
-  const script = bundle(modules), hash = crypto.createHash('sha256').update(script).digest('hex');
+  const script = bundle(modules);
+  const css = ['game/game.css','game/theme.css','wechat/browser/classic.css'].map(file => fs.readFileSync(path.join(ROOT,file),'utf8')).join('\n');
+  const html = fs.readFileSync(path.join(ROOT, 'wechat/browser/index.html'), 'utf8');
+  const hash = crypto.createHash('sha256').update(script).update(css).update(html).digest('hex');
   fs.mkdirSync(out, { recursive: true });
   // Only replace our own generated asset folders; arbitrary output files remain.
   for (const folder of ['pets','portraits','world-art','custom-assets']) {
@@ -42,9 +45,10 @@ function build(args = process.argv.slice(2)) {
     if (fs.existsSync(src)) fs.cpSync(src, dst, { recursive: true });
   }
   fs.writeFileSync(path.join(out, 'web-runtime.js'), script);
-  fs.writeFileSync(path.join(out, 'index.html'), fs.readFileSync(path.join(ROOT, 'wechat/browser/index.html'), 'utf8').replace('__BUILD_VERSION__', hash.slice(0,16)));
+  fs.writeFileSync(path.join(out, 'classic.css'), css);
+  fs.writeFileSync(path.join(out, 'index.html'), html.replaceAll('__BUILD_VERSION__', hash.slice(0,16)));
   fs.writeFileSync(path.join(out, '.nojekyll'), '');
-  const manifest = { format: 'math-pet-browser-v1', createdAt: new Date().toISOString(), bundleSha256: hash,
+  const manifest = { format: 'math-pet-browser-v1', createdAt: new Date().toISOString(), bundleSha256: crypto.createHash('sha256').update(script).digest('hex'), buildSha256: hash,
     debug: config.debug, testDefault: config.testDefault, customPets: config.customPets, assetVersion: config.assetVersion };
   fs.writeFileSync(path.join(out, 'web-build.json'), JSON.stringify(manifest, null, 2) + '\n');
   console.log(JSON.stringify({ output: path.relative(ROOT, out), modules: Object.keys(modules).length, ...manifest }, null, 2));

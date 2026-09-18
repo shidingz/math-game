@@ -39,6 +39,11 @@ function start(api = wx, environment = GameGlobal) {
     view.height = Math.max(660, (height - top - bottom) / scale);
     // Keep oversized desktop windows comfortable without stretching the character.
     view.height = Math.min(view.height, 920);
+    const browserLayout = api.getCanvasLayout?.(info);
+    if (browserLayout) {
+      ({ scale, left, top } = browserLayout);
+      view.height = browserLayout.height;
+    }
     dpr = Math.max(1, Math.min(2, info.pixelRatio || 1));
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
@@ -51,9 +56,13 @@ function start(api = wx, environment = GameGlobal) {
     game.tick(last ? stamp - last : 0);
     studio.tick();
     last = stamp;
+    api.beforeRender?.({ game, view, canvas, resize });
     ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.fillStyle = game.modal?.type === 'upgrade' ? '#101c2c' : view.palette.background;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (api.transparentCanvas?.()) ctx.clearRect(0, 0, canvas.width, canvas.height);
+    else {
+      ctx.fillStyle = game.modal?.type === 'upgrade' ? '#101c2c' : view.palette.background;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
     ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * left, dpr * top);
     view.render();
     frameId = raf(frame);

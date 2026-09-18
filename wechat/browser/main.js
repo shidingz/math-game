@@ -4,6 +4,7 @@ const { createAdapter } = require('./adapter');
 const config = require('../config');
 const localPacks = require('../data/local-pets');
 const start = require('../runtime/main');
+const { installClassicHome } = require('./classic-home');
 function launch(environment = window) {
   const document = environment.document;
   const connection = new Connection(config.customPets || {}, environment);
@@ -11,6 +12,7 @@ function launch(environment = window) {
   const { api } = createAdapter({ canvas: document.getElementById('game-canvas'), connection, bundledIds: localPacks.map(p => p.id), environment });
   const app = start(api, environment);
   environment.mathPetWeb = app;
+  installClassicHome(app, api, environment);
   const connect = document.getElementById('service-connect'), status = document.getElementById('service-status');
   function update() {
     const ready = !!connection.get(); connect.textContent = ready ? '服务设置' : '连接服务';

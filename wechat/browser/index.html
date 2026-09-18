@@ -1,8 +1,26 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f3f8f4"><title>算算萌宠 · 专属伙伴</title>
-<style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:system-ui,-apple-system,"PingFang SC",sans-serif;background:#f3f8f4;color:#294941}body{display:flex;flex-direction:column;height:100dvh}button,input{font:inherit}button{border:1px solid #cee0d8;border-radius:12px;background:white;color:#294941;font-weight:650;padding:9px 13px;cursor:pointer}button:hover{background:#e8f4ed}button:disabled{opacity:.55;cursor:wait}.web-toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left));padding-top:max(8px,env(safe-area-inset-top));flex:none;border-bottom:1px solid #e0eae3}.brand{font-size:12px;font-weight:650;line-height:1.5}.brand small{display:block;font-size:10px;font-weight:400;color:#6b7e76}.brand small[data-connected=true]{color:#2a8559}.toolbar-actions{display:flex;gap:6px}.toolbar-actions button{font-size:12px;padding:8px 10px}#open-studio{background:#e0f1e7}#game-canvas{display:block;width:100%;height:100%;min-height:0;flex:1;touch-action:none;outline:none}.photo-picker{position:fixed;left:-10000px;width:1px;height:1px}.web-dialog{border:1px solid #d6e4dc;border-radius:22px;width:min(420px,calc(100vw - 32px));padding:24px;color:#294941;background:#fbfdfb;box-shadow:0 20px 80px #122f3140}.web-dialog::backdrop{background:#183a465e}.web-dialog h2{margin:0 0 14px;font-size:22px}.web-dialog p{font-size:14px;line-height:1.6}.web-dialog label{display:block;font-size:13px;margin:14px 0 6px}.web-dialog input{width:100%;padding:12px;border:1px solid #bacfc3;border-radius:10px;color:#233d35;background:white;font-size:16px}.web-dialog .muted{font-size:12px;color:#687d73}.dialog-error{color:#a34235;min-height:22px}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.dialog-actions button:last-child{background:#296c51;color:white}.startup-error{position:absolute;top:100px;left:10%;right:10%;padding:20px;background:#fff1e9;border-radius:16px}
-</style></head>
-<body><header class="web-toolbar"><div class="brand"><span id="build-mode">算算萌宠</span><small id="service-status">可拍照制作伙伴</small></div><div class="toolbar-actions"><button id="open-studio" type="button">制作伙伴</button><button id="service-connect" type="button">连接服务</button></div></header><canvas id="game-canvas" aria-label="算算萌宠游戏"></canvas><p id="startup-error" class="startup-error" hidden role="alert"></p><script src="web-runtime.js?v=__BUILD_VERSION__"></script></body>
-</html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f3f8f5"><title>算算萌宠 · 专属伙伴</title>
+<link rel="stylesheet" href="classic.css?v=__BUILD_VERSION__">
+</head>
+<body class="classic-web">
+<div id="home-shell">
+<header class="header"><a class="brand" href="./"><span id="brand-symbol" class="brand-mark" aria-hidden="true">萌</span>算算萌宠</a><div class="wallet" aria-label="我的积分"><span aria-hidden="true">★</span><strong id="points">0</strong><span>积分</span></div></header>
+<main class="home">
+  <div class="welcome"><div><p class="eyebrow" id="grade-caption">每天进步一点点</p><h1 id="home-title">一起算，一起长大。</h1></div><nav class="partner-nav" aria-label="伙伴与练习"><button id="pets-open" class="unlock-pet" type="button">我的伙伴</button><select id="pet-select" class="pet-select" aria-label="切换伙伴"></select><button id="settings-open" class="grade-switch" type="button"><span id="grade-button">选择年级</span><span aria-hidden="true">⌄</span></button></nav></div>
+  <div class="creation-links"><button id="open-studio" type="button">拍照 / 上传，制作伙伴</button><div><small id="service-status">可拍照制作伙伴</small><button id="service-connect" type="button">连接服务</button></div></div>
+  <div class="game-layout">
+    <section class="pet-card" aria-label="我的宠物"><div class="pet-heading"><div><span id="scene-label" class="eyebrow">伙伴的小天地</span><h2><button id="pet-name" type="button">新伙伴</button><span id="rename-hint">点击改名</span></h2><p id="stage-name"></p></div><span id="level" class="level">Lv.1</span></div>
+      <div id="scene-slot" class="pet-scene"><div class="halo" aria-hidden="true"></div><div class="hill hill-one" aria-hidden="true"></div><div class="hill hill-two" aria-hidden="true"></div><p id="speech" class="speech" aria-live="polite">今天也一起成长吧！</p><canvas id="game-canvas" aria-label="伙伴互动，点击和伙伴打招呼" tabindex="0"></canvas><div id="feed-notice" class="feed-notice" role="status" hidden></div><span class="touch-hint">轻轻点我，有小惊喜</span></div>
+      <div class="growth"><div class="growth-label"><strong>成长进度</strong><span id="growth-value">0 / 40</span></div><progress id="growth-bar" max="40" value="0" aria-label="宠物成长进度"></progress><p id="evolution-milestones">Lv.6 · 30题　Lv.11 · 100题</p><p id="evolution-hint" class="evolution-hint"></p><p id="evolution-note"></p></div>
+    </section>
+    <section class="play-panel" aria-label="做题和喂养"><div class="feed-card"><div><p class="eyebrow">喂养会长大</p><h2>陪伙伴长大一点</h2><p>每份增加 20 点成长值</p></div><button id="feed" class="feed-button" type="button"><span id="feed-label">喂养伙伴</span><span id="feed-cost">20 积分</span></button><p id="feed-hint">做对 2 道题，就能喂养一次</p></div>
+      <div class="practice-card"><span class="card-icon" aria-hidden="true">＋</span><p class="eyebrow">做题赚积分</p><h2>开动小脑筋</h2><p class="card-copy">答对一题，获得 <strong>10 积分</strong>。<br>不计时，慢慢想也没关系。</p><div class="practice-meta"><span id="mode-label">按年级出题</span><span>每轮 10 题</span></div><button id="start" class="primary" type="button">开始做题 →</button></div>
+      <div class="small-note"><p>Lv.6 与 Lv.11 会进化。<br>答题赚积分，喂养让伙伴成长。</p></div>
+    </section>
+  </div>
+  <footer><span id="save-status">进度自动保存在这台设备</span><span id="total-solved">已完成 0 道题</span><div class="footer-actions"><button id="mistakes-open" type="button">错题回顾</button><button id="guide-open" type="button">成长指南</button><button id="debug-open" type="button" hidden>测试工具</button><span id="build-mode"></span></div></footer>
+</main></div>
+<dialog id="game-dialog" aria-label="游戏操作"><div id="dialog-canvas-slot"></div></dialog>
+<p id="startup-error" class="startup-error" hidden role="alert"></p><script src="web-runtime.js?v=__BUILD_VERSION__"></script>
+</body></html>

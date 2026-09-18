@@ -1,6 +1,8 @@
 # 开发说明
 
-当前开发版本为 `wechat-v22-photo-service`：保留 v21 的背景、主题特效与双伙伴互动，新增本机制作服务与真实浏览器适配器。灰猫案例已完成四次图片 API 生成、三阶段 27 动作，当前构建共 9 个伙伴。公开 Cloudflare 上的真实上传→4 次生图→裁切→领取→刷新全流程已通过，远程三阶段 1536×1536 图集加载正常；当前随包仍 9 个伙伴，新任务只属于验收会话。dev 的 `5922dde` 已构建并发布到 GitHub Pages `/dev/`，线上页面和服务连通检查通过。201 项通用测试、7 组服务测试及灰猫 81 动作组合/6 次进化/3 视口检查通过，完整实测边界见 [VALIDATION.md](VALIDATION.md)。操作见 [LOCAL-PET-SERVICE.md](LOCAL-PET-SERVICE.md)，主题视觉见 [WEBSITE-EFFECTS.md](WEBSITE-EFFECTS.md)。
+当前开发版本为 `wechat-v23-classic-home`：浏览器首页恢复经典 DOM 伙伴卡片，手机自然滚动、桌面双栏；Canvas 只承担角色动画与操作弹窗。生成服务、会话存档键和成长规则不变；微信原生布局保持原样。浏览器样式从 `game/game.css`、`game/theme.css` 和 `wechat/browser/classic.css` 合成，构建版本覆盖 HTML/CSS/JS。203 单测与三视口 729 动作边界/交互验证通过，详见 [VALIDATION.md](VALIDATION.md)。
+
+v22 历史记录：保留 v21 的背景、主题特效与双伙伴互动，新增本机制作服务与真实浏览器适配器。灰猫案例已完成四次图片 API 生成、三阶段 27 动作，当前构建共 9 个伙伴。公开 Cloudflare 上的真实上传→4 次生图→裁切→领取→刷新全流程已通过，远程三阶段 1536×1536 图集加载正常；当前随包仍 9 个伙伴，新任务只属于验收会话。dev 的 `5922dde` 已构建并发布到 GitHub Pages `/dev/`，线上页面和服务连通检查通过。201 项通用测试、7 组服务测试及灰猫 81 动作组合/6 次进化/3 视口检查通过，完整实测边界见 [VALIDATION.md](VALIDATION.md)。操作见 [LOCAL-PET-SERVICE.md](LOCAL-PET-SERVICE.md)，主题视觉见 [WEBSITE-EFFECTS.md](WEBSITE-EFFECTS.md)。
 
 ## 微信自定义宠物增补
 
